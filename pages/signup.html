@@ -1,0 +1,2053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BiteRush | Create Account</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           BITERUSH SIGNUP PAGE
+           Completely scoped with br-signup- classes.
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #030305;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        button,
+        input {
+            font-family: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .br-signup-page {
+            width: 100%;
+            min-height: 100vh;
+
+            display: grid;
+            grid-template-columns: 48% 52%;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(124, 58, 237, 0.12),
+                    transparent 35%
+                ),
+                #030305;
+        }
+
+
+        /* =====================================================
+           LEFT VISUAL
+        ===================================================== */
+
+        .br-signup-visual {
+            position: relative;
+
+            min-height: 100vh;
+
+            padding: 42px 56px;
+
+            display: flex;
+            flex-direction: column;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 48%,
+                    rgba(124, 58, 237, 0.18),
+                    transparent 38%
+                ),
+                linear-gradient(
+                    145deg,
+                    #07070b,
+                    #0a0818 55%,
+                    #050508
+                );
+
+            border-right: 1px solid
+                rgba(255,255,255,0.07);
+        }
+
+
+        .br-signup-visual::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            opacity: 0.15;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
+
+            pointer-events: none;
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .br-signup-brand {
+            position: relative;
+            z-index: 3;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            width: fit-content;
+
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+
+        .br-signup-brand-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #8b5cf6,
+                    #5b21b6
+                );
+
+            border: 1px solid
+                rgba(196,181,253,0.25);
+
+            box-shadow:
+                0 12px 35px
+                rgba(124,58,237,0.30);
+
+            font-size: 20px;
+        }
+
+
+        .br-signup-brand-name {
+            font-family: "Poppins", sans-serif;
+
+            font-size: 21px;
+            font-weight: 800;
+        }
+
+
+        .br-signup-brand-name span {
+            color: #a78bfa;
+        }
+
+        /* Actual BiteRush logo */
+        .br-signup-logo-wrap {
+            padding: 0;
+            overflow: hidden;
+            background: #030305;
+        }
+
+        .br-signup-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            border-radius: inherit;
+        }
+
+
+        /* =====================================================
+           VISUAL CONTENT
+        ===================================================== */
+
+        .br-signup-visual-content {
+            position: relative;
+            z-index: 2;
+
+            flex: 1;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            max-width: 620px;
+        }
+
+
+        .br-signup-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 20px;
+
+            color: #a78bfa;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+
+        .br-signup-eyebrow::before {
+            content: "";
+
+            width: 25px;
+            height: 2px;
+
+            border-radius: 999px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7c3aed,
+                    #a78bfa
+                );
+        }
+
+
+        .br-signup-visual-title {
+            font-family: "Poppins", sans-serif;
+
+            font-size: clamp(43px, 5vw, 68px);
+
+            line-height: 1.05;
+
+            letter-spacing: -2.8px;
+
+            font-weight: 800;
+
+            margin-bottom: 22px;
+        }
+
+
+        .br-signup-visual-title span {
+            background:
+                linear-gradient(
+                    100deg,
+                    #ffffff,
+                    #c4b5fd,
+                    #8b5cf6
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+
+        .br-signup-visual-description {
+            max-width: 520px;
+
+            color: rgba(255,255,255,0.57);
+
+            font-size: 16px;
+            line-height: 1.75;
+
+            margin-bottom: 40px;
+        }
+
+
+        /* =====================================================
+           BENEFIT CARDS
+        ===================================================== */
+
+        .br-signup-benefits {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 14px;
+
+            max-width: 590px;
+        }
+
+
+        .br-signup-benefit {
+            min-height: 135px;
+
+            padding: 20px;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,0.06),
+                    rgba(255,255,255,0.018)
+                );
+
+            border: 1px solid
+                rgba(255,255,255,0.07);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
+        }
+
+
+        .br-signup-benefit:hover {
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(139,92,246,0.35);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(124,58,237,0.12),
+                    rgba(255,255,255,0.025)
+                );
+        }
+
+
+        .br-signup-benefit-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin-bottom: 13px;
+
+            border-radius: 13px;
+
+            background:
+                rgba(124,58,237,0.13);
+
+            border: 1px solid
+                rgba(167,139,250,0.18);
+
+            font-size: 20px;
+        }
+
+
+        .br-signup-benefit h3 {
+            font-family: "Poppins", sans-serif;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            margin-bottom: 5px;
+        }
+
+
+        .br-signup-benefit p {
+            color: rgba(255,255,255,0.43);
+
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           RIGHT CONTENT
+        ===================================================== */
+
+        .br-signup-content {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 45px 7%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(8,8,13,0.98),
+                    rgba(13,9,25,0.98)
+                );
+        }
+
+
+        .br-signup-card {
+            width: 100%;
+            max-width: 520px;
+        }
+
+
+        /* Mobile brand */
+
+        .br-signup-mobile-brand {
+            display: none;
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        .br-signup-heading {
+            margin-bottom: 27px;
+        }
+
+
+        .br-signup-heading-label {
+            display: block;
+
+            margin-bottom: 13px;
+
+            color: #a78bfa;
+
+            font-size: 11px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+
+        .br-signup-heading h2 {
+            font-family: "Poppins", sans-serif;
+
+            font-size: 38px;
+            line-height: 1.15;
+
+            letter-spacing: -1.4px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .br-signup-heading p {
+            color: rgba(255,255,255,0.50);
+
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           FORM
+        ===================================================== */
+
+        .br-signup-form {
+            display: flex;
+            flex-direction: column;
+
+            gap: 15px;
+        }
+
+
+        .br-signup-row {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 14px;
+        }
+
+
+        .br-signup-group {
+            display: flex;
+            flex-direction: column;
+
+            gap: 7px;
+        }
+
+
+        .br-signup-group label {
+            color: rgba(255,255,255,0.78);
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           INPUT
+        ===================================================== */
+
+        .br-signup-input-wrap {
+            position: relative;
+
+            display: flex;
+            align-items: center;
+        }
+
+
+        .br-signup-input-icon {
+            position: absolute;
+
+            left: 15px;
+
+            font-size: 15px;
+
+            pointer-events: none;
+        }
+
+
+        .br-signup-input {
+            width: 100%;
+            height: 51px;
+
+            padding:
+                0 45px 0 44px;
+
+            border-radius: 13px;
+
+            border: 1px solid
+                rgba(255,255,255,0.09);
+
+            outline: none;
+
+            background:
+                rgba(255,255,255,0.045);
+
+            color: #ffffff;
+
+            font-size: 13px;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .br-signup-input::placeholder {
+            color:
+                rgba(255,255,255,0.28);
+        }
+
+
+        .br-signup-input:focus {
+            border-color:
+                rgba(139,92,246,0.65);
+
+            background:
+                rgba(124,58,237,0.06);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(124,58,237,0.09);
+        }
+
+
+        /* =====================================================
+           PASSWORD TOGGLE
+        ===================================================== */
+
+        .br-signup-password-toggle {
+            position: absolute;
+
+            right: 12px;
+
+            width: 30px;
+            height: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 0;
+
+            background: transparent;
+
+            color: rgba(255,255,255,0.50);
+
+            font-size: 16px;
+        }
+
+
+        .br-signup-password-toggle:hover {
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           PASSWORD STRENGTH
+        ===================================================== */
+
+        .br-signup-strength {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 5px;
+
+            min-height: 13px;
+        }
+
+
+        .br-signup-strength-bar {
+            flex: 1;
+
+            height: 3px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(255,255,255,0.08);
+
+            overflow: hidden;
+        }
+
+
+        .br-signup-strength-fill {
+            width: 0;
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                #8b5cf6;
+
+            transition:
+                width 0.25s ease,
+                background 0.25s ease;
+        }
+
+
+        .br-signup-strength-text {
+            min-width: 50px;
+
+            color: rgba(255,255,255,0.35);
+
+            font-size: 10px;
+        }
+
+
+        /* =====================================================
+           TERMS CHECKBOX
+        ===================================================== */
+
+        .br-signup-terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 9px;
+
+            margin-top: 4px;
+
+            color: rgba(255,255,255,0.42);
+
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+
+        .br-signup-terms input {
+            flex-shrink: 0;
+
+            width: 15px;
+            height: 15px;
+
+            margin-top: 1px;
+
+            accent-color: #8b5cf6;
+        }
+
+
+        .br-signup-terms a {
+            color: #a78bfa;
+
+            text-decoration: none;
+        }
+
+
+        .br-signup-terms a:hover {
+            color: #c4b5fd;
+        }
+
+
+        /* =====================================================
+           CREATE ACCOUNT
+        ===================================================== */
+
+        .br-signup-submit {
+            width: 100%;
+            height: 55px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 17px;
+
+            margin-top: 4px;
+
+            border: 0;
+            border-radius: 14px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #6d28d9
+                );
+
+            color: #ffffff;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            box-shadow:
+                0 16px 35px
+                rgba(109,40,217,0.28);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+
+        .br-signup-submit:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 20px 45px
+                rgba(109,40,217,0.42);
+        }
+
+
+        .br-signup-submit span {
+            font-size: 20px;
+
+            transition:
+                transform 0.2s ease;
+        }
+
+
+        .br-signup-submit:hover span {
+            transform: translateX(5px);
+        }
+
+
+        /* =====================================================
+           DIVIDER
+        ===================================================== */
+
+        .br-signup-divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            margin: 22px 0 17px;
+
+            color: rgba(255,255,255,0.28);
+
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+
+        .br-signup-divider::before,
+        .br-signup-divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background:
+                rgba(255,255,255,0.08);
+        }
+
+
+        /* =====================================================
+           GOOGLE
+        ===================================================== */
+
+        .br-signup-google {
+            width: 100%;
+            height: 51px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 11px;
+
+            border-radius: 13px;
+
+            border: 1px solid
+                rgba(255,255,255,0.10);
+
+            background:
+                rgba(255,255,255,0.035);
+
+            color: #ffffff;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            transition:
+                background 0.2s ease,
+                border-color 0.2s ease;
+        }
+
+
+        .br-signup-google:hover {
+            background:
+                rgba(255,255,255,0.07);
+
+            border-color:
+                rgba(255,255,255,0.18);
+        }
+
+
+        .br-signup-google-icon {
+            width: 22px;
+            height: 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #ffffff;
+
+            color: #4285f4;
+
+            font-family: Arial, sans-serif;
+
+            font-weight: 800;
+        }
+
+
+        /* =====================================================
+           LOGIN LINK
+        ===================================================== */
+
+        .br-signup-login {
+            display: flex;
+            justify-content: center;
+
+            margin-top: 21px;
+
+            color: rgba(255,255,255,0.46);
+
+            font-size: 12px;
+        }
+
+
+        .br-signup-login a {
+            margin-left: 6px;
+
+            color: #a78bfa;
+
+            font-weight: 800;
+
+            text-decoration: none;
+        }
+
+
+        .br-signup-login a:hover {
+            color: #c4b5fd;
+        }
+
+
+        /* =====================================================
+           GUEST
+        ===================================================== */
+
+        .br-signup-guest {
+            display: block;
+
+            width: 100%;
+
+            margin-top: 11px;
+
+            padding: 7px;
+
+            border: 0;
+
+            background: transparent;
+
+            color: rgba(255,255,255,0.32);
+
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+
+        .br-signup-guest:hover {
+            color: rgba(255,255,255,0.72);
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 1050px) {
+
+            .br-signup-page {
+                grid-template-columns: 44% 56%;
+            }
+
+            .br-signup-visual {
+                padding: 35px;
+            }
+
+            .br-signup-content {
+                padding: 40px 6%;
+            }
+
+            .br-signup-visual-title {
+                font-size: 49px;
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .br-signup-page {
+                display: block;
+            }
+
+
+            .br-signup-visual {
+                min-height: 360px;
+
+                padding: 25px 22px 30px;
+
+                border-right: 0;
+
+                border-bottom:
+                    1px solid
+                    rgba(255,255,255,0.07);
+            }
+
+
+            .br-signup-visual-content {
+                justify-content: flex-end;
+
+                padding-top: 45px;
+            }
+
+
+            .br-signup-visual-title {
+                font-size: 38px;
+
+                letter-spacing: -1.8px;
+            }
+
+
+            .br-signup-visual-description {
+                font-size: 13px;
+
+                margin-bottom: 20px;
+            }
+
+
+            .br-signup-benefits {
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 8px;
+            }
+
+
+            .br-signup-benefit {
+                min-height: 100px;
+
+                padding: 12px;
+
+                border-radius: 14px;
+            }
+
+
+            .br-signup-benefit-icon {
+                width: 32px;
+                height: 32px;
+
+                margin-bottom: 7px;
+
+                font-size: 16px;
+            }
+
+
+            .br-signup-benefit h3 {
+                font-size: 11px;
+            }
+
+
+            .br-signup-benefit p {
+                font-size: 9px;
+            }
+
+
+            .br-signup-content {
+                min-height: auto;
+
+                display: block;
+
+                padding: 40px 22px 50px;
+            }
+
+
+            .br-signup-mobile-brand {
+                display: block;
+
+                margin-bottom: 30px;
+            }
+
+
+            .br-signup-mobile-brand
+            .br-signup-brand {
+                position: static;
+            }
+
+
+            .br-signup-heading h2 {
+                font-size: 31px;
+            }
+
+        }
+
+
+        @media (max-width: 520px) {
+
+            .br-signup-row {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 420px) {
+
+            .br-signup-visual {
+                min-height: 340px;
+            }
+
+            .br-signup-visual-title {
+                font-size: 33px;
+            }
+
+            .br-signup-heading h2 {
+                font-size: 28px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <main class="br-signup-page">
+
+
+        <!-- =================================================
+             LEFT VISUAL
+        ================================================== -->
+
+        <section class="br-signup-visual">
+
+
+            <!-- Brand -->
+
+            <a
+                href="../index.html"
+                class="br-signup-brand"
+            >
+
+                <div class="br-signup-brand-icon br-signup-logo-wrap">
+                    <img
+                        src="../assets/logo/biterush-logo.png"
+                        alt="BiteRush"
+                        class="br-signup-logo"
+                    >
+                </div>
+
+                <div class="br-signup-brand-name">
+                    Bite<span>Rush</span>
+                </div>
+
+            </a>
+
+
+            <!-- Visual Content -->
+
+            <div class="br-signup-visual-content">
+
+                <div class="br-signup-eyebrow">
+                    JOIN BITERUSH
+                </div>
+
+
+                <h1 class="br-signup-visual-title">
+
+                    One account.
+                    <br>
+
+                    <span>Endless cravings.</span>
+
+                </h1>
+
+
+                <p class="br-signup-visual-description">
+
+                    Create your BiteRush account and make
+                    ordering your favorite food faster,
+                    easier, and more personal.
+
+                </p>
+
+
+                <!-- Benefits -->
+
+                <div class="br-signup-benefits">
+
+
+                    <div class="br-signup-benefit">
+
+                        <div class="br-signup-benefit-icon">
+                            🍕
+                        </div>
+
+                        <h3>
+                            Discover food
+                        </h3>
+
+                        <p>
+                            Explore restaurants and cuisines.
+                        </p>
+
+                    </div>
+
+
+                    <div class="br-signup-benefit">
+
+                        <div class="br-signup-benefit-icon">
+                            ⚡
+                        </div>
+
+                        <h3>
+                            Order faster
+                        </h3>
+
+                        <p>
+                            Save your details for easy checkout.
+                        </p>
+
+                    </div>
+
+
+                    <div class="br-signup-benefit">
+
+                        <div class="br-signup-benefit-icon">
+                            ❤️
+                        </div>
+
+                        <h3>
+                            Save favorites
+                        </h3>
+
+                        <p>
+                            Keep the food you love close.
+                        </p>
+
+                    </div>
+
+
+                    <div class="br-signup-benefit">
+
+                        <div class="br-signup-benefit-icon">
+                            📍
+                        </div>
+
+                        <h3>
+                            Track orders
+                        </h3>
+
+                        <p>
+                            Follow every delivery in real time.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RIGHT CONTENT
+        ================================================== -->
+
+        <section class="br-signup-content">
+
+            <div class="br-signup-card">
+
+
+                <!-- Mobile Brand -->
+
+                <div class="br-signup-mobile-brand">
+
+                    <a
+                        href="../index.html"
+                        class="br-signup-brand"
+                    >
+
+                        <div class="br-signup-brand-icon br-signup-logo-wrap">
+                            <img
+                                src="../assets/logo/biterush-logo.png"
+                                alt="BiteRush"
+                                class="br-signup-logo"
+                            >
+                        </div>
+
+                        <div class="br-signup-brand-name">
+                            Bite<span>Rush</span>
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <!-- Heading -->
+
+                <div class="br-signup-heading">
+
+                    <span class="br-signup-heading-label">
+                        CREATE YOUR ACCOUNT
+                    </span>
+
+                    <h2>
+                        Join BiteRush ✨
+                    </h2>
+
+                    <p>
+                        Create an account to start ordering
+                        delicious food.
+                    </p>
+
+                </div>
+
+
+                <!-- =================================================
+                     FORM
+                ================================================== -->
+
+                <form
+                    id="signupForm"
+                    class="br-signup-form"
+                    novalidate
+                >
+
+
+                    <!-- Full Name -->
+
+                    <div class="br-signup-group">
+
+                        <label for="signupName">
+                            Full name
+                        </label>
+
+                        <div class="br-signup-input-wrap">
+
+                            <span class="br-signup-input-icon">
+                                👤
+                            </span>
+
+                            <input
+                                type="text"
+                                id="signupName"
+                                class="br-signup-input"
+                                placeholder="Your full name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Email + Phone -->
+
+                    <div class="br-signup-row">
+
+
+                        <div class="br-signup-group">
+
+                            <label for="signupEmail">
+                                Email address
+                            </label>
+
+                            <div class="br-signup-input-wrap">
+
+                                <span class="br-signup-input-icon">
+                                    ✉️
+                                </span>
+
+                                <input
+                                    type="email"
+                                    id="signupEmail"
+                                    class="br-signup-input"
+                                    placeholder="you@example.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="br-signup-group">
+
+                            <label for="signupPhone">
+                                Phone number
+                            </label>
+
+                            <div class="br-signup-input-wrap">
+
+                                <span class="br-signup-input-icon">
+                                    📱
+                                </span>
+
+                                <input
+                                    type="tel"
+                                    id="signupPhone"
+                                    class="br-signup-input"
+                                    placeholder="10-digit number"
+                                    maxlength="10"
+                                    inputmode="numeric"
+                                    autocomplete="tel"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- Password -->
+
+                    <div class="br-signup-group">
+
+                        <label for="signupPassword">
+                            Password
+                        </label>
+
+                        <div class="br-signup-input-wrap">
+
+                            <span class="br-signup-input-icon">
+                                🔒
+                            </span>
+
+                            <input
+                                type="password"
+                                id="signupPassword"
+                                class="br-signup-input"
+                                placeholder="Create a password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="signupPasswordToggle"
+                                class="br-signup-password-toggle"
+                                onclick="toggleSignupPassword('signupPassword', 'signupPasswordToggle')"
+                                aria-label="Show password"
+                            >
+                                👁️
+                            </button>
+
+                        </div>
+
+
+                        <!-- Password strength -->
+
+                        <div class="br-signup-strength">
+
+                            <div class="br-signup-strength-bar">
+
+                                <div
+                                    id="passwordStrengthFill"
+                                    class="br-signup-strength-fill"
+                                ></div>
+
+                            </div>
+
+                            <span
+                                id="passwordStrengthText"
+                                class="br-signup-strength-text"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Confirm Password -->
+
+                    <div class="br-signup-group">
+
+                        <label for="signupConfirmPassword">
+                            Confirm password
+                        </label>
+
+                        <div class="br-signup-input-wrap">
+
+                            <span class="br-signup-input-icon">
+                                🔐
+                            </span>
+
+                            <input
+                                type="password"
+                                id="signupConfirmPassword"
+                                class="br-signup-input"
+                                placeholder="Confirm your password"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                id="signupConfirmToggle"
+                                class="br-signup-password-toggle"
+                                onclick="toggleSignupPassword('signupConfirmPassword', 'signupConfirmToggle')"
+                                aria-label="Show password"
+                            >
+                                👁️
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Terms -->
+
+                    <label class="br-signup-terms">
+
+                        <input
+                            type="checkbox"
+                            id="signupTerms"
+                        >
+
+                        <span>
+                            I agree to the
+                            <a
+                                href="#"
+                                onclick="showTerms(event)"
+                            >
+                                Terms of Service
+                            </a>
+                            and
+                            <a
+                                href="#"
+                                onclick="showPrivacy(event)"
+                            >
+                                Privacy Policy
+                            </a>.
+                        </span>
+
+                    </label>
+
+
+
+                    <!-- Create Account -->
+
+                    <button
+                        type="submit"
+                        class="br-signup-submit"
+                    >
+
+                        <span>
+                            Create Account
+                        </span>
+
+                        <span>
+                            →
+                        </span>
+
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- Divider -->
+
+                <div class="br-signup-divider">
+                    or continue with
+                </div>
+
+
+
+                <!-- Google -->
+
+                <button
+                    type="button"
+                    class="br-signup-google"
+                    onclick="googleSignup()"
+                >
+
+                    <span class="br-signup-google-icon">
+                        G
+                    </span>
+
+                    Continue with Google
+
+                </button>
+
+
+
+                <!-- Login -->
+
+                <div class="br-signup-login">
+
+                    <span>
+                        Already have an account?
+                    </span>
+
+                    <a href="login.html">
+                        Sign in
+                    </a>
+
+                </div>
+
+
+
+                <!-- Guest -->
+
+                <button
+                    type="button"
+                    class="br-signup-guest"
+                    onclick="continueAsGuest()"
+                >
+                    Continue as guest
+                </button>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         SIGNUP FUNCTIONALITY
+    ====================================================== -->
+
+    <script>
+
+        const signupForm =
+            document.getElementById("signupForm");
+
+
+        /* =================================================
+           PASSWORD VISIBILITY
+        ================================================= */
+
+        function toggleSignupPassword(
+            inputId,
+            buttonId
+        ) {
+
+            const input =
+                document.getElementById(inputId);
+
+            const button =
+                document.getElementById(buttonId);
+
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                button.textContent = "🙈";
+
+                button.setAttribute(
+                    "aria-label",
+                    "Hide password"
+                );
+
+            } else {
+
+                input.type = "password";
+
+                button.textContent = "👁️";
+
+                button.setAttribute(
+                    "aria-label",
+                    "Show password"
+                );
+
+            }
+
+        }
+
+
+
+        /* =================================================
+           PASSWORD STRENGTH
+        ================================================= */
+
+        const passwordInput =
+            document.getElementById(
+                "signupPassword"
+            );
+
+        const strengthFill =
+            document.getElementById(
+                "passwordStrengthFill"
+            );
+
+        const strengthText =
+            document.getElementById(
+                "passwordStrengthText"
+            );
+
+
+        passwordInput.addEventListener(
+            "input",
+            function() {
+
+                const password =
+                    passwordInput.value;
+
+                let score = 0;
+
+
+                if (password.length >= 6) {
+                    score++;
+                }
+
+                if (password.length >= 10) {
+                    score++;
+                }
+
+                if (/[A-Z]/.test(password)) {
+                    score++;
+                }
+
+                if (/[0-9]/.test(password)) {
+                    score++;
+                }
+
+                if (/[^A-Za-z0-9]/.test(password)) {
+                    score++;
+                }
+
+
+                if (!password) {
+
+                    strengthFill.style.width = "0%";
+                    strengthText.textContent = "—";
+
+                } else if (score <= 2) {
+
+                    strengthFill.style.width = "35%";
+                    strengthFill.style.background = "#ef4444";
+                    strengthText.textContent = "Weak";
+
+                } else if (score <= 4) {
+
+                    strengthFill.style.width = "70%";
+                    strengthFill.style.background = "#f59e0b";
+                    strengthText.textContent = "Good";
+
+                } else {
+
+                    strengthFill.style.width = "100%";
+                    strengthFill.style.background = "#8b5cf6";
+                    strengthText.textContent = "Strong";
+
+                }
+
+            }
+        );
+
+
+
+        /* =================================================
+           PHONE INPUT
+        ================================================= */
+
+        document
+            .getElementById("signupPhone")
+            .addEventListener(
+                "input",
+                function() {
+
+                    this.value =
+                        this.value
+                        .replace(/\D/g, "")
+                        .slice(0, 10);
+
+                }
+            );
+
+
+
+        /* =================================================
+           SIGNUP
+        ================================================= */
+
+        signupForm.addEventListener(
+            "submit",
+            function(event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document
+                    .getElementById("signupName")
+                    .value
+                    .trim();
+
+
+                const email =
+                    document
+                    .getElementById("signupEmail")
+                    .value
+                    .trim();
+
+
+                const phone =
+                    document
+                    .getElementById("signupPhone")
+                    .value
+                    .trim();
+
+
+                const password =
+                    document
+                    .getElementById("signupPassword")
+                    .value;
+
+
+                const confirmPassword =
+                    document
+                    .getElementById(
+                        "signupConfirmPassword"
+                    )
+                    .value;
+
+
+                const terms =
+                    document
+                    .getElementById("signupTerms")
+                    .checked;
+
+
+
+                /* Name */
+
+                if (!name) {
+
+                    alert(
+                        "Please enter your full name."
+                    );
+
+                    return;
+                }
+
+
+                if (name.length < 2) {
+
+                    alert(
+                        "Please enter a valid name."
+                    );
+
+                    return;
+                }
+
+
+
+                /* Email */
+
+                if (!email) {
+
+                    alert(
+                        "Please enter your email address."
+                    );
+
+                    return;
+                }
+
+
+                if (
+                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                    .test(email)
+                ) {
+
+                    alert(
+                        "Please enter a valid email address."
+                    );
+
+                    return;
+                }
+
+
+
+                /* Phone */
+
+                if (!/^\d{10}$/.test(phone)) {
+
+                    alert(
+                        "Please enter a valid 10-digit phone number."
+                    );
+
+                    return;
+                }
+
+
+
+                /* Password */
+
+                if (password.length < 6) {
+
+                    alert(
+                        "Password must contain at least 6 characters."
+                    );
+
+                    return;
+                }
+
+
+
+                /* Confirm */
+
+                if (
+                    password !== confirmPassword
+                ) {
+
+                    alert(
+                        "Passwords do not match."
+                    );
+
+                    return;
+                }
+
+
+
+                /* Terms */
+
+                if (!terms) {
+
+                    alert(
+                        "Please agree to the Terms of Service and Privacy Policy."
+                    );
+
+                    return;
+                }
+
+
+
+                /* =================================================
+                   SAVE PROFILE
+                ================================================= */
+
+                const profile = {
+
+                    name: name,
+
+                    email: email,
+
+                    phone: phone
+
+                };
+
+
+                localStorage.setItem(
+                    "biteRushProfile",
+                    JSON.stringify(profile)
+                );
+
+
+                localStorage.setItem(
+                    "biteRushUser",
+                    JSON.stringify({
+
+                        name: name,
+
+                        email: email,
+
+                        phone: phone,
+
+                        loggedIn: true
+
+                    })
+                );
+
+
+                localStorage.setItem(
+                    "biteRushLoggedIn",
+                    "true"
+                );
+
+
+                localStorage.removeItem(
+                    "biteRushGuest"
+                );
+
+
+                alert(
+                    "Account created successfully! Welcome to BiteRush."
+                );
+
+
+                window.location.href =
+                    "home.html";
+
+            }
+        );
+
+
+
+        /* =================================================
+           GOOGLE SIGNUP
+        ================================================= */
+
+        function googleSignup() {
+
+            alert(
+                "Google Sign-Up is available as a " +
+                "UI demonstration in this prototype."
+            );
+
+        }
+
+
+
+        /* =================================================
+           GUEST
+        ================================================= */
+
+        function continueAsGuest() {
+
+            localStorage.setItem(
+                "biteRushGuest",
+                "true"
+            );
+
+            localStorage.setItem(
+                "biteRushLoggedIn",
+                "false"
+            );
+
+            window.location.href =
+                "home.html";
+
+        }
+
+
+
+        /* =================================================
+           TERMS
+        ================================================= */
+
+        function showTerms(event) {
+
+            if (event) {
+                event.preventDefault();
+            }
+
+            alert(
+                "BiteRush Terms of Service\n\n" +
+                "This is a UI/UX prototype. " +
+                "Real terms would be displayed here."
+            );
+
+        }
+
+
+
+        /* =================================================
+           PRIVACY
+        ================================================= */
+
+        function showPrivacy(event) {
+
+            if (event) {
+                event.preventDefault();
+            }
+
+            alert(
+                "BiteRush Privacy Policy\n\n" +
+                "This is a UI/UX prototype. " +
+                "Real privacy information would be displayed here."
+            );
+
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BiteRush | Welcome</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        /* =====================================================
+           BITERUSH ONBOARDING ONLY
+           All classes use br-onb- prefix so nothing else
+           in the project can be affected.
+        ===================================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #030305;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        button,
+        a {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           MAIN PAGE
+        ===================================================== */
+
+        .br-onb-page {
+            width: 100%;
+            min-height: 100vh;
+
+            display: grid;
+            grid-template-columns: 52% 48%;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(125, 52, 255, 0.12),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(75, 45, 180, 0.10),
+                    transparent 35%
+                ),
+                #030305;
+        }
+
+
+        /* =====================================================
+           LEFT SIDE
+        ===================================================== */
+
+        .br-onb-left {
+            position: relative;
+
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+
+            padding: 42px 56px 40px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 48%,
+                    rgba(105, 45, 210, 0.18),
+                    transparent 34%
+                ),
+                linear-gradient(
+                    145deg,
+                    #07070b 0%,
+                    #090817 48%,
+                    #050509 100%
+                );
+
+            border-right: 1px solid rgba(255,255,255,0.07);
+        }
+
+
+        /* Decorative glow */
+
+        .br-onb-left::before {
+            content: "";
+
+            position: absolute;
+
+            width: 520px;
+            height: 520px;
+
+            left: 50%;
+            top: 48%;
+
+            transform: translate(-50%, -50%);
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(124, 58, 237, 0.16),
+                    transparent 68%
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* Grid */
+
+        .br-onb-left::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            opacity: 0.20;
+
+            background-image:
+                linear-gradient(
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.035) 1px,
+                    transparent 1px
+                );
+
+            background-size: 45px 45px;
+
+            pointer-events: none;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 80%
+                );
+        }
+
+
+        /* =====================================================
+           BRAND
+        ===================================================== */
+
+        .br-onb-brand {
+            position: relative;
+            z-index: 5;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            width: fit-content;
+
+            text-decoration: none;
+            color: #ffffff;
+        }
+
+        .br-onb-brand-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #7c3aed,
+                    #4c1d95
+                );
+
+            border: 1px solid rgba(167,139,250,0.35);
+
+            box-shadow:
+                0 10px 35px rgba(124,58,237,0.30);
+
+            font-size: 20px;
+        }
+
+        .br-onb-brand-name {
+            font-family: "Poppins", sans-serif;
+
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .br-onb-brand-name span {
+            color: #a78bfa;
+        }
+
+        .br-onb-logo-wrap {
+            padding: 0;
+            overflow: hidden;
+            background: #030305;
+        }
+
+        .br-onb-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            border-radius: inherit;
+        }
+
+        .br-onb-food-image {
+            position: relative;
+            z-index: 3;
+
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+            object-position: center;
+
+            display: block;
+
+            transition: transform 0.45s ease;
+        }
+
+        .br-onb-food-card:hover .br-onb-food-image {
+            transform: scale(1.025);
+        }
+
+
+        /* =====================================================
+           FOOD AREA
+        ===================================================== */
+
+        .br-onb-food-area {
+            position: relative;
+            z-index: 2;
+
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            min-height: 500px;
+        }
+
+
+        /* Main food card */
+
+        .br-onb-food-card {
+            position: relative;
+
+            width: min(500px, 84%);
+            aspect-ratio: 4 / 3;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 32px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(28, 23, 45, 0.98),
+                    rgba(10, 9, 16, 0.98)
+                );
+
+            border: 1px solid rgba(167,139,250,0.22);
+
+            box-shadow:
+                0 40px 100px rgba(0,0,0,0.65),
+                0 0 70px rgba(124,58,237,0.12),
+                inset 0 1px 0 rgba(255,255,255,0.07);
+
+            overflow: hidden;
+
+            animation: brOnbFloat 5s ease-in-out infinite;
+        }
+
+        @keyframes brOnbFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
+        }
+
+
+        /* Food glow */
+
+        .br-onb-food-card::before {
+            content: "";
+
+            position: absolute;
+            z-index: 1;
+
+            inset: -25%;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(124,58,237,0.20),
+                    transparent 65%
+                );
+
+            filter: blur(18px);
+            pointer-events: none;
+        }
+
+
+        /* Food plate */
+
+        .br-onb-plate {
+            position: relative;
+            z-index: 2;
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 28px;
+
+            background: #08080d;
+
+            overflow: hidden;
+        }
+
+
+        /* =====================================================
+           RATING BADGE
+        ===================================================== */
+
+        .br-onb-rating {
+            position: absolute;
+
+            z-index: 5;
+
+            right: 8%;
+            bottom: 13%;
+
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 12px 17px;
+
+            border-radius: 15px;
+
+            background:
+                rgba(10, 10, 16, 0.90);
+
+            border: 1px solid rgba(255,255,255,0.10);
+
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 15px 35px rgba(0,0,0,0.40);
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           FLOATING FOOD
+        ===================================================== */
+
+        .br-onb-floating {
+            position: absolute;
+
+            z-index: 5;
+
+            width: 62px;
+            height: 62px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 20px;
+
+            background:
+                rgba(15, 14, 23, 0.92);
+
+            border: 1px solid rgba(167,139,250,0.18);
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.42);
+
+            font-size: 29px;
+
+            backdrop-filter: blur(12px);
+        }
+
+        .br-onb-floating-one {
+            top: 20%;
+            left: 10%;
+
+            animation: brOnbFloatOne 4.5s ease-in-out infinite;
+        }
+
+        .br-onb-floating-two {
+            top: 27%;
+            right: 10%;
+
+            animation: brOnbFloatTwo 5s ease-in-out infinite;
+        }
+
+        .br-onb-floating-three {
+            bottom: 21%;
+            left: 13%;
+
+            animation: brOnbFloatOne 5.2s ease-in-out infinite;
+        }
+
+        .br-onb-floating-four {
+            bottom: 17%;
+            right: 13%;
+
+            animation: brOnbFloatTwo 4.7s ease-in-out infinite;
+        }
+
+        @keyframes brOnbFloatOne {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-4deg);
+            }
+
+            50% {
+                transform: translateY(-13px) rotate(4deg);
+            }
+        }
+
+        @keyframes brOnbFloatTwo {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(4deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(-4deg);
+            }
+        }
+
+
+        /* =====================================================
+           LEFT FOOTER
+        ===================================================== */
+
+        .br-onb-left-footer {
+            position: relative;
+            z-index: 5;
+
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 15px;
+            font-weight: 700;
+
+            color: rgba(255,255,255,0.72);
+        }
+
+        .br-onb-left-footer span:not(:last-child)::after {
+            content: "•";
+
+            margin-left: 12px;
+
+            color: #8b5cf6;
+        }
+
+
+        /* =====================================================
+           RIGHT SIDE
+        ===================================================== */
+
+        .br-onb-right {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+
+            padding: 55px 8%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(8,8,13,0.98),
+                    rgba(12,9,23,0.98)
+                );
+        }
+
+
+        .br-onb-content {
+            width: 100%;
+            max-width: 650px;
+
+            margin: 0 auto;
+        }
+
+
+        /* Mobile brand */
+
+        .br-onb-mobile-brand {
+            display: none;
+        }
+
+
+        /* =====================================================
+           EYEBROW
+        ===================================================== */
+
+        .br-onb-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+
+            margin-bottom: 22px;
+
+            color: #a78bfa;
+
+            font-size: 12px;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+        }
+
+        .br-onb-eyebrow::before {
+            content: "";
+
+            width: 25px;
+            height: 2px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7c3aed,
+                    #a78bfa
+                );
+
+            border-radius: 999px;
+        }
+
+
+        /* =====================================================
+           HEADING
+        ===================================================== */
+
+        .br-onb-title {
+            font-family: "Poppins", sans-serif;
+
+            font-size: clamp(44px, 5vw, 72px);
+
+            line-height: 1.04;
+
+            letter-spacing: -2.8px;
+
+            font-weight: 800;
+
+            color: #ffffff;
+
+            margin-bottom: 25px;
+        }
+
+        .br-onb-title span {
+            background:
+                linear-gradient(
+                    100deg,
+                    #ffffff 5%,
+                    #c4b5fd 42%,
+                    #8b5cf6 100%
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+        }
+
+
+        /* =====================================================
+           DESCRIPTION
+        ===================================================== */
+
+        .br-onb-description {
+            max-width: 590px;
+
+            margin-bottom: 34px;
+
+            color: rgba(255,255,255,0.63);
+
+            font-size: 17px;
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           FEATURES
+        ===================================================== */
+
+        .br-onb-features {
+            display: flex;
+            flex-direction: column;
+
+            gap: 13px;
+
+            margin-bottom: 36px;
+        }
+
+
+        .br-onb-feature {
+            display: flex;
+            align-items: center;
+            gap: 17px;
+
+            padding: 17px 19px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.045),
+                    rgba(255,255,255,0.018)
+                );
+
+            border: 1px solid rgba(255,255,255,0.07);
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .br-onb-feature:hover {
+            transform: translateX(5px);
+
+            border-color:
+                rgba(139,92,246,0.35);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124,58,237,0.10),
+                    rgba(255,255,255,0.025)
+                );
+        }
+
+
+        .br-onb-feature-icon {
+            flex-shrink: 0;
+
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background:
+                rgba(124,58,237,0.13);
+
+            border: 1px solid
+                rgba(167,139,250,0.18);
+
+            font-size: 22px;
+        }
+
+
+        .br-onb-feature-text h3 {
+            margin-bottom: 4px;
+
+            color: #ffffff;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .br-onb-feature-text p {
+            color: rgba(255,255,255,0.50);
+
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           ACTIONS
+        ===================================================== */
+
+        .br-onb-actions {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+
+        .br-onb-continue {
+            min-width: 190px;
+
+            height: 58px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+
+            padding: 0 25px;
+
+            border: 0;
+            border-radius: 16px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #6d28d9
+                );
+
+            color: #ffffff;
+
+            font-size: 15px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 15px 35px rgba(109,40,217,0.30);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .br-onb-continue:hover {
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 20px 45px rgba(109,40,217,0.45);
+        }
+
+        .br-onb-arrow {
+            font-size: 22px;
+
+            transition:
+                transform 0.25s ease;
+        }
+
+        .br-onb-continue:hover .br-onb-arrow {
+            transform: translateX(5px);
+        }
+
+
+        .br-onb-skip {
+            border: 0;
+
+            background: transparent;
+
+            color: rgba(255,255,255,0.50);
+
+            font-size: 14px;
+            font-weight: 600;
+
+            cursor: pointer;
+
+            padding: 12px 5px;
+
+            transition:
+                color 0.2s ease;
+        }
+
+        .br-onb-skip:hover {
+            color: #ffffff;
+        }
+
+
+        /* =====================================================
+           NOTE
+        ===================================================== */
+
+        .br-onb-note {
+            margin-top: 25px;
+
+            color: rgba(255,255,255,0.32);
+
+            font-size: 12px;
+        }
+
+
+        /* =====================================================
+           TABLET
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .br-onb-page {
+                grid-template-columns: 47% 53%;
+            }
+
+            .br-onb-left {
+                padding: 35px 35px;
+            }
+
+            .br-onb-right {
+                padding: 45px 6%;
+            }
+
+            .br-onb-food-card {
+                width: 84%;
+            }
+
+            .br-onb-title {
+                font-size: 52px;
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 800px) {
+
+            body {
+                overflow-x: hidden;
+            }
+
+            .br-onb-page {
+                display: block;
+
+                min-height: 100vh;
+            }
+
+
+            .br-onb-left {
+                min-height: 390px;
+
+                padding: 25px 22px 30px;
+
+                border-right: 0;
+                border-bottom: 1px solid
+                    rgba(255,255,255,0.07);
+            }
+
+
+            .br-onb-brand {
+                position: absolute;
+
+                top: 25px;
+                left: 22px;
+            }
+
+
+            .br-onb-brand-name {
+                font-size: 18px;
+            }
+
+
+            .br-onb-brand-icon {
+                width: 36px;
+                height: 36px;
+
+                font-size: 17px;
+            }
+
+
+            .br-onb-food-area {
+                min-height: 315px;
+
+                margin-top: 20px;
+            }
+
+
+            .br-onb-food-card {
+                width: 88%;
+                max-width: 430px;
+                aspect-ratio: 4 / 3;
+
+                border-radius: 28px;
+            }
+
+
+            .br-onb-floating {
+                width: 47px;
+                height: 47px;
+
+                border-radius: 14px;
+
+                font-size: 21px;
+            }
+
+
+            .br-onb-floating-one {
+                left: 7%;
+                top: 25%;
+            }
+
+            .br-onb-floating-two {
+                right: 7%;
+                top: 28%;
+            }
+
+            .br-onb-floating-three {
+                left: 9%;
+                bottom: 13%;
+            }
+
+            .br-onb-floating-four {
+                right: 9%;
+                bottom: 10%;
+            }
+
+
+            .br-onb-left-footer {
+                justify-content: center;
+
+                font-size: 12px;
+            }
+
+
+            .br-onb-right {
+                min-height: auto;
+
+                padding: 42px 22px 45px;
+
+                display: block;
+            }
+
+
+            .br-onb-content {
+                max-width: none;
+            }
+
+
+            .br-onb-mobile-brand {
+                display: block;
+
+                margin-bottom: 34px;
+            }
+
+            .br-onb-mobile-brand .br-onb-brand {
+                position: static;
+            }
+
+
+            .br-onb-mobile-brand
+            .br-onb-brand-name {
+                font-size: 20px;
+            }
+
+
+            .br-onb-title {
+                font-size: 43px;
+
+                letter-spacing: -1.8px;
+            }
+
+
+            .br-onb-description {
+                font-size: 15px;
+            }
+
+
+            .br-onb-feature {
+                padding: 14px;
+            }
+
+
+            .br-onb-actions {
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 8px;
+            }
+
+
+            .br-onb-continue {
+                width: 100%;
+            }
+
+
+            .br-onb-skip {
+                width: 100%;
+
+                padding: 13px;
+            }
+
+
+            .br-onb-note {
+                text-align: center;
+            }
+
+        }
+
+
+        /* =====================================================
+           SMALL PHONES
+        ===================================================== */
+
+        @media (max-width: 420px) {
+
+            .br-onb-left {
+                min-height: 350px;
+            }
+
+            .br-onb-food-area {
+                min-height: 280px;
+            }
+
+            .br-onb-food-card {
+                width: 92%;
+                max-width: 360px;
+                aspect-ratio: 4 / 3;
+            }
+
+            .br-onb-title {
+                font-size: 36px;
+            }
+
+            .br-onb-feature-text p {
+                font-size: 12px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <main class="br-onb-page">
+
+
+        <!-- =================================================
+             LEFT VISUAL
+        ================================================== -->
+
+        <section class="br-onb-left">
+
+
+            <!-- Brand -->
+
+            <a
+                href="../index.html"
+                class="br-onb-brand"
+            >
+
+                <div class="br-onb-brand-icon br-onb-logo-wrap">
+                    <img src="../assets/logo/biterush-logo.png" alt="BiteRush" class="br-onb-logo">
+                </div>
+
+                <div class="br-onb-brand-name">
+                    Bite<span>Rush</span>
+                </div>
+
+            </a>
+
+
+            <!-- Food Visual -->
+
+            <div class="br-onb-food-area">
+
+
+                <!-- Floating food -->
+
+                <div class="br-onb-floating br-onb-floating-one">
+                    🍔
+                </div>
+
+                <div class="br-onb-floating br-onb-floating-two">
+                    🍟
+                </div>
+
+                <div class="br-onb-floating br-onb-floating-three">
+                    🥤
+                </div>
+
+                <div class="br-onb-floating br-onb-floating-four">
+                    🍰
+                </div>
+
+
+                <!-- Main card -->
+
+                <div class="br-onb-food-card">
+
+
+                    <div class="br-onb-plate">
+
+                        <img src="../assets/images/onboarding/onboarding-food.png" alt="Delicious food from BiteRush" class="br-onb-food-image">
+
+                    </div>
+
+
+                    <div class="br-onb-rating">
+                        ⭐ 4.9
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- Bottom -->
+
+            <div class="br-onb-left-footer">
+
+                <span>Fresh.</span>
+
+                <span>Fast.</span>
+
+                <span>Delicious.</span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RIGHT CONTENT
+        ================================================== -->
+
+        <section class="br-onb-right">
+
+            <div class="br-onb-content">
+
+
+                <!-- Mobile brand -->
+
+                <div class="br-onb-mobile-brand">
+
+                    <a
+                        href="../index.html"
+                        class="br-onb-brand"
+                    >
+
+                        <div class="br-onb-brand-icon br-onb-logo-wrap">
+                            <img src="../assets/logo/biterush-logo.png" alt="BiteRush" class="br-onb-logo">
+                        </div>
+
+                        <div class="br-onb-brand-name">
+                            Bite<span>Rush</span>
+                        </div>
+
+                    </a>
+
+                </div>
+
+
+                <!-- Eyebrow -->
+
+                <div class="br-onb-eyebrow">
+                    WELCOME TO BITERUSH
+                </div>
+
+
+                <!-- Heading -->
+
+                <h1 class="br-onb-title">
+
+                    Your cravings.
+
+                    <br>
+
+                    <span>
+                        Delivered fast.
+                    </span>
+
+                </h1>
+
+
+                <!-- Description -->
+
+                <p class="br-onb-description">
+
+                    Discover delicious food from your favorite
+                    restaurants, explore new flavors, and get
+                    every craving delivered straight to your door.
+
+                </p>
+
+
+                <!-- Features -->
+
+                <div class="br-onb-features">
+
+
+                    <div class="br-onb-feature">
+
+                        <div class="br-onb-feature-icon">
+                            ⚡
+                        </div>
+
+                        <div class="br-onb-feature-text">
+
+                            <h3>
+                                Lightning-fast delivery
+                            </h3>
+
+                            <p>
+                                Get your favorite meals delivered
+                                quickly and conveniently.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="br-onb-feature">
+
+                        <div class="br-onb-feature-icon">
+                            🍴
+                        </div>
+
+                        <div class="br-onb-feature-text">
+
+                            <h3>
+                                Endless food choices
+                            </h3>
+
+                            <p>
+                                Explore restaurants and cuisines
+                                for every kind of craving.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="br-onb-feature">
+
+                        <div class="br-onb-feature-icon">
+                            📍
+                        </div>
+
+                        <div class="br-onb-feature-text">
+
+                            <h3>
+                                Live order tracking
+                            </h3>
+
+                            <p>
+                                Follow your order from the kitchen
+                                all the way to your doorstep.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Actions -->
+
+                <div class="br-onb-actions">
+
+
+                    <button
+                        type="button"
+                        class="br-onb-continue"
+                        onclick="continueToLogin()"
+                    >
+
+                        <span>
+                            Continue
+                        </span>
+
+                        <span class="br-onb-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="br-onb-skip"
+                        onclick="skipOnboarding()"
+                    >
+
+                        Skip for now
+
+                    </button>
+
+
+                </div>
+
+
+                <!-- Note -->
+
+                <p class="br-onb-note">
+
+                    Delicious moments are just a few taps away.
+
+                </p>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FUNCTIONALITY
+    ====================================================== -->
+
+    <script>
+
+        function continueToLogin() {
+
+            localStorage.setItem(
+                "biteRushOnboardingSeen",
+                "true"
+            );
+
+            window.location.href = "login.html";
+
+        }
+
+
+        function skipOnboarding() {
+
+            localStorage.setItem(
+                "biteRushOnboardingSeen",
+                "true"
+            );
+
+            window.location.href = "home.html";
+
+        }
+
+    </script>
+
+</body>
+</html>

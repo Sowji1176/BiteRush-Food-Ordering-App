@@ -1,0 +1,2527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order | BiteRush</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --black: #07070b;
+            --black-2: #0d0d14;
+            --navy: #10152b;
+            --navy-2: #151b36;
+            --purple: #7c3aed;
+            --purple-light: #a855f7;
+            --purple-dark: #4c1d95;
+            --white: #ffffff;
+            --text: #f8f7ff;
+            --muted: #a6a4b8;
+            --border: rgba(255,255,255,0.09);
+            --success: #35d399;
+            --warning: #fbbf24;
+            --danger: #fb7185;
+            --pink: #ec4899;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 15% 0%, rgba(124,58,237,0.15), transparent 30%),
+                radial-gradient(circle at 90% 10%, rgba(59,130,246,0.10), transparent 28%),
+                var(--black);
+            color: var(--text);
+            font-family: "Inter", sans-serif;
+            overflow-x: hidden;
+        }
+
+        button,
+        a,
+        input {
+            font-family: inherit;
+        }
+
+        button {
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .br-track-header {
+            height: 78px;
+            width: 100%;
+            padding: 0 38px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            background: rgba(7,7,11,0.94);
+            backdrop-filter: blur(18px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .br-track-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .br-track-brand img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+        }
+
+        .br-track-brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .br-track-brand-name {
+            font-family: "Poppins", sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.4px;
+        }
+
+        .br-track-brand-subtitle {
+            color: var(--muted);
+            font-size: 11px;
+            margin-top: 1px;
+        }
+
+        .br-track-header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .br-track-icon-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.045);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.25s ease;
+        }
+
+        .br-track-icon-btn:hover {
+            transform: translateY(-2px);
+            border-color: rgba(168,85,247,0.45);
+            background: rgba(124,58,237,0.14);
+        }
+
+        .br-track-icon-btn img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .br-track-page {
+            width: 100%;
+            padding: 34px 38px 50px;
+        }
+
+        .br-track-top {
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 28px;
+        }
+
+        .br-track-heading small {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            color: #c4b5fd;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .br-track-heading h1 {
+            font-family: "Poppins", sans-serif;
+            font-size: clamp(28px, 3vw, 42px);
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+
+        .br-track-heading p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 9px;
+        }
+
+        .br-track-top-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .br-track-secondary-btn,
+        .br-track-primary-btn {
+            min-height: 44px;
+            padding: 0 17px;
+            border-radius: 13px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 13px;
+            transition: 0.25s ease;
+        }
+
+        .br-track-secondary-btn {
+            background: rgba(255,255,255,0.045);
+            color: var(--white);
+            border: 1px solid var(--border);
+        }
+
+        .br-track-secondary-btn:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-2px);
+        }
+
+        .br-track-primary-btn {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            color: white;
+            box-shadow: 0 10px 28px rgba(124,58,237,0.25);
+        }
+
+        .br-track-primary-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 35px rgba(124,58,237,0.36);
+        }
+
+        .br-track-btn-icon {
+            width: 18px;
+            height: 18px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           ORDER HERO
+        ========================= */
+
+        .br-track-order-hero {
+            width: 100%;
+            padding: 26px;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            background:
+                linear-gradient(135deg, rgba(124,58,237,0.16), rgba(16,21,43,0.82)),
+                var(--black-2);
+            box-shadow: 0 22px 70px rgba(0,0,0,0.25);
+            margin-bottom: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .br-track-order-hero::after {
+            content: "";
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            border-radius: 50%;
+            right: -100px;
+            top: -120px;
+            background: rgba(168,85,247,0.10);
+            filter: blur(5px);
+        }
+
+        .br-track-order-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .br-track-order-id {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 7px;
+        }
+
+        .br-track-order-id strong {
+            color: var(--white);
+            font-size: 14px;
+        }
+
+        .br-track-order-title {
+            font-family: "Poppins", sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .br-track-status-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .br-track-live-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--success);
+            box-shadow: 0 0 0 5px rgba(53,211,153,0.10);
+            animation: pulse 1.8s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 0 4px rgba(53,211,153,0.10);
+            }
+            50% {
+                box-shadow: 0 0 0 8px rgba(53,211,153,0.02);
+            }
+        }
+
+        .br-track-status-text {
+            font-size: 13px;
+            color: #d8d5e7;
+            font-weight: 600;
+        }
+
+        .br-track-eta {
+            text-align: right;
+            position: relative;
+            z-index: 2;
+        }
+
+        .br-track-eta-label {
+            color: var(--muted);
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+        .br-track-eta-value {
+            font-family: "Poppins", sans-serif;
+            font-size: 29px;
+            font-weight: 800;
+            color: white;
+        }
+
+        .br-track-eta-time {
+            color: #c4b5fd;
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        /* =========================
+           GRID
+        ========================= */
+
+        .br-track-grid {
+            width: 100%;
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(340px, 0.75fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        .br-track-card {
+            background: rgba(13,13,20,0.92);
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.16);
+        }
+
+        .br-track-card-header {
+            padding: 21px 23px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .br-track-card-title {
+            font-family: "Poppins", sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .br-track-card-subtitle {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 3px;
+        }
+
+        /* =========================
+           TIMELINE
+        ========================= */
+
+        .br-track-timeline {
+            padding: 28px 28px 25px;
+        }
+
+        .br-track-step {
+            display: grid;
+            grid-template-columns: 48px minmax(0,1fr) 100px;
+            gap: 16px;
+            position: relative;
+            min-height: 94px;
+        }
+
+        .br-track-step:last-child {
+            min-height: auto;
+        }
+
+        .br-track-step-marker {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .br-track-step-circle {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: #171728;
+            border: 1px solid rgba(255,255,255,0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease;
+        }
+
+        .br-track-step-circle img {
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+            opacity: 0.55;
+        }
+
+        .br-track-step-line {
+            position: absolute;
+            left: 23px;
+            top: 38px;
+            width: 2px;
+            height: 62px;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .br-track-step:last-child .br-track-step-line {
+            display: none;
+        }
+
+        .br-track-step.active .br-track-step-circle,
+        .br-track-step.completed .br-track-step-circle {
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            border-color: transparent;
+            box-shadow: 0 8px 25px rgba(124,58,237,0.25);
+        }
+
+        .br-track-step.active .br-track-step-circle img,
+        .br-track-step.completed .br-track-step-circle img {
+            opacity: 1;
+        }
+
+        .br-track-step.completed .br-track-step-line {
+            background: linear-gradient(var(--purple), var(--pink));
+        }
+
+        .br-track-step.active .br-track-step-line {
+            background: linear-gradient(var(--purple), rgba(255,255,255,0.08));
+        }
+
+        .br-track-step-content {
+            padding-top: 1px;
+        }
+
+        .br-track-step-title {
+            font-weight: 700;
+            font-size: 14px;
+            color: #b0aec0;
+            transition: 0.25s ease;
+        }
+
+        .br-track-step-description {
+            color: #77758a;
+            font-size: 12px;
+            line-height: 1.55;
+            margin-top: 5px;
+        }
+
+        .br-track-step.active .br-track-step-title,
+        .br-track-step.completed .br-track-step-title {
+            color: white;
+        }
+
+        .br-track-step.active .br-track-step-description,
+        .br-track-step.completed .br-track-step-description {
+            color: var(--muted);
+        }
+
+        .br-track-step-time {
+            text-align: right;
+            color: #6f6d80;
+            font-size: 11px;
+            padding-top: 3px;
+        }
+
+        .br-track-step.active .br-track-step-time {
+            color: #c4b5fd;
+            font-weight: 700;
+        }
+
+        .br-track-simulation {
+            margin: 0 28px 25px;
+            padding: 14px 15px;
+            border-radius: 14px;
+            border: 1px dashed rgba(168,85,247,0.28);
+            background: rgba(124,58,237,0.07);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .br-track-simulation-text {
+            color: var(--muted);
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+        .br-track-simulation-text strong {
+            color: #ddd6fe;
+        }
+
+        .br-track-sim-btn {
+            min-height: 36px;
+            padding: 0 13px;
+            border-radius: 10px;
+            background: rgba(124,58,237,0.17);
+            border: 1px solid rgba(168,85,247,0.25);
+            color: #ddd6fe;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .br-track-sim-btn:hover {
+            background: rgba(124,58,237,0.28);
+        }
+
+        /* =========================
+           RIGHT SIDE
+        ========================= */
+
+        .br-track-side-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .br-track-info-list {
+            padding: 7px 22px 18px;
+        }
+
+        .br-track-info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.055);
+        }
+
+        .br-track-info-row:last-child {
+            border-bottom: none;
+        }
+
+        .br-track-info-icon {
+            flex: 0 0 auto;
+            width: 37px;
+            height: 37px;
+            border-radius: 11px;
+            background: rgba(124,58,237,0.11);
+            border: 1px solid rgba(168,85,247,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .br-track-info-icon img {
+            width: 19px;
+            height: 19px;
+            object-fit: contain;
+        }
+
+        .br-track-info-label {
+            color: #77758a;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.7px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .br-track-info-value {
+            color: #eeeef5;
+            font-size: 13px;
+            line-height: 1.45;
+            font-weight: 600;
+        }
+
+        /* =========================
+           ORDER ITEMS
+        ========================= */
+
+        .br-track-items {
+            padding: 10px 22px 20px;
+        }
+
+        .br-track-item {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.055);
+        }
+
+        .br-track-item:last-child {
+            border-bottom: none;
+        }
+
+        .br-track-item-image {
+            width: 57px;
+            height: 57px;
+            border-radius: 14px;
+            object-fit: cover;
+            background: #181824;
+            border: 1px solid rgba(255,255,255,0.08);
+            flex-shrink: 0;
+        }
+
+        .br-track-item-details {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .br-track-item-name {
+            font-size: 13px;
+            font-weight: 700;
+            color: #f4f2fb;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .br-track-item-category {
+            color: #7d7a8f;
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .br-track-item-qty {
+            color: #aaa7ba;
+            font-size: 11px;
+            margin-top: 4px;
+        }
+
+        .br-track-item-price {
+            font-size: 13px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* =========================
+           SUMMARY
+        ========================= */
+
+        .br-track-summary {
+            padding: 5px 22px 21px;
+        }
+
+        .br-track-summary-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 8px 0;
+            color: #9c99aa;
+            font-size: 12px;
+        }
+
+        .br-track-summary-row.discount {
+            color: var(--success);
+        }
+
+        .br-track-summary-row.total {
+            margin-top: 8px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            color: white;
+            font-size: 17px;
+            font-weight: 800;
+        }
+
+        /* =========================
+           QUICK ACTIONS
+        ========================= */
+
+        .br-track-quick-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 9px;
+            padding: 0 22px 22px;
+        }
+
+        .br-track-quick-action {
+            min-height: 72px;
+            padding: 10px 7px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid var(--border);
+            color: #dddbe8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            font-size: 10px;
+            font-weight: 700;
+            transition: 0.25s ease;
+        }
+
+        .br-track-quick-action:hover {
+            transform: translateY(-2px);
+            background: rgba(124,58,237,0.10);
+            border-color: rgba(168,85,247,0.25);
+        }
+
+        .br-track-quick-action img {
+            width: 21px;
+            height: 21px;
+            object-fit: contain;
+        }
+
+        /* =========================
+           EMPTY STATE
+        ========================= */
+
+        .br-track-empty {
+            display: none;
+            width: 100%;
+            min-height: 500px;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            background: rgba(13,13,20,0.9);
+            padding: 40px;
+        }
+
+        .br-track-empty.active {
+            display: flex;
+        }
+
+        .br-track-empty-icon {
+            width: 82px;
+            height: 82px;
+            border-radius: 24px;
+            margin: 0 auto 20px;
+            background: rgba(124,58,237,0.12);
+            border: 1px solid rgba(168,85,247,0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .br-track-empty-icon img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .br-track-empty h2 {
+            font-family: "Poppins", sans-serif;
+            font-size: 23px;
+        }
+
+        .br-track-empty p {
+            max-width: 450px;
+            margin: 9px auto 22px;
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .br-track-empty-actions {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        .br-track-toast {
+            position: fixed;
+            left: 50%;
+            bottom: 25px;
+            transform: translate(-50%, 120px);
+            opacity: 0;
+            z-index: 500;
+            padding: 13px 18px;
+            border-radius: 13px;
+            background: #171725;
+            border: 1px solid rgba(168,85,247,0.28);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.35);
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+            transition: 0.3s ease;
+            pointer-events: none;
+        }
+
+        .br-track-toast.show {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .br-track-footer {
+            width: 100%;
+            margin-top: 28px;
+            padding: 20px 5px 0;
+            border-top: 1px solid rgba(255,255,255,0.055);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            color: #656274;
+            font-size: 11px;
+        }
+
+        .br-track-footer-brand {
+            color: #8c8999;
+            font-weight: 700;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1050px) {
+            .br-track-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .br-track-side-stack {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .br-track-header {
+                height: 70px;
+                padding: 0 17px;
+            }
+
+            .br-track-brand-text {
+                display: none;
+            }
+
+            .br-track-page {
+                padding: 22px 15px 35px;
+            }
+
+            .br-track-top {
+                align-items: flex-start;
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+
+            .br-track-top-actions {
+                width: 100%;
+            }
+
+            .br-track-top-actions button {
+                flex: 1;
+            }
+
+            .br-track-order-hero {
+                padding: 20px;
+            }
+
+            .br-track-order-main {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .br-track-eta {
+                text-align: left;
+            }
+
+            .br-track-side-stack {
+                display: flex;
+            }
+
+            .br-track-step {
+                grid-template-columns: 42px minmax(0,1fr);
+                gap: 12px;
+            }
+
+            .br-track-step-time {
+                display: none;
+            }
+
+            .br-track-step-line {
+                left: 20px;
+            }
+
+            .br-track-timeline {
+                padding: 23px 19px;
+            }
+
+            .br-track-simulation {
+                margin: 0 19px 20px;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .br-track-sim-btn {
+                width: 100%;
+            }
+
+            .br-track-quick-actions {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 450px) {
+            .br-track-header-actions .br-track-icon-btn:nth-child(1) {
+                display: none;
+            }
+
+            .br-track-heading h1 {
+                font-size: 28px;
+            }
+
+            .br-track-order-title {
+                font-size: 20px;
+            }
+
+            .br-track-eta-value {
+                font-size: 25px;
+            }
+
+            .br-track-card-header {
+                padding: 18px;
+            }
+
+            .br-track-items,
+            .br-track-info-list,
+            .br-track-summary {
+                padding-left: 17px;
+                padding-right: 17px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="br-track-header">
+
+        <a href="home.html" class="br-track-brand">
+            <img src="../assets/logo/biterush-logo.png" alt="BiteRush Logo">
+
+            <div class="br-track-brand-text">
+                <div class="br-track-brand-name">BiteRush</div>
+                <div class="br-track-brand-subtitle">Food delivered with a rush</div>
+            </div>
+        </a>
+
+        <div class="br-track-header-actions">
+
+            <button
+                class="br-track-icon-btn"
+                onclick="goToCart()"
+                title="Cart"
+                aria-label="Cart"
+            >
+                <img src="../assets/icons/cart.png" alt="Cart">
+            </button>
+
+            <button
+                class="br-track-icon-btn"
+                onclick="goToHome()"
+                title="Home"
+                aria-label="Home"
+            >
+                <img src="../assets/icons/home.png" alt="Home">
+            </button>
+
+            <button
+                class="br-track-icon-btn"
+                onclick="goToProfile()"
+                title="Profile"
+                aria-label="Profile"
+            >
+                <img src="../assets/icons/profile.png" alt="Profile">
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main class="br-track-page">
+
+        <!-- TOP -->
+        <section class="br-track-top">
+
+            <div class="br-track-heading">
+                <small>
+                    <span>●</span>
+                    Live Order Tracking
+                </small>
+
+                <h1>Track your order</h1>
+
+                <p>
+                    Follow your BiteRush order from kitchen preparation to your doorstep.
+                </p>
+            </div>
+
+            <div class="br-track-top-actions">
+
+                <button
+                    class="br-track-secondary-btn"
+                    onclick="refreshTracking()"
+                >
+                    ↻ Refresh Status
+                </button>
+
+                <button
+                    class="br-track-primary-btn"
+                    onclick="goToHome()"
+                >
+                    <img
+                        class="br-track-btn-icon"
+                        src="../assets/icons/home.png"
+                        alt=""
+                    >
+                    Back to Home
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- EMPTY ORDER -->
+        <section id="emptyState" class="br-track-empty">
+
+            <div>
+
+                <div class="br-track-empty-icon">
+                    <img
+                        src="../assets/icons/delivery.png"
+                        alt="Delivery"
+                    >
+                </div>
+
+                <h2>No active order found</h2>
+
+                <p>
+                    We couldn't find an active BiteRush order on this device.
+                    Place an order first and your live tracking details will appear here.
+                </p>
+
+                <div class="br-track-empty-actions">
+
+                    <button
+                        class="br-track-primary-btn"
+                        onclick="goToHome()"
+                    >
+                        <img
+                            class="br-track-btn-icon"
+                            src="../assets/icons/home.png"
+                            alt=""
+                        >
+                        Start Ordering
+                    </button>
+
+                    <button
+                        class="br-track-secondary-btn"
+                        onclick="goToCart()"
+                    >
+                        <img
+                            class="br-track-btn-icon"
+                            src="../assets/icons/cart.png"
+                            alt=""
+                        >
+                        View Cart
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TRACKING CONTENT -->
+        <section id="trackingContent" style="display:none;">
+
+            <!-- ORDER HERO -->
+            <section class="br-track-order-hero">
+
+                <div class="br-track-order-main">
+
+                    <div>
+
+                        <div class="br-track-order-id">
+                            Order ID:
+                            <strong id="orderId">—</strong>
+                        </div>
+
+                        <div class="br-track-order-title" id="heroStatus">
+                            Order Confirmed
+                        </div>
+
+                        <div class="br-track-status-row">
+
+                            <span
+                                class="br-track-live-dot"
+                                id="liveDot"
+                            ></span>
+
+                            <span
+                                class="br-track-status-text"
+                                id="statusDescription"
+                            >
+                                Your order has been confirmed.
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="br-track-eta">
+
+                        <div class="br-track-eta-label">
+                            Estimated arrival
+                        </div>
+
+                        <div
+                            class="br-track-eta-value"
+                            id="etaValue"
+                        >
+                            25–35 min
+                        </div>
+
+                        <div
+                            class="br-track-eta-time"
+                            id="etaTime"
+                        >
+                            Preparing your order
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MAIN GRID -->
+            <div class="br-track-grid">
+
+                <!-- LEFT -->
+                <div>
+
+                    <!-- TIMELINE -->
+                    <section class="br-track-card">
+
+                        <div class="br-track-card-header">
+
+                            <div>
+                                <div class="br-track-card-title">
+                                    Delivery progress
+                                </div>
+
+                                <div class="br-track-card-subtitle">
+                                    Your order status updates will appear here.
+                                </div>
+                            </div>
+
+                            <img
+                                src="../assets/icons/delivery.png"
+                                alt="Delivery"
+                                style="width:26px;height:26px;object-fit:contain;"
+                            >
+
+                        </div>
+
+
+                        <div class="br-track-timeline">
+
+                            <!-- STEP 1 -->
+                            <div
+                                class="br-track-step"
+                                data-step="0"
+                            >
+
+                                <div class="br-track-step-marker">
+
+                                    <div class="br-track-step-circle">
+                                        <img
+                                            src="../assets/icons/payment.png"
+                                            alt=""
+                                        >
+                                    </div>
+
+                                    <div class="br-track-step-line"></div>
+
+                                </div>
+
+                                <div class="br-track-step-content">
+
+                                    <div class="br-track-step-title">
+                                        Order Confirmed
+                                    </div>
+
+                                    <div class="br-track-step-description">
+                                        Your order has been received and confirmed successfully.
+                                    </div>
+
+                                </div>
+
+                                <div
+                                    class="br-track-step-time"
+                                    id="stepTime0"
+                                >
+                                    —
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 2 -->
+                            <div
+                                class="br-track-step"
+                                data-step="1"
+                            >
+
+                                <div class="br-track-step-marker">
+
+                                    <div class="br-track-step-circle">
+                                        <img
+                                            src="../assets/icons/cart.png"
+                                            alt=""
+                                        >
+                                    </div>
+
+                                    <div class="br-track-step-line"></div>
+
+                                </div>
+
+                                <div class="br-track-step-content">
+
+                                    <div class="br-track-step-title">
+                                        Preparing Your Food
+                                    </div>
+
+                                    <div class="br-track-step-description">
+                                        The restaurant is preparing your selected items fresh.
+                                    </div>
+
+                                </div>
+
+                                <div
+                                    class="br-track-step-time"
+                                    id="stepTime1"
+                                >
+                                    —
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 3 -->
+                            <div
+                                class="br-track-step"
+                                data-step="2"
+                            >
+
+                                <div class="br-track-step-marker">
+
+                                    <div class="br-track-step-circle">
+                                        <img
+                                            src="../assets/icons/delivery.png"
+                                            alt=""
+                                        >
+                                    </div>
+
+                                    <div class="br-track-step-line"></div>
+
+                                </div>
+
+                                <div class="br-track-step-content">
+
+                                    <div class="br-track-step-title">
+                                        Out for Delivery
+                                    </div>
+
+                                    <div class="br-track-step-description">
+                                        Your BiteRush delivery partner is on the way.
+                                    </div>
+
+                                </div>
+
+                                <div
+                                    class="br-track-step-time"
+                                    id="stepTime2"
+                                >
+                                    —
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 4 -->
+                            <div
+                                class="br-track-step"
+                                data-step="3"
+                            >
+
+                                <div class="br-track-step-marker">
+
+                                    <div class="br-track-step-circle">
+                                        <img
+                                            src="../assets/icons/home.png"
+                                            alt=""
+                                        >
+                                    </div>
+
+                                </div>
+
+                                <div class="br-track-step-content">
+
+                                    <div class="br-track-step-title">
+                                        Delivered
+                                    </div>
+
+                                    <div class="br-track-step-description">
+                                        Your order has reached your delivery address.
+                                    </div>
+
+                                </div>
+
+                                <div
+                                    class="br-track-step-time"
+                                    id="stepTime3"
+                                >
+                                    —
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- DEMO SIMULATION -->
+                        <div class="br-track-simulation">
+
+                            <div class="br-track-simulation-text">
+                                <strong>Prototype tracking</strong><br>
+                                Use the button to demonstrate the next delivery status during your UI/UX presentation.
+                            </div>
+
+                            <button
+                                class="br-track-sim-btn"
+                                id="simulateBtn"
+                                onclick="simulateNextStatus()"
+                            >
+                                Simulate Next Update
+                            </button>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- RIGHT -->
+                <aside class="br-track-side-stack">
+
+                    <!-- DELIVERY DETAILS -->
+                    <section class="br-track-card">
+
+                        <div class="br-track-card-header">
+
+                            <div>
+                                <div class="br-track-card-title">
+                                    Delivery details
+                                </div>
+
+                                <div class="br-track-card-subtitle">
+                                    Where your order is going
+                                </div>
+                            </div>
+
+                            <img
+                                src="../assets/icons/location.png"
+                                alt="Location"
+                                style="width:25px;height:25px;object-fit:contain;"
+                            >
+
+                        </div>
+
+
+                        <div class="br-track-info-list">
+
+                            <div class="br-track-info-row">
+
+                                <div class="br-track-info-icon">
+                                    <img
+                                        src="../assets/icons/profile.png"
+                                        alt="Customer"
+                                    >
+                                </div>
+
+                                <div>
+                                    <div class="br-track-info-label">
+                                        Customer
+                                    </div>
+
+                                    <div
+                                        class="br-track-info-value"
+                                        id="customerName"
+                                    >
+                                        —
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="br-track-info-row">
+
+                                <div class="br-track-info-icon">
+                                    <img
+                                        src="../assets/icons/location.png"
+                                        alt="Address"
+                                    >
+                                </div>
+
+                                <div>
+                                    <div class="br-track-info-label">
+                                        Delivery Address
+                                    </div>
+
+                                    <div
+                                        class="br-track-info-value"
+                                        id="customerAddress"
+                                    >
+                                        —
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="br-track-info-row">
+
+                                <div class="br-track-info-icon">
+                                    <img
+                                        src="../assets/icons/delivery.png"
+                                        alt="Delivery"
+                                    >
+                                </div>
+
+                                <div>
+                                    <div class="br-track-info-label">
+                                        Delivery Method
+                                    </div>
+
+                                    <div
+                                        class="br-track-info-value"
+                                        id="deliveryMethod"
+                                    >
+                                        —
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="br-track-info-row">
+
+                                <div class="br-track-info-icon">
+                                    <img
+                                        src="../assets/icons/payment.png"
+                                        alt="Payment"
+                                    >
+                                </div>
+
+                                <div>
+                                    <div class="br-track-info-label">
+                                        Payment
+                                    </div>
+
+                                    <div
+                                        class="br-track-info-value"
+                                        id="paymentMethod"
+                                    >
+                                        —
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ORDER ITEMS -->
+                    <section class="br-track-card">
+
+                        <div class="br-track-card-header">
+
+                            <div>
+                                <div class="br-track-card-title">
+                                    Your order
+                                </div>
+
+                                <div
+                                    class="br-track-card-subtitle"
+                                    id="itemCountText"
+                                >
+                                    0 items
+                                </div>
+                            </div>
+
+                            <img
+                                src="../assets/icons/cart.png"
+                                alt="Cart"
+                                style="width:24px;height:24px;object-fit:contain;"
+                            >
+
+                        </div>
+
+
+                        <div
+                            class="br-track-items"
+                            id="orderItems"
+                        >
+                        </div>
+
+
+                        <!-- SUMMARY -->
+                        <div class="br-track-summary">
+
+                            <div class="br-track-summary-row">
+                                <span>Subtotal</span>
+                                <strong id="subtotal">₹0</strong>
+                            </div>
+
+                            <div class="br-track-summary-row">
+                                <span>Delivery fee</span>
+                                <strong id="deliveryFee">₹0</strong>
+                            </div>
+
+                            <div
+                                class="br-track-summary-row discount"
+                                id="discountRow"
+                            >
+                                <span>Discount</span>
+                                <strong id="discount">-₹0</strong>
+                            </div>
+
+                            <div class="br-track-summary-row total">
+                                <span>Total Paid</span>
+                                <strong id="total">₹0</strong>
+                            </div>
+
+                        </div>
+
+
+                        <!-- QUICK ACTIONS -->
+                        <div class="br-track-quick-actions">
+
+                            <button
+                                class="br-track-quick-action"
+                                onclick="goToHome()"
+                            >
+                                <img
+                                    src="../assets/icons/home.png"
+                                    alt=""
+                                >
+                                Home
+                            </button>
+
+                            <button
+                                class="br-track-quick-action"
+                                onclick="goToCart()"
+                            >
+                                <img
+                                    src="../assets/icons/cart.png"
+                                    alt=""
+                                >
+                                Cart
+                            </button>
+
+                            <button
+                                class="br-track-quick-action"
+                                onclick="goToProfile()"
+                            >
+                                <img
+                                    src="../assets/icons/profile.png"
+                                    alt=""
+                                >
+                                Profile
+                            </button>
+
+                        </div>
+
+                    </section>
+
+                </aside>
+
+            </div>
+
+
+            <!-- FOOTER -->
+            <footer class="br-track-footer">
+
+                <div>
+                    Need help with your order?
+                    <span class="br-track-footer-brand">
+                        BiteRush Support
+                    </span>
+                </div>
+
+                <div>
+                    © 2026 BiteRush
+                </div>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- TOAST -->
+    <div
+        class="br-track-toast"
+        id="toast"
+    ></div>
+
+
+    <script>
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        function goToHome() {
+            window.location.href = "home.html";
+        }
+
+        function goToCart() {
+            window.location.href = "cart.html";
+        }
+
+        function goToProfile() {
+            window.location.href = "profile.html";
+        }
+
+
+        /* =========================================================
+           CATEGORY FOLDERS
+        ========================================================= */
+
+        const categoryFolders = {
+            "Biryani & Rice": "biryani & rice",
+            "Breads": "breads",
+            "Burgers & Sandwiches": "burgers & sandwiches",
+            "Chicken": "chicken",
+            "Curries & Rice Combos": "curries & rice combos",
+            "Desserts": "desserts",
+            "Drinks": "drinks",
+            "Egg": "egg",
+            "Mutton": "mutton",
+            "Noodles & Asian": "noodles & asian",
+            "Pizzas": "pizzas",
+            "Seafood": "seafood",
+            "Sides & Starters": "sides & starters",
+            "Thali": "thali",
+            "Vegetarian": "vegetarian"
+        };
+
+
+        /* =========================================================
+           TRACKING STATE
+        ========================================================= */
+
+        const trackingSteps = [
+            {
+                title: "Order Confirmed",
+                description: "Your order has been received and confirmed successfully."
+            },
+            {
+                title: "Preparing Your Food",
+                description: "The restaurant is preparing your selected items fresh."
+            },
+            {
+                title: "Out for Delivery",
+                description: "Your BiteRush delivery partner is on the way."
+            },
+            {
+                title: "Delivered",
+                description: "Your order has reached your delivery address."
+            }
+        ];
+
+        let currentStep = 0;
+        let currentOrder = null;
+
+
+        /* =========================================================
+           HELPERS
+        ========================================================= */
+
+        function money(value) {
+            const number = Number(value || 0);
+
+            return "₹" + number.toLocaleString("en-IN", {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 2
+            });
+        }
+
+
+        function escapeHTML(value) {
+            return String(value ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+        function getImagePath(item) {
+
+            if (!item) {
+                return "";
+            }
+
+            const image = item.image || "";
+
+            if (!image) {
+                return "";
+            }
+
+            if (
+                image.startsWith("http://") ||
+                image.startsWith("https://") ||
+                image.startsWith("data:") ||
+                image.startsWith("../") ||
+                image.startsWith("./")
+            ) {
+                return image;
+            }
+
+            if (image.includes("assets/")) {
+                return "../" + image.replace(/^\/+/, "");
+            }
+
+            const folder = categoryFolders[item.category];
+
+            if (folder) {
+                return "../assets/images/food/" +
+                    folder +
+                    "/" +
+                    image;
+            }
+
+            return "../assets/images/food/" + image;
+        }
+
+
+        function getCurrentTime() {
+
+            return new Date().toLocaleTimeString("en-IN", {
+                hour: "2-digit",
+                minute: "2-digit"
+            });
+
+        }
+
+
+        function showToast(message) {
+
+            const toast = document.getElementById("toast");
+
+            toast.textContent = message;
+            toast.classList.add("show");
+
+            clearTimeout(window.brToastTimer);
+
+            window.brToastTimer = setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2600);
+        }
+
+
+        /* =========================================================
+           LOAD ORDER
+        ========================================================= */
+
+        function loadOrder() {
+
+            let order = null;
+
+            try {
+                order = JSON.parse(
+                    localStorage.getItem("biteRushOrder") || "null"
+                );
+            } catch (error) {
+                order = null;
+            }
+
+
+            /*
+             * Fallback to latest order history if active order
+             * is not available.
+             */
+            if (!order) {
+
+                try {
+
+                    const history = JSON.parse(
+                        localStorage.getItem("biteRushOrderHistory") || "[]"
+                    );
+
+                    if (Array.isArray(history) && history.length) {
+                        order = history[history.length - 1];
+                    }
+
+                } catch (error) {
+                    order = null;
+                }
+
+            }
+
+
+            if (!order) {
+
+                document.getElementById("emptyState")
+                    .classList.add("active");
+
+                document.getElementById("trackingContent")
+                    .style.display = "none";
+
+                return;
+            }
+
+
+            currentOrder = order;
+
+            currentStep = getStepFromStatus(order.status);
+
+            document.getElementById("emptyState")
+                .classList.remove("active");
+
+            document.getElementById("trackingContent")
+                .style.display = "block";
+
+
+            renderOrder();
+            renderTimeline();
+
+        }
+
+
+        /* =========================================================
+           STATUS
+        ========================================================= */
+
+        function getStepFromStatus(status) {
+
+            const value = String(status || "")
+                .toLowerCase()
+                .trim();
+
+
+            if (
+                value.includes("deliver") &&
+                !value.includes("out")
+            ) {
+                return 3;
+            }
+
+            if (
+                value.includes("out") ||
+                value.includes("way")
+            ) {
+                return 2;
+            }
+
+            if (
+                value.includes("prepar") ||
+                value.includes("process")
+            ) {
+                return 1;
+            }
+
+            return 0;
+        }
+
+
+        function getStatusTitle() {
+
+            return trackingSteps[currentStep].title;
+
+        }
+
+
+        function getStatusDescription() {
+
+            return trackingSteps[currentStep].description;
+
+        }
+
+
+        function getEtaText() {
+
+            if (currentStep === 3) {
+                return "Delivered";
+            }
+
+            if (currentStep === 2) {
+                return "10–20 min";
+            }
+
+            if (currentStep === 1) {
+                return "15–25 min";
+            }
+
+            if (
+                currentOrder &&
+                currentOrder.deliveryMethod &&
+                String(currentOrder.deliveryMethod)
+                    .toLowerCase()
+                    .includes("express")
+            ) {
+                return "15–20 min";
+            }
+
+            return "25–35 min";
+        }
+
+
+        /* =========================================================
+           RENDER ORDER
+        ========================================================= */
+
+        function renderOrder() {
+
+            if (!currentOrder) {
+                return;
+            }
+
+
+            document.getElementById("orderId").textContent =
+                currentOrder.orderId || "BR-ORDER";
+
+
+            document.getElementById("heroStatus").textContent =
+                getStatusTitle();
+
+
+            document.getElementById("statusDescription").textContent =
+                getStatusDescription();
+
+
+            document.getElementById("etaValue").textContent =
+                getEtaText();
+
+
+            if (currentStep === 3) {
+
+                document.getElementById("etaTime").textContent =
+                    "Order completed successfully";
+
+                document.getElementById("liveDot").style.background =
+                    "var(--success)";
+
+            } else {
+
+                document.getElementById("etaTime").textContent =
+                    currentStep === 0
+                        ? "Your restaurant is receiving the order"
+                        : "Your order is moving through the delivery process";
+
+            }
+
+
+            /* CUSTOMER */
+
+            const customer = currentOrder.customer || {};
+
+            document.getElementById("customerName").textContent =
+                customer.name ||
+                "BiteRush Customer";
+
+
+            const addressParts = [
+                customer.address,
+                customer.city,
+                customer.pincode
+            ].filter(Boolean);
+
+
+            document.getElementById("customerAddress").textContent =
+                addressParts.length
+                    ? addressParts.join(", ")
+                    : "Delivery address saved during checkout";
+
+
+            document.getElementById("deliveryMethod").textContent =
+                currentOrder.deliveryMethod ||
+                "Standard Delivery";
+
+
+            document.getElementById("paymentMethod").textContent =
+                currentOrder.paymentMethod ||
+                "Payment selected at checkout";
+
+
+            renderItems();
+
+
+            document.getElementById("subtotal").textContent =
+                money(currentOrder.subtotal);
+
+
+            document.getElementById("deliveryFee").textContent =
+                money(currentOrder.deliveryFee);
+
+
+            const discount =
+                Number(currentOrder.discount || 0);
+
+
+            document.getElementById("discount").textContent =
+                "-" + money(discount);
+
+
+            document.getElementById("total").textContent =
+                money(currentOrder.total);
+
+
+            const discountRow =
+                document.getElementById("discountRow");
+
+
+            if (discount > 0) {
+                discountRow.style.display = "flex";
+            } else {
+                discountRow.style.display = "none";
+            }
+
+        }
+
+
+        /* =========================================================
+           RENDER ITEMS
+        ========================================================= */
+
+        function renderItems() {
+
+            const container =
+                document.getElementById("orderItems");
+
+
+            const items =
+                Array.isArray(currentOrder.items)
+                    ? currentOrder.items
+                    : [];
+
+
+            const totalQuantity = items.reduce(
+                (sum, item) =>
+                    sum + Number(item.quantity || 1),
+                0
+            );
+
+
+            document.getElementById("itemCountText").textContent =
+                `${totalQuantity} item${totalQuantity === 1 ? "" : "s"}`;
+
+
+            if (!items.length) {
+
+                container.innerHTML = `
+                    <div style="
+                        padding:20px 0;
+                        color:#77758a;
+                        font-size:12px;
+                        text-align:center;
+                    ">
+                        Order items are unavailable.
+                    </div>
+                `;
+
+                return;
+            }
+
+
+            container.innerHTML = items.map(item => {
+
+                const quantity =
+                    Number(item.quantity || 1);
+
+                const itemTotal =
+                    Number(item.price || 0) * quantity;
+
+                const image =
+                    getImagePath(item);
+
+
+                const fallback =
+                    item.emoji || "🍽️";
+
+
+                return `
+                    <div class="br-track-item">
+
+                        ${
+                            image
+                            ? `
+                                <img
+                                    class="br-track-item-image"
+                                    src="${escapeHTML(image)}"
+                                    alt="${escapeHTML(item.name || "Food item")}"
+                                    onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+                                >
+                                <div
+                                    class="br-track-item-image"
+                                    style="
+                                        display:none;
+                                        align-items:center;
+                                        justify-content:center;
+                                        font-size:25px;
+                                    "
+                                >
+                                    ${fallback}
+                                </div>
+                              `
+                            : `
+                                <div
+                                    class="br-track-item-image"
+                                    style="
+                                        display:flex;
+                                        align-items:center;
+                                        justify-content:center;
+                                        font-size:25px;
+                                    "
+                                >
+                                    ${fallback}
+                                </div>
+                              `
+                        }
+
+                        <div class="br-track-item-details">
+
+                            <div class="br-track-item-name">
+                                ${escapeHTML(item.name || "Food Item")}
+                            </div>
+
+                            ${
+                                item.category
+                                ? `
+                                    <div class="br-track-item-category">
+                                        ${escapeHTML(item.category)}
+                                    </div>
+                                  `
+                                : ""
+                            }
+
+                            <div class="br-track-item-qty">
+                                Qty: ${quantity}
+                            </div>
+
+                        </div>
+
+                        <div class="br-track-item-price">
+                            ${money(itemTotal)}
+                        </div>
+
+                    </div>
+                `;
+
+            }).join("");
+
+        }
+
+
+        /* =========================================================
+           TIMELINE
+        ========================================================= */
+
+        function renderTimeline() {
+
+            const steps =
+                document.querySelectorAll(".br-track-step");
+
+
+            steps.forEach((step, index) => {
+
+                step.classList.remove(
+                    "active",
+                    "completed"
+                );
+
+
+                if (index < currentStep) {
+
+                    step.classList.add("completed");
+
+                } else if (index === currentStep) {
+
+                    step.classList.add("active");
+
+                }
+
+
+                const timeElement =
+                    document.getElementById(
+                        "stepTime" + index
+                    );
+
+
+                if (index < currentStep) {
+
+                    if (
+                        !timeElement.dataset.time
+                    ) {
+                        timeElement.dataset.time =
+                            getCurrentTime();
+                    }
+
+                    timeElement.textContent =
+                        timeElement.dataset.time;
+
+                } else if (index === currentStep) {
+
+                    timeElement.textContent =
+                        "Now";
+
+                } else {
+
+                    timeElement.textContent =
+                        "Upcoming";
+
+                }
+
+            });
+
+
+            const button =
+                document.getElementById("simulateBtn");
+
+
+            if (currentStep >= 3) {
+
+                button.textContent =
+                    "Order Delivered ✓";
+
+                button.disabled = true;
+
+                button.style.opacity = "0.55";
+                button.style.cursor = "default";
+
+            } else {
+
+                button.textContent =
+                    "Simulate Next Update";
+
+                button.disabled = false;
+
+                button.style.opacity = "1";
+                button.style.cursor = "pointer";
+
+            }
+
+        }
+
+
+        /* =========================================================
+           SIMULATE NEXT STATUS
+        ========================================================= */
+
+        function simulateNextStatus() {
+
+            if (!currentOrder) {
+                return;
+            }
+
+
+            if (currentStep >= 3) {
+
+                showToast("This order has already been delivered.");
+
+                return;
+            }
+
+
+            currentStep++;
+
+
+            const statusValues = [
+                "Order Confirmed",
+                "Preparing",
+                "Out for Delivery",
+                "Delivered"
+            ];
+
+
+            currentOrder.status =
+                statusValues[currentStep];
+
+
+            if (currentStep === 3) {
+
+                currentOrder.eta =
+                    "Delivered";
+
+            } else {
+
+                currentOrder.eta =
+                    getEtaText();
+
+            }
+
+
+            localStorage.setItem(
+                "biteRushOrder",
+                JSON.stringify(currentOrder)
+            );
+
+
+            /*
+             * Also update matching order in history.
+             */
+            try {
+
+                const history =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "biteRushOrderHistory"
+                        ) || "[]"
+                    );
+
+
+                if (Array.isArray(history)) {
+
+                    const index =
+                        history.findIndex(
+                            order =>
+                                order.orderId ===
+                                currentOrder.orderId
+                        );
+
+
+                    if (index !== -1) {
+
+                        history[index] =
+                            currentOrder;
+
+                        localStorage.setItem(
+                            "biteRushOrderHistory",
+                            JSON.stringify(history)
+                        );
+
+                    }
+
+                }
+
+            } catch (error) {
+                console.warn(
+                    "Could not update order history.",
+                    error
+                );
+            }
+
+
+            renderOrder();
+            renderTimeline();
+
+
+            if (currentStep === 1) {
+
+                showToast(
+                    "Your food is now being prepared 🍽️"
+                );
+
+            } else if (currentStep === 2) {
+
+                showToast(
+                    "Your delivery partner is on the way 🚴"
+                );
+
+            } else if (currentStep === 3) {
+
+                showToast(
+                    "Order delivered successfully ✓"
+                );
+
+            }
+
+        }
+
+
+        /* =========================================================
+           REFRESH
+        ========================================================= */
+
+        function refreshTracking() {
+
+            let savedOrder = null;
+
+
+            try {
+
+                savedOrder =
+                    JSON.parse(
+                        localStorage.getItem(
+                            "biteRushOrder"
+                        ) || "null"
+                    );
+
+            } catch (error) {
+                savedOrder = null;
+            }
+
+
+            if (savedOrder) {
+
+                currentOrder =
+                    savedOrder;
+
+                currentStep =
+                    getStepFromStatus(
+                        savedOrder.status
+                    );
+
+                renderOrder();
+                renderTimeline();
+
+                showToast(
+                    "Order status refreshed."
+                );
+
+            } else {
+
+                loadOrder();
+
+                showToast(
+                    "Tracking information refreshed."
+                );
+
+            }
+
+        }
+
+
+        /* =========================================================
+           IMAGE FALLBACK
+        ========================================================= */
+
+        document.addEventListener(
+            "error",
+            function(event) {
+
+                if (
+                    event.target &&
+                    event.target.tagName === "IMG" &&
+                    event.target.classList.contains(
+                        "br-track-item-image"
+                    )
+                ) {
+
+                    event.target.style.display =
+                        "none";
+
+                }
+
+            },
+            true
+        );
+
+
+        /* =========================================================
+           INITIALIZE
+        ========================================================= */
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function() {
+
+                loadOrder();
+
+            }
+        );
+
+    </script>
+
+</body>
+</html>

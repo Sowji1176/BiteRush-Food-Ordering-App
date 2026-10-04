@@ -1,0 +1,3967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>BiteRush — Checkout</title>
+
+    <style>
+
+        /* =========================================================
+           BITERUSH CHECKOUT
+           DARK PREMIUM UI
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        :root {
+
+            --black:
+                #050509;
+
+            --black-soft:
+                #0a0b12;
+
+            --navy:
+                #10152a;
+
+            --navy-light:
+                #171d38;
+
+            --purple:
+                #8b5cf6;
+
+            --purple-light:
+                #a78bfa;
+
+            --purple-dark:
+                #6d28d9;
+
+            --white:
+                #ffffff;
+
+            --text:
+                #f5f5f7;
+
+            --muted:
+                #9ca3b5;
+
+            --border:
+                rgba(255,255,255,0.09);
+
+            --card:
+                rgba(15,17,30,0.92);
+
+            --success:
+                #22c55e;
+
+            --danger:
+                #ef4444;
+
+            --shadow:
+                0 24px 70px rgba(0,0,0,0.45);
+
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                Arial,
+                sans-serif;
+
+            color:
+                var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 10% 0%,
+                    rgba(139,92,246,0.16),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 90% 15%,
+                    rgba(30,64,175,0.14),
+                    transparent 30%
+                ),
+
+                var(--black);
+
+        }
+
+
+        button,
+        input,
+        textarea,
+        select {
+
+            font:
+                inherit;
+
+        }
+
+
+        button {
+
+            cursor:
+                pointer;
+
+        }
+
+
+        a {
+
+            color:
+                inherit;
+
+            text-decoration:
+                none;
+
+        }
+
+
+        /* =========================================================
+           PAGE
+        ========================================================= */
+
+        .br-checkout-page {
+
+            width:
+                100%;
+
+            min-height:
+                100vh;
+
+            padding:
+                28px 42px 60px;
+
+        }
+
+
+        .br-checkout-shell {
+
+            width:
+                100%;
+
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .br-checkout-header {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap:
+                24px;
+
+            padding-bottom:
+                30px;
+
+            border-bottom:
+                1px solid var(--border);
+
+        }
+
+
+        .br-checkout-brand {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                13px;
+
+            font-size:
+                23px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        .br-checkout-logo {
+
+            width:
+                48px;
+
+            height:
+                48px;
+
+            object-fit:
+                contain;
+
+            display:
+                block;
+
+        }
+
+
+        .br-checkout-brand-name span {
+
+            color:
+                var(--purple-light);
+
+        }
+
+
+        .br-checkout-back {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap:
+                9px;
+
+            padding:
+                12px 17px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                14px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            color:
+                var(--muted);
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .br-checkout-back:hover {
+
+            color:
+                var(--white);
+
+            border-color:
+                rgba(167,139,250,0.5);
+
+            background:
+                rgba(139,92,246,0.10);
+
+            transform:
+                translateX(-3px);
+
+        }
+
+
+        /* =========================================================
+           HEADING
+        ========================================================= */
+
+        .br-checkout-heading {
+
+            padding:
+                38px 0 30px;
+
+        }
+
+
+        .br-checkout-eyebrow {
+
+            display:
+                inline-flex;
+
+            padding:
+                7px 12px;
+
+            border:
+                1px solid rgba(167,139,250,0.22);
+
+            border-radius:
+                999px;
+
+            color:
+                var(--purple-light);
+
+            background:
+                rgba(139,92,246,0.08);
+
+            font-size:
+                11px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                1.5px;
+
+        }
+
+
+        .br-checkout-heading h1 {
+
+            margin-top:
+                15px;
+
+            font-size:
+                clamp(32px, 4vw, 52px);
+
+            line-height:
+                1.05;
+
+            letter-spacing:
+                -1.8px;
+
+        }
+
+
+        .br-checkout-heading h1 span {
+
+            color:
+                var(--purple-light);
+
+        }
+
+
+        .br-checkout-heading p {
+
+            margin-top:
+                12px;
+
+            max-width:
+                720px;
+
+            color:
+                var(--muted);
+
+            line-height:
+                1.7;
+
+            font-size:
+                15px;
+
+        }
+
+
+        /* =========================================================
+           MAIN GRID
+        ========================================================= */
+
+        .br-checkout-grid {
+
+            width:
+                100%;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                minmax(0, 1.45fr)
+                minmax(360px, 0.75fr);
+
+            gap:
+                28px;
+
+            align-items:
+                start;
+
+        }
+
+
+        /* =========================================================
+           CARDS
+        ========================================================= */
+
+        .br-checkout-card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18,20,35,0.96),
+                    rgba(8,10,18,0.96)
+                );
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                24px;
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .br-checkout-section {
+
+            padding:
+                28px;
+
+            margin-bottom:
+                20px;
+
+        }
+
+
+        .br-checkout-section:last-child {
+
+            margin-bottom:
+                0;
+
+        }
+
+
+        .br-checkout-section-title {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                13px;
+
+            margin-bottom:
+                24px;
+
+        }
+
+
+        .br-checkout-section-icon {
+
+            width:
+                43px;
+
+            height:
+                43px;
+
+            border-radius:
+                13px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            background:
+                rgba(139,92,246,0.11);
+
+            border:
+                1px solid rgba(139,92,246,0.22);
+
+        }
+
+
+        .br-checkout-section-icon img {
+
+            width:
+                25px;
+
+            height:
+                25px;
+
+            object-fit:
+                contain;
+
+        }
+
+
+        .br-checkout-section-title h2 {
+
+            font-size:
+                19px;
+
+        }
+
+
+        .br-checkout-section-title p {
+
+            margin-top:
+                4px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+        }
+
+
+        /* =========================================================
+           FORM
+        ========================================================= */
+
+        .br-checkout-form-grid {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap:
+                18px;
+
+        }
+
+
+        .br-checkout-field {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                8px;
+
+        }
+
+
+        .br-checkout-field.full {
+
+            grid-column:
+                1 / -1;
+
+        }
+
+
+        .br-checkout-field label {
+
+            color:
+                #d7d9e2;
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .br-checkout-field input,
+        .br-checkout-field textarea,
+        .br-checkout-field select {
+
+            width:
+                100%;
+
+            padding:
+                14px 15px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                14px;
+
+            outline:
+                none;
+
+            background:
+                rgba(255,255,255,0.045);
+
+            color:
+                var(--white);
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .br-checkout-field textarea {
+
+            min-height:
+                105px;
+
+            resize:
+                vertical;
+
+        }
+
+
+        .br-checkout-field select option {
+
+            background:
+                #10121f;
+
+            color:
+                white;
+
+        }
+
+
+        .br-checkout-field input::placeholder,
+        .br-checkout-field textarea::placeholder {
+
+            color:
+                #697083;
+
+        }
+
+
+        .br-checkout-field input:focus,
+        .br-checkout-field textarea:focus,
+        .br-checkout-field select:focus {
+
+            border-color:
+                rgba(167,139,250,0.72);
+
+            background:
+                rgba(139,92,246,0.055);
+
+            box-shadow:
+                0 0 0 4px rgba(139,92,246,0.08);
+
+        }
+
+
+        .br-checkout-error {
+
+            display:
+                none;
+
+            margin-top:
+                7px;
+
+            color:
+                #fca5a5;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .br-checkout-error.show {
+
+            display:
+                block;
+
+        }
+
+
+        /* =========================================================
+           DELIVERY OPTIONS
+        ========================================================= */
+
+        .br-delivery-options {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0,1fr));
+
+            gap:
+                15px;
+
+        }
+
+
+        .br-delivery-option {
+
+            position:
+                relative;
+
+        }
+
+
+        .br-delivery-option input {
+
+            position:
+                absolute;
+
+            opacity:
+                0;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .br-delivery-label {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                14px;
+
+            min-height:
+                92px;
+
+            padding:
+                17px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                17px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            transition:
+                0.25s ease;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .br-delivery-label:hover {
+
+            border-color:
+                rgba(167,139,250,0.45);
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        .br-delivery-option input:checked
+        + .br-delivery-label {
+
+            border-color:
+                rgba(167,139,250,0.8);
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(139,92,246,0.16),
+                    rgba(30,64,175,0.08)
+                );
+
+            box-shadow:
+                0 12px 35px rgba(0,0,0,0.2);
+
+        }
+
+
+        .br-delivery-icon {
+
+            width:
+                46px;
+
+            height:
+                46px;
+
+            flex:
+                0 0 46px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            border-radius:
+                13px;
+
+            background:
+                rgba(139,92,246,0.10);
+
+        }
+
+
+        .br-delivery-icon img {
+
+            width:
+                27px;
+
+            height:
+                27px;
+
+            object-fit:
+                contain;
+
+        }
+
+
+        .br-delivery-info strong {
+
+            display:
+                block;
+
+            font-size:
+                14px;
+
+        }
+
+
+        .br-delivery-info span {
+
+            display:
+                block;
+
+            margin-top:
+                5px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+        }
+
+
+        .br-delivery-price {
+
+            margin-left:
+                auto;
+
+            color:
+                var(--purple-light);
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        /* =========================================================
+           PAYMENT OPTIONS
+        ========================================================= */
+
+        .br-payment-options {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(3, minmax(0,1fr));
+
+            gap:
+                13px;
+
+        }
+
+
+        .br-payment-option {
+
+            position:
+                relative;
+
+        }
+
+
+        .br-payment-option input {
+
+            position:
+                absolute;
+
+            opacity:
+                0;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .br-payment-label {
+
+            min-height:
+                90px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+
+            align-items:
+                center;
+
+            gap:
+                9px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                16px;
+
+            background:
+                rgba(255,255,255,0.035);
+
+            cursor:
+                pointer;
+
+            transition:
+                0.25s ease;
+
+            text-align:
+                center;
+
+        }
+
+
+        .br-payment-label:hover {
+
+            transform:
+                translateY(-2px);
+
+            border-color:
+                rgba(167,139,250,0.4);
+
+        }
+
+
+        .br-payment-option input:checked
+        + .br-payment-label {
+
+            border-color:
+                rgba(167,139,250,0.8);
+
+            background:
+                rgba(139,92,246,0.13);
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.2);
+
+        }
+
+
+        .br-payment-label img {
+
+            width:
+                28px;
+
+            height:
+                28px;
+
+            object-fit:
+                contain;
+
+        }
+
+
+        .br-payment-label span {
+
+            color:
+                #d9dbe4;
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        /* =========================================================
+           RIGHT SUMMARY
+        ========================================================= */
+
+        .br-checkout-summary {
+
+            position:
+                sticky;
+
+            top:
+                22px;
+
+        }
+
+
+        .br-summary-header {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            margin-bottom:
+                23px;
+
+        }
+
+
+        .br-summary-header h2 {
+
+            font-size:
+                20px;
+
+        }
+
+
+        .br-summary-count {
+
+            color:
+                var(--muted);
+
+            font-size:
+                12px;
+
+        }
+
+
+        /* =========================================================
+           ORDER ITEMS
+        ========================================================= */
+
+        .br-summary-items {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                13px;
+
+            max-height:
+                430px;
+
+            overflow:
+                auto;
+
+            padding-right:
+                3px;
+
+        }
+
+
+        .br-summary-item {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                62px minmax(0,1fr) auto;
+
+            gap:
+                13px;
+
+            align-items:
+                center;
+
+            padding:
+                11px;
+
+            border:
+                1px solid rgba(255,255,255,0.07);
+
+            border-radius:
+                15px;
+
+            background:
+                rgba(255,255,255,0.028);
+
+        }
+
+
+        .br-summary-item-image {
+
+            width:
+                62px;
+
+            height:
+                62px;
+
+            border-radius:
+                13px;
+
+            overflow:
+                hidden;
+
+            background:
+                #171a28;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            font-size:
+                28px;
+
+        }
+
+
+        .br-summary-item-image img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                cover;
+
+        }
+
+
+        .br-summary-item-name {
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+            line-height:
+                1.35;
+
+        }
+
+
+        .br-summary-item-meta {
+
+            margin-top:
+                5px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                11px;
+
+        }
+
+
+        .br-summary-item-total {
+
+            color:
+                var(--white);
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        /* =========================================================
+           PRICE BREAKDOWN
+        ========================================================= */
+
+        .br-price-breakdown {
+
+            margin-top:
+                23px;
+
+            padding-top:
+                20px;
+
+            border-top:
+                1px solid var(--border);
+
+        }
+
+
+        .br-price-row {
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            margin-bottom:
+                13px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+        }
+
+
+        .br-price-row.discount {
+
+            color:
+                #86efac;
+
+        }
+
+
+        .br-price-row.total {
+
+            margin-top:
+                18px;
+
+            padding-top:
+                17px;
+
+            border-top:
+                1px solid var(--border);
+
+            color:
+                var(--white);
+
+            font-size:
+                18px;
+
+            font-weight:
+                800;
+
+        }
+
+
+        /* =========================================================
+           SECURE
+        ========================================================= */
+
+        .br-checkout-secure {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                10px;
+
+            margin-top:
+                20px;
+
+            padding:
+                13px;
+
+            border:
+                1px solid rgba(34,197,94,0.16);
+
+            border-radius:
+                13px;
+
+            background:
+                rgba(34,197,94,0.055);
+
+            color:
+                #9ee6b4;
+
+            font-size:
+                11px;
+
+            line-height:
+                1.5;
+
+        }
+
+
+        /* =========================================================
+           PLACE ORDER
+        ========================================================= */
+
+        .br-place-order {
+
+            width:
+                100%;
+
+            margin-top:
+                19px;
+
+            padding:
+                16px 20px;
+
+            border:
+                0;
+
+            border-radius:
+                15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--purple),
+                    #5b21b6
+                );
+
+            color:
+                white;
+
+            font-weight:
+                800;
+
+            font-size:
+                15px;
+
+            box-shadow:
+                0 16px 35px rgba(109,40,217,0.30);
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .br-place-order:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 20px 45px rgba(109,40,217,0.42);
+
+        }
+
+
+        .br-place-order:active {
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        .br-place-order:disabled {
+
+            opacity:
+                0.45;
+
+            cursor:
+                not-allowed;
+
+            transform:
+                none;
+
+            box-shadow:
+                none;
+
+        }
+
+
+        /* =========================================================
+           EMPTY CART
+        ========================================================= */
+
+        .br-checkout-empty {
+
+            min-height:
+                330px;
+
+            display:
+                none;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            padding:
+                30px;
+
+        }
+
+
+        .br-checkout-empty.show {
+
+            display:
+                flex;
+
+        }
+
+
+        .br-checkout-empty-icon {
+
+            width:
+                82px;
+
+            height:
+                82px;
+
+            margin:
+                0 auto 18px;
+
+            border-radius:
+                22px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            background:
+                rgba(139,92,246,0.09);
+
+            border:
+                1px solid rgba(139,92,246,0.2);
+
+        }
+
+
+        .br-checkout-empty-icon img {
+
+            width:
+                45px;
+
+            height:
+                45px;
+
+            object-fit:
+                contain;
+
+        }
+
+
+        .br-checkout-empty h2 {
+
+            font-size:
+                22px;
+
+        }
+
+
+        .br-checkout-empty p {
+
+            margin-top:
+                8px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+        }
+
+
+        .br-empty-button {
+
+            display:
+                inline-flex;
+
+            margin-top:
+                20px;
+
+            padding:
+                13px 19px;
+
+            border-radius:
+                13px;
+
+            background:
+                var(--purple);
+
+            color:
+                white;
+
+            font-weight:
+                800;
+
+        }
+
+
+        /* =========================================================
+           SUCCESS
+        ========================================================= */
+
+        .br-order-success {
+
+            position:
+                fixed;
+
+            inset:
+                0;
+
+            z-index:
+                999;
+
+            display:
+                none;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            padding:
+                24px;
+
+            background:
+                rgba(3,4,9,0.88);
+
+            backdrop-filter:
+                blur(14px);
+
+        }
+
+
+        .br-order-success.show {
+
+            display:
+                flex;
+
+        }
+
+
+        .br-success-card {
+
+            width:
+                min(520px, 100%);
+
+            padding:
+                38px;
+
+            text-align:
+                center;
+
+            border:
+                1px solid rgba(167,139,250,0.22);
+
+            border-radius:
+                27px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #141629,
+                    #090b14
+                );
+
+            box-shadow:
+                0 30px 100px rgba(0,0,0,0.6);
+
+            animation:
+                brSuccessIn 0.4s ease;
+
+        }
+
+
+        @keyframes brSuccessIn {
+
+            from {
+
+                opacity:
+                    0;
+
+                transform:
+                    translateY(18px)
+                    scale(0.97);
+
+            }
+
+            to {
+
+                opacity:
+                    1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+
+            }
+
+        }
+
+
+        .br-success-icon {
+
+            width:
+                76px;
+
+            height:
+                76px;
+
+            margin:
+                0 auto 20px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(34,197,94,0.12);
+
+            border:
+                1px solid rgba(34,197,94,0.3);
+
+            color:
+                #86efac;
+
+            font-size:
+                35px;
+
+        }
+
+
+        .br-success-card h2 {
+
+            font-size:
+                29px;
+
+        }
+
+
+        .br-success-card p {
+
+            margin-top:
+                10px;
+
+            color:
+                var(--muted);
+
+            line-height:
+                1.6;
+
+        }
+
+
+        .br-success-order-id {
+
+            margin:
+                20px 0;
+
+            padding:
+                14px;
+
+            border-radius:
+                14px;
+
+            background:
+                rgba(255,255,255,0.04);
+
+            color:
+                var(--purple-light);
+
+            font-weight:
+                800;
+
+        }
+
+
+        .br-success-actions {
+
+            display:
+                grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap:
+                12px;
+
+            margin-top:
+                20px;
+
+        }
+
+
+        .br-success-actions button {
+
+            padding:
+                14px;
+
+            border-radius:
+                13px;
+
+            font-weight:
+                800;
+
+            border:
+                1px solid var(--border);
+
+            background:
+                rgba(255,255,255,0.04);
+
+            color:
+                white;
+
+        }
+
+
+        .br-success-actions button.primary {
+
+            border:
+                0;
+
+            background:
+                var(--purple);
+
+        }
+
+
+        /* =========================================================
+           TOAST
+        ========================================================= */
+
+        .br-checkout-toast {
+
+            position:
+                fixed;
+
+            left:
+                50%;
+
+            bottom:
+                28px;
+
+            transform:
+                translate(-50%, 20px);
+
+            z-index:
+                1000;
+
+            padding:
+                13px 19px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                13px;
+
+            background:
+                #171a2a;
+
+            color:
+                white;
+
+            font-size:
+                13px;
+
+            opacity:
+                0;
+
+            pointer-events:
+                none;
+
+            transition:
+                0.25s ease;
+
+        }
+
+
+        .br-checkout-toast.show {
+
+            opacity:
+                1;
+
+            transform:
+                translate(-50%, 0);
+
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 1050px) {
+
+            .br-checkout-page {
+
+                padding:
+                    24px;
+
+            }
+
+
+            .br-checkout-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .br-checkout-summary {
+
+                position:
+                    static;
+
+            }
+
+        }
+
+
+        @media (max-width: 700px) {
+
+            .br-checkout-page {
+
+                padding:
+                    18px 14px 40px;
+
+            }
+
+
+            .br-checkout-header {
+
+                padding-bottom:
+                    20px;
+
+            }
+
+
+            .br-checkout-brand {
+
+                font-size:
+                    19px;
+
+            }
+
+
+            .br-checkout-logo {
+
+                width:
+                    40px;
+
+                height:
+                    40px;
+
+            }
+
+
+            .br-checkout-back {
+
+                padding:
+                    10px 12px;
+
+                font-size:
+                    12px;
+
+            }
+
+
+            .br-checkout-heading {
+
+                padding:
+                    28px 0 22px;
+
+            }
+
+
+            .br-checkout-heading h1 {
+
+                font-size:
+                    34px;
+
+            }
+
+
+            .br-checkout-section {
+
+                padding:
+                    20px;
+
+            }
+
+
+            .br-checkout-form-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .br-checkout-field.full {
+
+                grid-column:
+                    auto;
+
+            }
+
+
+            .br-delivery-options {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .br-payment-options {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .br-summary-items {
+
+                max-height:
+                    none;
+
+            }
+
+
+            .br-success-actions {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 430px) {
+
+            .br-checkout-heading h1 {
+
+                font-size:
+                    30px;
+
+            }
+
+
+            .br-checkout-section {
+
+                padding:
+                    17px;
+
+                border-radius:
+                    19px;
+
+            }
+
+
+            .br-checkout-section-title h2 {
+
+                font-size:
+                    17px;
+
+            }
+
+
+            .br-summary-item {
+
+                grid-template-columns:
+                    52px minmax(0,1fr) auto;
+
+            }
+
+
+            .br-summary-item-image {
+
+                width:
+                    52px;
+
+                height:
+                    52px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<main class="br-checkout-page">
+
+
+    <div class="br-checkout-shell">
+
+
+        <!-- =====================================================
+             HEADER
+        ====================================================== -->
+
+        <header class="br-checkout-header">
+
+
+            <a
+                href="home.html"
+                class="br-checkout-brand"
+            >
+
+                <img
+                    src="../assets/logo/biterush-logo.png"
+                    alt="BiteRush"
+                    class="br-checkout-logo"
+                >
+
+                <div class="br-checkout-brand-name">
+                    Bite<span>Rush</span>
+                </div>
+
+            </a>
+
+
+            <button
+                class="br-checkout-back"
+                onclick="goBackToCart()"
+            >
+
+                ← Back to Cart
+
+            </button>
+
+
+        </header>
+
+
+
+        <!-- =====================================================
+             HEADING
+        ====================================================== -->
+
+        <section class="br-checkout-heading">
+
+            <span class="br-checkout-eyebrow">
+                SECURE CHECKOUT
+            </span>
+
+
+            <h1>
+                Almost there.
+                <span>Let's deliver.</span>
+            </h1>
+
+
+            <p>
+                Confirm your delivery details, choose your
+                preferred delivery speed and payment method,
+                then place your BiteRush order.
+            </p>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             EMPTY CART
+        ====================================================== -->
+
+        <section
+            class="br-checkout-card br-checkout-empty"
+            id="brCheckoutEmpty"
+        >
+
+            <div>
+
+                <div class="br-checkout-empty-icon">
+
+                    <img
+                        src="../assets/icons/cart.png"
+                        alt="Cart"
+                    >
+
+                </div>
+
+
+                <h2>
+                    Your cart is empty
+                </h2>
+
+
+                <p>
+                    Add something delicious before continuing
+                    to checkout.
+                </p>
+
+
+                <a
+                    href="home.html"
+                    class="br-empty-button"
+                >
+                    Start Ordering
+                </a>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             CHECKOUT GRID
+        ====================================================== -->
+
+        <div
+            class="br-checkout-grid"
+            id="brCheckoutContent"
+        >
+
+
+            <!-- =================================================
+                 LEFT
+            ================================================== -->
+
+            <div>
+
+
+                <!-- DELIVERY DETAILS -->
+
+                <section class="br-checkout-card br-checkout-section">
+
+
+                    <div class="br-checkout-section-title">
+
+                        <div class="br-checkout-section-icon">
+
+                            <img
+                                src="../assets/icons/location.png"
+                                alt="Location"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Delivery Details
+                            </h2>
+
+                            <p>
+                                Where should we deliver your order?
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="br-checkout-form-grid">
+
+
+                        <div class="br-checkout-field">
+
+                            <label for="customerName">
+                                Full Name *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerName"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                            >
+
+                            <span
+                                class="br-checkout-error"
+                                id="customerNameError"
+                            >
+                                Please enter your name.
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="br-checkout-field">
+
+                            <label for="customerPhone">
+                                Phone Number *
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="customerPhone"
+                                placeholder="Enter your phone number"
+                                autocomplete="tel"
+                            >
+
+                            <span
+                                class="br-checkout-error"
+                                id="customerPhoneError"
+                            >
+                                Please enter a valid phone number.
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="br-checkout-field full">
+
+                            <label for="customerAddress">
+                                Delivery Address *
+                            </label>
+
+                            <textarea
+                                id="customerAddress"
+                                placeholder="House / Flat number, street, area, landmark..."
+                            ></textarea>
+
+                            <span
+                                class="br-checkout-error"
+                                id="customerAddressError"
+                            >
+                                Please enter your delivery address.
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="br-checkout-field">
+
+                            <label for="customerCity">
+                                City *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerCity"
+                                placeholder="City"
+                                autocomplete="address-level2"
+                            >
+
+                            <span
+                                class="br-checkout-error"
+                                id="customerCityError"
+                            >
+                                Please enter your city.
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="br-checkout-field">
+
+                            <label for="customerPincode">
+                                PIN Code *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerPincode"
+                                placeholder="6-digit PIN code"
+                                inputmode="numeric"
+                                maxlength="6"
+                                autocomplete="postal-code"
+                            >
+
+                            <span
+                                class="br-checkout-error"
+                                id="customerPincodeError"
+                            >
+                                Please enter a valid 6-digit PIN code.
+                            </span>
+
+                        </div>
+
+
+
+                        <div class="br-checkout-field full">
+
+                            <label for="customerInstructions">
+                                Delivery Instructions
+                                <span
+                                    style="
+                                    color:#73798a;
+                                    font-weight:500;
+                                    "
+                                >
+                                    (Optional)
+                                </span>
+                            </label>
+
+                            <textarea
+                                id="customerInstructions"
+                                placeholder="Example: Please leave the order at the door..."
+                            ></textarea>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- DELIVERY SPEED -->
+
+                <section class="br-checkout-card br-checkout-section">
+
+
+                    <div class="br-checkout-section-title">
+
+                        <div class="br-checkout-section-icon">
+
+                            <img
+                                src="../assets/icons/delivery.png"
+                                alt="Delivery"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Delivery Speed
+                            </h2>
+
+                            <p>
+                                Choose when you'd like your order.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="br-delivery-options">
+
+
+                        <div class="br-delivery-option">
+
+                            <input
+                                type="radio"
+                                name="deliveryMethod"
+                                id="standardDelivery"
+                                value="standard"
+                                checked
+                            >
+
+
+                            <label
+                                for="standardDelivery"
+                                class="br-delivery-label"
+                            >
+
+                                <div class="br-delivery-icon">
+
+                                    <img
+                                        src="../assets/icons/delivery.png"
+                                        alt=""
+                                    >
+
+                                </div>
+
+
+                                <div class="br-delivery-info">
+
+                                    <strong>
+                                        Standard Delivery
+                                    </strong>
+
+                                    <span>
+                                        Estimated 25–35 min
+                                    </span>
+
+                                </div>
+
+
+                                <div
+                                    class="br-delivery-price"
+                                    id="standardDeliveryPrice"
+                                >
+                                    ₹40
+                                </div>
+
+                            </label>
+
+                        </div>
+
+
+
+                        <div class="br-delivery-option">
+
+                            <input
+                                type="radio"
+                                name="deliveryMethod"
+                                id="expressDelivery"
+                                value="express"
+                            >
+
+
+                            <label
+                                for="expressDelivery"
+                                class="br-delivery-label"
+                            >
+
+                                <div class="br-delivery-icon">
+
+                                    <img
+                                        src="../assets/icons/delivery.png"
+                                        alt=""
+                                    >
+
+                                </div>
+
+
+                                <div class="br-delivery-info">
+
+                                    <strong>
+                                        Express Delivery
+                                    </strong>
+
+                                    <span>
+                                        Estimated 15–20 min
+                                    </span>
+
+                                </div>
+
+
+                                <div class="br-delivery-price">
+                                    ₹70
+                                </div>
+
+                            </label>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+
+                <!-- PAYMENT -->
+
+                <section class="br-checkout-card br-checkout-section">
+
+
+                    <div class="br-checkout-section-title">
+
+                        <div class="br-checkout-section-icon">
+
+                            <img
+                                src="../assets/icons/payment.png"
+                                alt="Payment"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <h2>
+                                Payment Method
+                            </h2>
+
+                            <p>
+                                Select your preferred payment option.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="br-payment-options">
+
+
+                        <div class="br-payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                id="upiPayment"
+                                value="UPI"
+                                checked
+                            >
+
+
+                            <label
+                                for="upiPayment"
+                                class="br-payment-label"
+                            >
+
+                                <img
+                                    src="../assets/icons/payment.png"
+                                    alt="UPI"
+                                >
+
+                                <span>
+                                    UPI
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+
+                        <div class="br-payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                id="cardPayment"
+                                value="Card"
+                            >
+
+
+                            <label
+                                for="cardPayment"
+                                class="br-payment-label"
+                            >
+
+                                <img
+                                    src="../assets/icons/payment.png"
+                                    alt="Card"
+                                >
+
+                                <span>
+                                    Card
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+
+                        <div class="br-payment-option">
+
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                id="codPayment"
+                                value="Cash on Delivery"
+                            >
+
+
+                            <label
+                                for="codPayment"
+                                class="br-payment-label"
+                            >
+
+                                <img
+                                    src="../assets/icons/payment.png"
+                                    alt="Cash on Delivery"
+                                >
+
+                                <span>
+                                    Cash on Delivery
+                                </span>
+
+                            </label>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RIGHT SUMMARY
+            ================================================== -->
+
+            <aside
+                class="br-checkout-card br-checkout-section br-checkout-summary"
+            >
+
+
+                <div class="br-summary-header">
+
+                    <h2>
+                        Order Summary
+                    </h2>
+
+
+                    <span
+                        class="br-summary-count"
+                        id="summaryItemCount"
+                    >
+                        0 items
+                    </span>
+
+                </div>
+
+
+
+                <div
+                    class="br-summary-items"
+                    id="summaryItems"
+                ></div>
+
+
+
+                <div class="br-price-breakdown">
+
+
+                    <div class="br-price-row">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <strong id="summarySubtotal">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="br-price-row">
+
+                        <span>
+                            Delivery Fee
+                        </span>
+
+                        <strong id="summaryDelivery">
+                            ₹40
+                        </strong>
+
+                    </div>
+
+
+
+                    <div
+                        class="br-price-row discount"
+                        id="summaryDiscountRow"
+                        style="display:none;"
+                    >
+
+                        <span>
+                            Discount
+                        </span>
+
+                        <strong id="summaryDiscount">
+                            -₹0
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="br-price-row total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="summaryTotal">
+                            ₹0
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="br-checkout-secure">
+
+                    🔒
+
+                    <span>
+                        Secure checkout. Your information is
+                        stored only in this browser prototype.
+                    </span>
+
+                </div>
+
+
+
+                <button
+                    class="br-place-order"
+                    id="placeOrderButton"
+                    onclick="placeOrder()"
+                >
+                    Place Order →
+                </button>
+
+
+            </aside>
+
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =========================================================
+     SUCCESS MODAL
+========================================================= -->
+
+<div
+    class="br-order-success"
+    id="orderSuccess"
+>
+
+    <div class="br-success-card">
+
+
+        <div class="br-success-icon">
+            ✓
+        </div>
+
+
+        <h2>
+            Order Confirmed!
+        </h2>
+
+
+        <p>
+            Your BiteRush order has been placed successfully.
+            Get ready for something delicious.
+        </p>
+
+
+        <div class="br-success-order-id">
+
+            Order ID:
+            <span id="successOrderId">
+                BR-000000
+            </span>
+
+        </div>
+
+
+        <div class="br-success-actions">
+
+            <button
+                class="primary"
+                onclick="goToOrderTracking()"
+            >
+                Track Order
+            </button>
+
+
+            <button
+                onclick="goToHome()"
+            >
+                Back to Home
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+
+<div
+    class="br-checkout-toast"
+    id="checkoutToast"
+></div>
+
+
+
+<script>
+
+
+/* =========================================================
+   BITERUSH CHECKOUT JAVASCRIPT
+========================================================= */
+
+
+/* =========================================================
+   CART
+========================================================= */
+
+function getCart() {
+
+    try {
+
+        return JSON.parse(
+            localStorage.getItem(
+                "biteRushCart"
+            )
+        ) || [];
+
+    }
+
+    catch {
+
+        return [];
+
+    }
+
+}
+
+
+/* =========================================================
+   DISCOUNT
+========================================================= */
+
+function getDiscount() {
+
+    const discount =
+        Number(
+            localStorage.getItem(
+                "biteRushDiscount"
+            )
+        );
+
+    return Number.isFinite(discount)
+        ? Math.max(0, discount)
+        : 0;
+
+}
+
+
+/* =========================================================
+   SUBTOTAL
+========================================================= */
+
+function getSubtotal(cart) {
+
+    return cart.reduce(
+        (total, item) => {
+
+            return total +
+                Number(item.price || 0) *
+                Number(item.quantity || 0);
+
+        },
+        0
+    );
+
+}
+
+
+/* =========================================================
+   ITEM COUNT
+========================================================= */
+
+function getItemCount(cart) {
+
+    return cart.reduce(
+        (total, item) => {
+
+            return total +
+                Number(item.quantity || 0);
+
+        },
+        0
+    );
+
+}
+
+
+/* =========================================================
+   IMAGE RESOLVER
+========================================================= */
+
+function resolveFoodImage(image) {
+
+    if (!image) {
+        return "";
+    }
+
+
+    if (
+        image.startsWith("http://") ||
+        image.startsWith("https://") ||
+        image.startsWith("data:")
+    ) {
+
+        return image;
+
+    }
+
+
+    if (
+        image.startsWith("../") ||
+        image.startsWith("./")
+    ) {
+
+        return image;
+
+    }
+
+
+    if (
+        image.includes("assets/")
+    ) {
+
+        return "../" +
+            image.substring(
+                image.indexOf("assets/")
+            );
+
+    }
+
+
+    return "../assets/images/food/" +
+        image;
+
+}
+
+
+/* =========================================================
+   RENDER SUMMARY
+========================================================= */
+
+function renderSummary() {
+
+    const cart =
+        getCart();
+
+    const empty =
+        document.getElementById(
+            "brCheckoutEmpty"
+        );
+
+    const content =
+        document.getElementById(
+            "brCheckoutContent"
+        );
+
+
+    if (!cart.length) {
+
+        empty.classList.add("show");
+
+        content.style.display =
+            "none";
+
+        return;
+
+    }
+
+
+    empty.classList.remove("show");
+
+    content.style.display =
+        "grid";
+
+
+    const items =
+        document.getElementById(
+            "summaryItems"
+        );
+
+
+    items.innerHTML =
+        cart.map(
+            item => {
+
+                const quantity =
+                    Number(
+                        item.quantity || 0
+                    );
+
+                const price =
+                    Number(
+                        item.price || 0
+                    );
+
+                const total =
+                    quantity * price;
+
+                const image =
+                    resolveFoodImage(
+                        item.image
+                    );
+
+
+                return `
+
+                    <article
+                        class="br-summary-item"
+                    >
+
+                        <div
+                            class="br-summary-item-image"
+                        >
+
+                            ${
+                                image
+
+                                ?
+
+                                `
+                                <img
+                                    src="${image}"
+                                    alt="${escapeHTML(item.name || "Food")}"
+                                    onerror="this.style.display='none';this.parentElement.textContent='🍽️';"
+                                >
+                                `
+
+                                :
+
+                                (
+                                    item.emoji ||
+                                    "🍽️"
+                                )
+                            }
+
+                        </div>
+
+
+                        <div>
+
+                            <div
+                                class="br-summary-item-name"
+                            >
+                                ${escapeHTML(
+                                    item.name ||
+                                    "Food item"
+                                )}
+                            </div>
+
+
+                            <div
+                                class="br-summary-item-meta"
+                            >
+                                Qty ${quantity}
+                                × ₹${price}
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="br-summary-item-total"
+                        >
+                            ₹${total}
+                        </div>
+
+                    </article>
+
+                `;
+
+            }
+        ).join("");
+
+
+    document.getElementById(
+        "summaryItemCount"
+    ).textContent =
+        `${getItemCount(cart)} item${
+            getItemCount(cart) === 1
+                ? ""
+                : "s"
+        }`;
+
+
+    updateCheckoutTotals();
+
+}
+
+
+/* =========================================================
+   UPDATE TOTALS
+========================================================= */
+
+function updateCheckoutTotals() {
+
+    const cart =
+        getCart();
+
+    const subtotal =
+        getSubtotal(cart);
+
+    const discount =
+        Math.min(
+            getDiscount(),
+            subtotal
+        );
+
+
+    const selectedDelivery =
+        document.querySelector(
+            'input[name="deliveryMethod"]:checked'
+        );
+
+
+    const deliveryType =
+        selectedDelivery
+            ? selectedDelivery.value
+            : "standard";
+
+
+    let deliveryFee =
+        deliveryType === "express"
+            ? 70
+            : 40;
+
+
+    /*
+       Free standard delivery
+       above ₹499.
+    */
+
+    if (
+        deliveryType === "standard" &&
+        subtotal > 499
+    ) {
+
+        deliveryFee = 0;
+
+    }
+
+
+    const total =
+        Math.max(
+            0,
+            subtotal +
+            deliveryFee -
+            discount
+        );
+
+
+    document.getElementById(
+        "summarySubtotal"
+    ).textContent =
+        `₹${subtotal}`;
+
+
+    document.getElementById(
+        "summaryDelivery"
+    ).textContent =
+        deliveryFee === 0
+            ? "FREE"
+            : `₹${deliveryFee}`;
+
+
+    const discountRow =
+        document.getElementById(
+            "summaryDiscountRow"
+        );
+
+
+    if (discount > 0) {
+
+        discountRow.style.display =
+            "flex";
+
+        document.getElementById(
+            "summaryDiscount"
+        ).textContent =
+            `-₹${discount}`;
+
+    }
+
+    else {
+
+        discountRow.style.display =
+            "none";
+
+    }
+
+
+    document.getElementById(
+        "summaryTotal"
+    ).textContent =
+        `₹${total}`;
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================================
+   PROFILE DATA
+========================================================= */
+
+function loadSavedProfile() {
+
+    let profile = null;
+
+
+    try {
+
+        profile =
+            JSON.parse(
+                localStorage.getItem(
+                    "biteRushProfile"
+                )
+            );
+
+    }
+
+    catch {
+
+        profile = null;
+
+    }
+
+
+    if (!profile) {
+
+        try {
+
+            profile =
+                JSON.parse(
+                    localStorage.getItem(
+                        "biteRushUser"
+                    )
+                );
+
+        }
+
+        catch {
+
+            profile = null;
+
+        }
+
+    }
+
+
+    if (!profile) {
+        return;
+    }
+
+
+    if (
+        profile.name ||
+        profile.fullName
+    ) {
+
+        document.getElementById(
+            "customerName"
+        ).value =
+            profile.name ||
+            profile.fullName;
+
+    }
+
+
+    if (
+        profile.phone ||
+        profile.mobile
+    ) {
+
+        document.getElementById(
+            "customerPhone"
+        ).value =
+            profile.phone ||
+            profile.mobile;
+
+    }
+
+
+    if (
+        profile.address
+    ) {
+
+        document.getElementById(
+            "customerAddress"
+        ).value =
+            profile.address;
+
+    }
+
+
+    if (
+        profile.city
+    ) {
+
+        document.getElementById(
+            "customerCity"
+        ).value =
+            profile.city;
+
+    }
+
+
+    if (
+        profile.pincode ||
+        profile.pinCode
+    ) {
+
+        document.getElementById(
+            "customerPincode"
+        ).value =
+            profile.pincode ||
+            profile.pinCode;
+
+    }
+
+}
+
+
+/* =========================================================
+   VALIDATION
+========================================================= */
+
+function validateCheckout() {
+
+    let valid = true;
+
+
+    const name =
+        document.getElementById(
+            "customerName"
+        );
+
+
+    const phone =
+        document.getElementById(
+            "customerPhone"
+        );
+
+
+    const address =
+        document.getElementById(
+            "customerAddress"
+        );
+
+
+    const city =
+        document.getElementById(
+            "customerCity"
+        );
+
+
+    const pincode =
+        document.getElementById(
+            "customerPincode"
+        );
+
+
+    clearErrors();
+
+
+    if (
+        !name.value.trim()
+    ) {
+
+        showError(
+            "customerNameError"
+        );
+
+        valid = false;
+
+    }
+
+
+    const phoneDigits =
+        phone.value
+            .replace(
+                /\D/g,
+                ""
+            );
+
+
+    if (
+        phoneDigits.length < 10
+    ) {
+
+        showError(
+            "customerPhoneError"
+        );
+
+        valid = false;
+
+    }
+
+
+    if (
+        address.value.trim().length < 5
+    ) {
+
+        showError(
+            "customerAddressError"
+        );
+
+        valid = false;
+
+    }
+
+
+    if (
+        !city.value.trim()
+    ) {
+
+        showError(
+            "customerCityError"
+        );
+
+        valid = false;
+
+    }
+
+
+    if (
+        !/^\d{6}$/.test(
+            pincode.value.trim()
+        )
+    ) {
+
+        showError(
+            "customerPincodeError"
+        );
+
+        valid = false;
+
+    }
+
+
+    return valid;
+
+}
+
+
+/* =========================================================
+   ERRORS
+========================================================= */
+
+function showError(id) {
+
+    const element =
+        document.getElementById(id);
+
+    if (element) {
+
+        element.classList.add(
+            "show"
+        );
+
+    }
+
+}
+
+
+function clearErrors() {
+
+    document
+        .querySelectorAll(
+            ".br-checkout-error"
+        )
+        .forEach(
+            element =>
+                element.classList.remove(
+                    "show"
+                )
+        );
+
+}
+
+
+/* =========================================================
+   PLACE ORDER
+========================================================= */
+
+function placeOrder() {
+
+    const cart =
+        getCart();
+
+
+    if (!cart.length) {
+
+        showToast(
+            "Your cart is empty."
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !validateCheckout()
+    ) {
+
+        showToast(
+            "Please complete the required delivery details."
+        );
+
+        return;
+
+    }
+
+
+    const subtotal =
+        getSubtotal(cart);
+
+
+    const discount =
+        Math.min(
+            getDiscount(),
+            subtotal
+        );
+
+
+    const deliveryMethod =
+        document.querySelector(
+            'input[name="deliveryMethod"]:checked'
+        );
+
+
+    const deliveryType =
+        deliveryMethod
+            ? deliveryMethod.value
+            : "standard";
+
+
+    let deliveryFee =
+        deliveryType === "express"
+            ? 70
+            : 40;
+
+
+    if (
+        deliveryType === "standard" &&
+        subtotal > 499
+    ) {
+
+        deliveryFee = 0;
+
+    }
+
+
+    const payment =
+        document.querySelector(
+            'input[name="paymentMethod"]:checked'
+        );
+
+
+    const paymentMethod =
+        payment
+            ? payment.value
+            : "UPI";
+
+
+    const total =
+        Math.max(
+            0,
+            subtotal +
+            deliveryFee -
+            discount
+        );
+
+
+    const orderId =
+        "BR-" +
+        Date.now()
+            .toString()
+            .slice(-8);
+
+
+    const now =
+        new Date();
+
+
+    const eta =
+        deliveryType === "express"
+            ? "15–20 min"
+            : "25–35 min";
+
+
+    const order = {
+
+        orderId:
+
+            orderId,
+
+        createdAt:
+
+            now.toISOString(),
+
+        status:
+
+            "Order Confirmed",
+
+        eta:
+
+            eta,
+
+        deliveryMethod:
+
+            deliveryType,
+
+        paymentMethod:
+
+            paymentMethod,
+
+        customer:
+
+            {
+
+                name:
+                    document.getElementById(
+                        "customerName"
+                    ).value.trim(),
+
+                phone:
+                    document.getElementById(
+                        "customerPhone"
+                    ).value.trim(),
+
+                address:
+                    document.getElementById(
+                        "customerAddress"
+                    ).value.trim(),
+
+                city:
+                    document.getElementById(
+                        "customerCity"
+                    ).value.trim(),
+
+                pincode:
+                    document.getElementById(
+                        "customerPincode"
+                    ).value.trim(),
+
+                instructions:
+                    document.getElementById(
+                        "customerInstructions"
+                    ).value.trim()
+
+            },
+
+        items:
+
+            cart,
+
+        subtotal:
+
+            subtotal,
+
+        deliveryFee:
+
+            deliveryFee,
+
+        discount:
+
+            discount,
+
+        total:
+
+            total
+
+    };
+
+
+    localStorage.setItem(
+        "biteRushOrder",
+        JSON.stringify(
+            order
+        )
+    );
+
+
+    /*
+       Add to order history.
+    */
+
+    let orderHistory = [];
+
+
+    try {
+
+        orderHistory =
+            JSON.parse(
+                localStorage.getItem(
+                    "biteRushOrderHistory"
+                )
+            ) || [];
+
+    }
+
+    catch {
+
+        orderHistory = [];
+
+    }
+
+
+    orderHistory.unshift(
+        order
+    );
+
+
+    localStorage.setItem(
+        "biteRushOrderHistory",
+        JSON.stringify(
+            orderHistory
+        )
+    );
+
+
+    /*
+       Save customer details
+       back to profile.
+    */
+
+    localStorage.setItem(
+        "biteRushProfile",
+        JSON.stringify({
+
+            name:
+                order.customer.name,
+
+            phone:
+                order.customer.phone,
+
+            address:
+                order.customer.address,
+
+            city:
+                order.customer.city,
+
+            pincode:
+                order.customer.pincode
+
+        })
+    );
+
+
+    /*
+       Clear cart.
+    */
+
+    localStorage.removeItem(
+        "biteRushCart"
+    );
+
+
+    localStorage.removeItem(
+        "biteRushDiscount"
+    );
+
+
+    document.getElementById(
+        "successOrderId"
+    ).textContent =
+        orderId;
+
+
+    document.getElementById(
+        "orderSuccess"
+    ).classList.add(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   BACK TO CART
+========================================================= */
+
+function goBackToCart() {
+
+    window.location.href =
+        "cart.html";
+
+}
+
+
+/* =========================================================
+   ORDER TRACKING
+========================================================= */
+
+function goToOrderTracking() {
+
+    window.location.href =
+        "order-tracking.html";
+
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function goToHome() {
+
+    window.location.href =
+        "home.html";
+
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
+
+let toastTimer;
+
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById(
+            "checkoutToast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            () => {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2800
+        );
+
+}
+
+
+/* =========================================================
+   DELIVERY CHANGE
+========================================================= */
+
+document
+    .querySelectorAll(
+        'input[name="deliveryMethod"]'
+    )
+    .forEach(
+        input => {
+
+            input.addEventListener(
+                "change",
+                updateCheckoutTotals
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        loadSavedProfile();
+
+        renderSummary();
+
+        updateCheckoutTotals();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

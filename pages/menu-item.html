@@ -1,0 +1,1834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BiteRush — Menu Item</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+        /* =========================================================
+           BITERUSH MENU ITEM PAGE
+           All styles are scoped with br-menu-item-
+        ========================================================= */
+
+        .br-menu-item-page {
+            min-height: 100vh;
+            width: 100%;
+
+            background:
+                radial-gradient(
+                    circle at 82% 8%,
+                    rgba(124, 58, 237, 0.18),
+                    transparent 27%
+                ),
+                radial-gradient(
+                    circle at 8% 40%,
+                    rgba(37, 99, 235, 0.08),
+                    transparent 25%
+                ),
+                #050508;
+
+            color: #ffffff;
+            font-family: "Inter", sans-serif;
+
+            overflow-x: hidden;
+        }
+
+        .br-menu-item-page *,
+        .br-menu-item-page *::before,
+        .br-menu-item-page *::after {
+            box-sizing: border-box;
+        }
+
+        /* ================= HEADER ================= */
+
+        .br-menu-item-header {
+            width: 100%;
+            min-height: 78px;
+
+            padding: 0 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            background: rgba(5, 5, 8, 0.88);
+
+            border-bottom:
+                1px solid rgba(255, 255, 255, 0.07);
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .br-menu-item-header-left,
+        .br-menu-item-header-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .br-menu-item-back {
+            width: 44px;
+            height: 44px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: #101017;
+            border:
+                1px solid rgba(255, 255, 255, 0.08);
+
+            color: #ffffff;
+
+            font-size: 20px;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .br-menu-item-back:hover {
+            transform: translateX(-3px);
+
+            border-color:
+                rgba(139, 92, 246, 0.55);
+
+            background: #171322;
+        }
+
+        .br-menu-item-brand {
+            font-family: "Poppins", sans-serif;
+
+            font-size: 21px;
+            font-weight: 800;
+
+            letter-spacing: -0.5px;
+        }
+
+        .br-menu-item-brand span {
+            color: #a78bfa;
+        }
+
+        .br-menu-item-cart {
+            min-width: 48px;
+            height: 44px;
+
+            padding: 0 13px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+
+            border-radius: 13px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124, 58, 237, 0.25),
+                    rgba(79, 70, 229, 0.18)
+                );
+
+            border:
+                1px solid rgba(167, 139, 250, 0.25);
+
+            color: #ffffff;
+
+            font-size: 18px;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .br-menu-item-cart:hover {
+            transform: translateY(-2px);
+
+            border-color: #a78bfa;
+
+            box-shadow:
+                0 10px 25px
+                rgba(124, 58, 237, 0.18);
+        }
+
+        .br-menu-item-cart-count {
+            min-width: 21px;
+            height: 21px;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0 5px;
+
+            border-radius: 50%;
+
+            background: #a78bfa;
+            color: #08080c;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .br-menu-item-cart-count.show {
+            display: flex;
+        }
+
+        /* ================= MAIN ================= */
+
+        .br-menu-item-main {
+            width: 100%;
+
+            padding:
+                40px 42px 100px;
+        }
+
+        /* ================= PRODUCT LAYOUT ================= */
+
+        .br-menu-item-layout {
+            width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(420px, 0.9fr)
+                minmax(0, 1.1fr);
+
+            gap: 45px;
+
+            align-items: stretch;
+        }
+
+        /* ================= VISUAL ================= */
+
+        .br-menu-item-visual {
+            min-height: 600px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 32px;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 45%,
+                    rgba(124, 58, 237, 0.20),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    145deg,
+                    #14141f,
+                    #080a12
+                );
+
+            border:
+                1px solid rgba(255, 255, 255, 0.08);
+
+            box-shadow:
+                0 30px 80px
+                rgba(0, 0, 0, 0.40);
+        }
+
+        .br-menu-item-visual::before {
+            content: "";
+
+            position: absolute;
+
+            width: 380px;
+            height: 380px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(124, 58, 237, 0.10);
+
+            filter: blur(10px);
+        }
+
+        .br-menu-item-visual-glow {
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(79, 70, 229, 0.12);
+
+            filter: blur(35px);
+        }
+
+        .br-menu-item-food {
+            position: relative;
+
+            z-index: 3;
+
+            font-size:
+                clamp(150px, 18vw, 250px);
+
+            line-height: 1;
+
+            filter:
+                drop-shadow(
+                    0 35px 35px
+                    rgba(0, 0, 0, 0.50)
+                );
+
+            animation:
+                brMenuFoodFloat 4s ease-in-out infinite;
+        }
+
+        /* Real food image support */
+        .br-menu-item-food-image {
+            position: relative;
+            z-index: 3;
+            width: min(82%, 520px);
+            height: min(82%, 520px);
+            max-width: 520px;
+            max-height: 520px;
+            object-fit: contain;
+            object-position: center;
+            display: none;
+            border-radius: 28px;
+            filter:
+                drop-shadow(
+                    0 35px 35px
+                    rgba(0, 0, 0, 0.50)
+                );
+            animation: brMenuFoodFloat 4s ease-in-out infinite;
+        }
+
+        .br-menu-item-food-image.show {
+            display: block;
+        }
+
+        .br-menu-item-food-fallback {
+            position: relative;
+            z-index: 3;
+        }
+
+        @keyframes brMenuFoodFloat {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-13px)
+                    rotate(-2deg);
+            }
+        }
+
+        .br-menu-item-floating-tag {
+            position: absolute;
+
+            z-index: 5;
+
+            padding: 10px 14px;
+
+            border-radius: 12px;
+
+            background:
+                rgba(10, 10, 17, 0.78);
+
+            border:
+                1px solid
+                rgba(167, 139, 250, 0.22);
+
+            color: #d5cdfd;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            backdrop-filter: blur(12px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(0, 0, 0, 0.25);
+        }
+
+        .br-menu-item-tag-one {
+            top: 35px;
+            left: 35px;
+        }
+
+        .br-menu-item-tag-two {
+            right: 35px;
+            bottom: 35px;
+        }
+
+        /* ================= INFO ================= */
+
+        .br-menu-item-info {
+            min-width: 0;
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding:
+                20px 35px 20px 0;
+        }
+
+        .br-menu-item-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+
+            margin-bottom: 18px;
+        }
+
+        .br-menu-item-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+
+            padding: 8px 12px;
+
+            border-radius: 999px;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .br-menu-item-badge-popular {
+            color: #c4b5fd;
+
+            background:
+                rgba(124, 58, 237, 0.12);
+
+            border:
+                1px solid
+                rgba(167, 139, 250, 0.20);
+        }
+
+        .br-menu-item-badge-category {
+            color: #b5b5c4;
+
+            background:
+                rgba(255, 255, 255, 0.045);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.07);
+        }
+
+        .br-menu-item-title {
+            margin: 0;
+
+            font-family: "Poppins", sans-serif;
+
+            font-size:
+                clamp(38px, 4.5vw, 62px);
+
+            line-height: 1.04;
+
+            letter-spacing: -2px;
+
+            font-weight: 800;
+        }
+
+        .br-menu-item-price {
+            margin-top: 17px;
+
+            font-size: 29px;
+            font-weight: 800;
+
+            color: #ffffff;
+        }
+
+        .br-menu-item-price-symbol {
+            color: #a78bfa;
+        }
+
+        .br-menu-item-description {
+            margin: 17px 0 0;
+
+            max-width: 750px;
+
+            color: #9292a2;
+
+            font-size: 15px;
+            line-height: 1.75;
+        }
+
+        /* ================= META ================= */
+
+        .br-menu-item-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            margin-top: 25px;
+        }
+
+        .br-menu-item-meta-box {
+            min-width: 115px;
+
+            padding: 13px 14px;
+
+            border-radius: 14px;
+
+            background:
+                rgba(255, 255, 255, 0.04);
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.07);
+        }
+
+        .br-menu-item-meta-value {
+            display: block;
+
+            color: #ffffff;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .br-menu-item-meta-label {
+            display: block;
+
+            margin-top: 4px;
+
+            color: #6f6f7d;
+
+            font-size: 11px;
+        }
+
+        /* ================= DIVIDER ================= */
+
+        .br-menu-item-divider {
+            width: 100%;
+            height: 1px;
+
+            margin: 28px 0;
+
+            background:
+                rgba(255, 255, 255, 0.07);
+        }
+
+        /* ================= QUANTITY ================= */
+
+        .br-menu-item-quantity-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .br-menu-item-quantity-label {
+            color: #ffffff;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .br-menu-item-quantity {
+            display: flex;
+            align-items: center;
+
+            background: #0d0d14;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.09);
+
+            border-radius: 14px;
+
+            overflow: hidden;
+        }
+
+        .br-menu-item-quantity button {
+            width: 45px;
+            height: 45px;
+
+            border: none;
+
+            background: transparent;
+
+            color: #ffffff;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .br-menu-item-quantity button:hover {
+            background:
+                rgba(124, 58, 237, 0.18);
+
+            color: #c4b5fd;
+        }
+
+        .br-menu-item-quantity-value {
+            min-width: 43px;
+
+            text-align: center;
+
+            color: #ffffff;
+
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        /* ================= INSTRUCTIONS ================= */
+
+        .br-menu-item-instructions-label {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: #ffffff;
+
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .br-menu-item-instructions {
+            width: 100%;
+
+            min-height: 100px;
+
+            resize: vertical;
+
+            padding: 14px 16px;
+
+            border-radius: 14px;
+
+            outline: none;
+
+            background: #0d0d14;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.08);
+
+            color: #ffffff;
+
+            font-family: inherit;
+
+            font-size: 13px;
+            line-height: 1.6;
+
+            transition: 0.25s ease;
+        }
+
+        .br-menu-item-instructions::placeholder {
+            color: #5e5e6c;
+        }
+
+        .br-menu-item-instructions:focus {
+            border-color:
+                rgba(139, 92, 246, 0.60);
+
+            box-shadow:
+                0 0 0 4px
+                rgba(124, 58, 237, 0.07);
+        }
+
+        /* ================= BOTTOM ACTION ================= */
+
+        .br-menu-item-action-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-top: 24px;
+        }
+
+        .br-menu-item-favorite {
+            width: 52px;
+            height: 52px;
+
+            flex-shrink: 0;
+
+            border-radius: 15px;
+
+            background:
+                #15121d;
+
+            border:
+                1px solid
+                rgba(167, 139, 250, 0.20);
+
+            color: #ffffff;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            transition: 0.25s ease;
+        }
+
+        .br-menu-item-favorite:hover {
+            transform: translateY(-2px);
+
+            border-color: #a78bfa;
+
+            background:
+                rgba(124, 58, 237, 0.20);
+        }
+
+        .br-menu-item-favorite.active {
+            color: #c4b5fd;
+
+            background:
+                rgba(124, 58, 237, 0.20);
+        }
+
+        .br-menu-item-add {
+            flex: 1;
+
+            min-height: 52px;
+
+            padding: 0 22px;
+
+            border: none;
+
+            border-radius: 15px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #4f46e5
+                );
+
+            color: #ffffff;
+
+            font-family: inherit;
+
+            font-size: 14px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 12px 30px
+                rgba(124, 58, 237, 0.20);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .br-menu-item-add:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 17px 35px
+                rgba(124, 58, 237, 0.30);
+        }
+
+        .br-menu-item-add:active {
+            transform: translateY(0);
+        }
+
+        .br-menu-item-add-total {
+            margin-left: 8px;
+
+            color: #ddd6fe;
+        }
+
+        /* ================= TOAST ================= */
+
+        .br-menu-item-toast {
+            position: fixed;
+
+            left: 50%;
+            bottom: 30px;
+
+            transform:
+                translate(-50%, 20px);
+
+            padding: 13px 18px;
+
+            border-radius: 13px;
+
+            background: #171722;
+
+            border:
+                1px solid
+                rgba(167, 139, 250, 0.25);
+
+            color: #ffffff;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transition: 0.3s ease;
+
+            z-index: 300;
+
+            box-shadow:
+                0 15px 35px
+                rgba(0, 0, 0, 0.45);
+        }
+
+        .br-menu-item-toast.show {
+            opacity: 1;
+
+            transform:
+                translate(-50%, 0);
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (min-width: 1500px) {
+
+            .br-menu-item-layout {
+                grid-template-columns:
+                    minmax(520px, 0.85fr)
+                    minmax(0, 1.15fr);
+
+                gap: 65px;
+            }
+
+            .br-menu-item-visual {
+                min-height: 680px;
+            }
+
+        }
+
+        @media (max-width: 1000px) {
+
+            .br-menu-item-layout {
+                grid-template-columns: 1fr;
+
+                gap: 30px;
+            }
+
+            .br-menu-item-visual {
+                min-height: 430px;
+            }
+
+            .br-menu-item-info {
+                padding-right: 0;
+            }
+
+        }
+
+        @media (max-width: 650px) {
+
+            .br-menu-item-header {
+                min-height: 70px;
+                padding: 0 16px;
+            }
+
+            .br-menu-item-brand {
+                font-size: 19px;
+            }
+
+            .br-menu-item-main {
+                padding:
+                    20px 16px 50px;
+            }
+
+            .br-menu-item-layout {
+                gap: 22px;
+            }
+
+            .br-menu-item-visual {
+                min-height: 310px;
+
+                border-radius: 24px;
+            }
+
+            .br-menu-item-food {
+                font-size: 130px;
+            }
+
+            .br-menu-item-floating-tag {
+                padding: 8px 11px;
+                font-size: 10px;
+            }
+
+            .br-menu-item-tag-one {
+                top: 20px;
+                left: 20px;
+            }
+
+            .br-menu-item-tag-two {
+                right: 20px;
+                bottom: 20px;
+            }
+
+            .br-menu-item-title {
+                font-size: 38px;
+
+                letter-spacing: -1.3px;
+            }
+
+            .br-menu-item-price {
+                font-size: 25px;
+            }
+
+            .br-menu-item-description {
+                font-size: 13px;
+            }
+
+            .br-menu-item-meta-box {
+                flex: 1;
+                min-width: 90px;
+            }
+
+            .br-menu-item-quantity-section {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .br-menu-item-action-row {
+                position: sticky;
+                bottom: 10px;
+
+                padding: 8px;
+
+                border-radius: 18px;
+
+                background:
+                    rgba(10, 10, 16, 0.92);
+
+                border:
+                    1px solid
+                    rgba(255, 255, 255, 0.08);
+
+                backdrop-filter: blur(16px);
+
+                z-index: 50;
+            }
+
+            .br-menu-item-toast {
+                bottom: 85px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="br-menu-item-page">
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="br-menu-item-header">
+
+        <div class="br-menu-item-header-left">
+
+            <button
+                class="br-menu-item-back"
+                onclick="goBack()"
+                aria-label="Go back"
+            >
+                ←
+            </button>
+
+            <div class="br-menu-item-brand">
+                Bite<span>Rush</span>
+            </div>
+
+        </div>
+
+
+        <div class="br-menu-item-header-right">
+
+            <button
+                class="br-menu-item-cart"
+                onclick="openCart()"
+                aria-label="Open cart"
+            >
+
+                <img
+                    src="../assets/icons/cart.png"
+                    alt="Cart"
+                    style="width:24px;height:24px;object-fit:contain;"
+                >
+
+                <span
+                    class="br-menu-item-cart-count"
+                    id="brMenuItemCartCount"
+                >
+                    0
+                </span>
+
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="br-menu-item-main">
+
+        <div class="br-menu-item-layout">
+
+
+            <!-- ================= FOOD VISUAL ================= -->
+
+            <section class="br-menu-item-visual">
+
+                <div class="br-menu-item-visual-glow"></div>
+
+                <div
+                    class="br-menu-item-floating-tag br-menu-item-tag-one"
+                >
+                    🔥 Customer Favorite
+                </div>
+
+                <div
+                    class="br-menu-item-food"
+                    id="brMenuItemFood"
+                >
+                    <img
+                        id="brMenuItemFoodImage"
+                        class="br-menu-item-food-image"
+                        alt=""
+                    >
+                    <span
+                        id="brMenuItemFoodFallback"
+                        class="br-menu-item-food-fallback"
+                    >🍕</span>
+                </div>
+
+                <div
+                    class="br-menu-item-floating-tag br-menu-item-tag-two"
+                >
+                    ✨ Freshly Prepared
+                </div>
+
+            </section>
+
+
+            <!-- ================= PRODUCT INFO ================= -->
+
+            <section class="br-menu-item-info">
+
+
+                <!-- BADGES -->
+
+                <div class="br-menu-item-badges">
+
+                    <span
+                        class="br-menu-item-badge br-menu-item-badge-popular"
+                    >
+                        🔥 Popular
+                    </span>
+
+                    <span
+                        class="br-menu-item-badge br-menu-item-badge-category"
+                        id="brMenuItemCategory"
+                    >
+                        Pizza
+                    </span>
+
+                </div>
+
+
+                <!-- NAME -->
+
+                <h1
+                    class="br-menu-item-title"
+                    id="brMenuItemName"
+                >
+                    Margherita Pizza
+                </h1>
+
+
+                <!-- PRICE -->
+
+                <div
+                    class="br-menu-item-price"
+                    id="brMenuItemPrice"
+                >
+                    <span class="br-menu-item-price-symbol">₹</span>299
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <p
+                    class="br-menu-item-description"
+                    id="brMenuItemDescription"
+                >
+                    Classic tomato, mozzarella and fresh basil.
+                </p>
+
+
+                <!-- META -->
+
+                <div class="br-menu-item-meta">
+
+                    <div class="br-menu-item-meta-box">
+
+                        <span class="br-menu-item-meta-value">
+                            ⭐ 4.8
+                        </span>
+
+                        <span class="br-menu-item-meta-label">
+                            Rating
+                        </span>
+
+                    </div>
+
+
+                    <div class="br-menu-item-meta-box">
+
+                        <span class="br-menu-item-meta-value">
+                            🔥 Popular
+                        </span>
+
+                        <span class="br-menu-item-meta-label">
+                            Choice
+                        </span>
+
+                    </div>
+
+
+                    <div class="br-menu-item-meta-box">
+
+                        <span class="br-menu-item-meta-value">
+                            🕒 20 min
+                        </span>
+
+                        <span class="br-menu-item-meta-label">
+                            Preparation
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="br-menu-item-divider"></div>
+
+
+                <!-- QUANTITY -->
+
+                <div class="br-menu-item-quantity-section">
+
+                    <span class="br-menu-item-quantity-label">
+                        Quantity
+                    </span>
+
+
+                    <div class="br-menu-item-quantity">
+
+                        <button
+                            onclick="changeQuantity(-1)"
+                            aria-label="Decrease quantity"
+                        >
+                            −
+                        </button>
+
+                        <span
+                            class="br-menu-item-quantity-value"
+                            id="brMenuItemQuantity"
+                        >
+                            1
+                        </span>
+
+                        <button
+                            onclick="changeQuantity(1)"
+                            aria-label="Increase quantity"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="br-menu-item-divider"></div>
+
+
+                <!-- SPECIAL INSTRUCTIONS -->
+
+                <label
+                    class="br-menu-item-instructions-label"
+                    for="brMenuItemInstructions"
+                >
+                    Special Instructions
+                </label>
+
+                <textarea
+                    id="brMenuItemInstructions"
+                    class="br-menu-item-instructions"
+                    placeholder="Any special requests? e.g. Less spicy, extra cheese..."
+                ></textarea>
+
+
+                <!-- ACTIONS -->
+
+                <div class="br-menu-item-action-row">
+
+                    <button
+                        class="br-menu-item-favorite"
+                        id="brMenuItemFavorite"
+                        onclick="toggleFavorite()"
+                        aria-label="Favorite item"
+                    >
+                        ♡
+                    </button>
+
+
+                    <button
+                        class="br-menu-item-add"
+                        onclick="addToCart()"
+                    >
+                        Add to Cart
+
+                        <span
+                            class="br-menu-item-add-total"
+                            id="brMenuItemAddTotal"
+                        >
+                            • ₹299
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        class="br-menu-item-toast"
+        id="brMenuItemToast"
+    ></div>
+
+</div>
+
+
+<script>
+
+    /* =========================================================
+       BITERUSH MENU ITEM PAGE JAVASCRIPT
+    ========================================================= */
+
+
+    /* ================= DEFAULT ITEM ================= */
+
+    let brMenuSelectedItem = {
+
+        name:
+            "Margherita Pizza",
+
+        price:
+            299,
+
+        emoji:
+            "🍕",
+
+        description:
+            "Classic tomato, mozzarella and fresh basil.",
+
+        category:
+            "Pizza",
+
+        image:
+            "../assets/images/food/pizzas/margherita-pizza.png"
+
+    };
+
+
+    let brMenuQuantity = 1;
+
+
+    /* ================= LOAD ITEM ================= */
+
+    function loadSelectedMenuItem() {
+
+        try {
+
+            const savedItem =
+                localStorage.getItem(
+                    "selectedMenuItem"
+                );
+
+
+            if (savedItem) {
+
+                const parsed =
+                    JSON.parse(
+                        savedItem
+                    );
+
+
+                if (
+                    parsed &&
+                    typeof parsed === "object"
+                ) {
+
+                    brMenuSelectedItem =
+                        {
+                            ...brMenuSelectedItem,
+                            ...parsed
+                        };
+
+                }
+
+            }
+
+        } catch (error) {
+
+            console.log(
+                "Using default menu item."
+            );
+
+        }
+
+
+        document.getElementById(
+            "brMenuItemName"
+        ).textContent =
+            brMenuSelectedItem.name;
+
+
+        const foodImage =
+            document.getElementById(
+                "brMenuItemFoodImage"
+            );
+
+        const foodFallback =
+            document.getElementById(
+                "brMenuItemFoodFallback"
+            );
+
+        if (foodImage && brMenuSelectedItem.image) {
+            foodImage.src = brMenuSelectedItem.image;
+            foodImage.alt =
+                brMenuSelectedItem.name || "Food item";
+            foodImage.classList.add("show");
+
+            foodImage.onerror = function () {
+                foodImage.classList.remove("show");
+                foodFallback.textContent =
+                    brMenuSelectedItem.emoji || "🍽️";
+                foodFallback.style.display = "inline";
+            };
+
+            if (foodFallback) {
+                foodFallback.style.display = "none";
+            }
+        }
+        else if (foodFallback) {
+            foodFallback.textContent =
+                brMenuSelectedItem.emoji || "🍕";
+            foodFallback.style.display = "inline";
+        }
+
+
+        document.getElementById(
+            "brMenuItemPrice"
+        ).innerHTML =
+            `<span class="br-menu-item-price-symbol">₹</span>${Number(brMenuSelectedItem.price)}`;
+
+
+        document.getElementById(
+            "brMenuItemDescription"
+        ).textContent =
+            brMenuSelectedItem.description ||
+            "Deliciously prepared fresh for you.";
+
+
+        document.getElementById(
+            "brMenuItemCategory"
+        ).textContent =
+            brMenuSelectedItem.category ||
+            "Food";
+
+
+        brMenuQuantity = 1;
+
+        updateQuantityUI();
+
+        loadItemFavorite();
+
+    }
+
+
+    /* ================= QUANTITY ================= */
+
+    function changeQuantity(amount) {
+
+        brMenuQuantity += amount;
+
+
+        if (brMenuQuantity < 1) {
+            brMenuQuantity = 1;
+        }
+
+
+        if (brMenuQuantity > 20) {
+            brMenuQuantity = 20;
+        }
+
+
+        updateQuantityUI();
+
+    }
+
+
+    function updateQuantityUI() {
+
+        const quantityElement =
+            document.getElementById(
+                "brMenuItemQuantity"
+            );
+
+
+        quantityElement.textContent =
+            brMenuQuantity;
+
+
+        const total =
+            Number(brMenuSelectedItem.price) *
+            brMenuQuantity;
+
+
+        document.getElementById(
+            "brMenuItemAddTotal"
+        ).textContent =
+            `• ₹${total}`;
+
+    }
+
+
+    /* ================= CART ================= */
+
+    function getCart() {
+
+        try {
+
+            return JSON.parse(
+                localStorage.getItem(
+                    "biteRushCart"
+                )
+            ) || [];
+
+        } catch {
+
+            return [];
+
+        }
+
+    }
+
+
+    function saveCart(cart) {
+
+        localStorage.setItem(
+            "biteRushCart",
+            JSON.stringify(cart)
+        );
+
+    }
+
+
+    function updateCartCount() {
+
+        const cart =
+            getCart();
+
+
+        const count =
+            cart.reduce(
+                (total, item) =>
+                    total +
+                    Number(item.quantity || 0),
+                0
+            );
+
+
+        const countElement =
+            document.getElementById(
+                "brMenuItemCartCount"
+            );
+
+
+        if (count > 0) {
+
+            countElement.textContent =
+                count;
+
+            countElement.classList.add(
+                "show"
+            );
+
+        }
+        else {
+
+            countElement.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+
+
+    /* ================= ADD TO CART ================= */
+
+    function addToCart() {
+
+        const item =
+            brMenuSelectedItem;
+
+
+        let cart =
+            getCart();
+
+
+        const existing =
+            cart.find(
+                cartItem =>
+                    cartItem.name ===
+                    item.name
+            );
+
+
+        const instructions =
+            document
+                .getElementById(
+                    "brMenuItemInstructions"
+                )
+                .value
+                .trim();
+
+
+        if (existing) {
+
+            existing.quantity =
+                Number(existing.quantity || 0) +
+                brMenuQuantity;
+
+
+            if (instructions) {
+
+                existing.instructions =
+                    instructions;
+
+            }
+
+            if (item.image) {
+                existing.image = item.image;
+            }
+
+            if (item.category) {
+                existing.category = item.category;
+            }
+
+            if (item.description) {
+                existing.description = item.description;
+            }
+
+        }
+        else {
+
+            cart.push({
+
+                name:
+                    item.name,
+
+                price:
+                    Number(item.price),
+
+                emoji:
+                    item.emoji,
+
+                image:
+                    item.image || "",
+
+                category:
+                    item.category || "",
+
+                description:
+                    item.description,
+
+                quantity:
+                    brMenuQuantity,
+
+                instructions:
+                    instructions
+
+            });
+
+        }
+
+
+        saveCart(cart);
+
+        updateCartCount();
+
+
+        showMenuItemToast(
+            `${item.name} added to cart 🛒`
+        );
+
+    }
+
+
+    /* ================= FAVORITES ================= */
+
+    function getFavorites() {
+
+        try {
+
+            return JSON.parse(
+                localStorage.getItem(
+                    "biteRushFavorites"
+                )
+            ) || [];
+
+        } catch {
+
+            return [];
+
+        }
+
+    }
+
+
+    function toggleFavorite() {
+
+        let favorites =
+            getFavorites();
+
+
+        const itemName =
+            brMenuSelectedItem.name;
+
+
+        const existingIndex =
+            favorites.indexOf(
+                itemName
+            );
+
+
+        const button =
+            document.getElementById(
+                "brMenuItemFavorite"
+            );
+
+
+        if (
+            existingIndex === -1
+        ) {
+
+            favorites.push(
+                itemName
+            );
+
+
+            button.classList.add(
+                "active"
+            );
+
+            button.textContent =
+                "♥";
+
+
+            showMenuItemToast(
+                "Added to favorites ❤️"
+            );
+
+        }
+        else {
+
+            favorites.splice(
+                existingIndex,
+                1
+            );
+
+
+            button.classList.remove(
+                "active"
+            );
+
+            button.textContent =
+                "♡";
+
+
+            showMenuItemToast(
+                "Removed from favorites"
+            );
+
+        }
+
+
+        localStorage.setItem(
+            "biteRushFavorites",
+            JSON.stringify(
+                favorites
+            )
+        );
+
+    }
+
+
+    function loadItemFavorite() {
+
+        const favorites =
+            getFavorites();
+
+
+        const button =
+            document.getElementById(
+                "brMenuItemFavorite"
+            );
+
+
+        if (
+            favorites.includes(
+                brMenuSelectedItem.name
+            )
+        ) {
+
+            button.classList.add(
+                "active"
+            );
+
+            button.textContent =
+                "♥";
+
+        }
+
+    }
+
+
+    /* ================= NAVIGATION ================= */
+
+    function openCart() {
+
+        window.location.href =
+            "cart.html";
+
+    }
+
+
+    function goBack() {
+
+        if (
+            document.referrer &&
+            document.referrer.includes(
+                "restaurant.html"
+            )
+        ) {
+
+            window.history.back();
+
+        }
+        else {
+
+            window.location.href =
+                "restaurant.html";
+
+        }
+
+    }
+
+
+    /* ================= TOAST ================= */
+
+    let brMenuToastTimer;
+
+
+    function showMenuItemToast(message) {
+
+        const toast =
+            document.getElementById(
+                "brMenuItemToast"
+            );
+
+
+        toast.textContent =
+            message;
+
+
+        toast.classList.add(
+            "show"
+        );
+
+
+        clearTimeout(
+            brMenuToastTimer
+        );
+
+
+        brMenuToastTimer =
+            setTimeout(
+                function () {
+
+                    toast.classList.remove(
+                        "show"
+                    );
+
+                },
+                2200
+            );
+
+    }
+
+
+    /* ================= INITIALIZE ================= */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            loadSelectedMenuItem();
+
+            updateCartCount();
+
+        }
+    );
+
+</script>
+
+</body>
+</html>

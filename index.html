@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BiteRush — Food Delivered Fast</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================================
+         NAVIGATION
+    ========================================== -->
+    <header class="landing-header">
+        <div class="landing-nav">
+
+            <a href="index.html" class="brand-logo">
+                <img
+                    src="assets/logo/biterush-logo.png"
+                    alt="BiteRush"
+                    style="height:58px; width:auto; max-width:210px; object-fit:contain; display:block;"
+                >
+            </a>
+
+            <nav class="landing-menu">
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#restaurants">Restaurants</a>
+            </nav>
+
+            <div class="landing-actions">
+                <button
+                    type="button"
+                    class="nav-login-btn"
+                    onclick="goToLogin()">
+                    Log In
+                </button>
+
+                <button
+                    type="button"
+                    class="nav-order-btn"
+                    onclick="startApp()">
+                    Order Now
+                </button>
+            </div>
+
+            <button
+                type="button"
+                class="mobile-menu-btn"
+                aria-label="Open navigation"
+                onclick="toggleMobileMenu()">
+                ☰
+            </button>
+
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="mobile-navigation" id="mobileNavigation">
+            <a href="#features" onclick="closeMobileMenu()">Features</a>
+            <a href="#how-it-works" onclick="closeMobileMenu()">How It Works</a>
+            <a href="#restaurants" onclick="closeMobileMenu()">Restaurants</a>
+
+            <button type="button" onclick="goToLogin()">
+                Log In
+            </button>
+
+            <button type="button" onclick="startApp()">
+                Order Now
+            </button>
+        </div>
+    </header>
+
+
+    <!-- =========================================
+         HERO SECTION
+    ========================================== -->
+    <main>
+
+        <section class="landing-hero">
+
+            <!-- Background Glow -->
+            <div class="hero-glow hero-glow-one"></div>
+            <div class="hero-glow hero-glow-two"></div>
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Fast delivery • Fresh food • Easy ordering
+                </div>
+
+                <h1>
+                    Your cravings.
+                    <span>Delivered fast.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Discover your favorite restaurants, order delicious food,
+                    and track your delivery in real time — all from one place.
+                </p>
+
+                <div class="hero-buttons">
+
+                    <button
+                        type="button"
+                        class="primary-hero-btn"
+                        onclick="startApp()">
+                        <span>Start Ordering</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="secondary-hero-btn"
+                        onclick="scrollToSection('restaurants')">
+                        Explore Restaurants
+                    </button>
+
+                </div>
+
+                <div class="hero-trust">
+
+                    <div class="trust-item">
+                        <strong>4.8/5</strong>
+                        <span>Customer rating</span>
+                    </div>
+
+                    <div class="trust-divider"></div>
+
+                    <div class="trust-item">
+                        <strong>25–30 min</strong>
+                        <span>Average delivery</span>
+                    </div>
+
+                    <div class="trust-divider"></div>
+
+                    <div class="trust-item">
+                        <strong>100+</strong>
+                        <span>Food choices</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================
+                 HERO FOOD VISUAL
+            ====================================== -->
+            <div class="hero-visual">
+
+                <div class="hero-orbit orbit-one"></div>
+                <div class="hero-orbit orbit-two"></div>
+
+                <div class="food-glow"></div>
+
+                <div class="main-food-card">
+
+                    <div class="food-card-top">
+                        <span class="food-status">
+                            ● Popular
+                        </span>
+
+                        <button
+                            type="button"
+                            class="food-heart"
+                            aria-label="Favorite">
+                            ♡
+                        </button>
+                    </div>
+
+                    <div class="food-image-area">
+
+                        <img
+                            src="assets/images/food/pizzas/margherita-pizza.png"
+                            alt="Margherita Pizza"
+                            class="food-main-image"
+                            style="width:100%; height:100%; max-width:320px; max-height:260px; object-fit:contain; display:block; margin:auto;"
+                        >
+
+                        <div class="floating-food floating-food-one">
+                            🍅
+                        </div>
+
+                        <div class="floating-food floating-food-two">
+                            🧀
+                        </div>
+
+                        <div class="floating-food floating-food-three">
+                            🌿
+                        </div>
+
+                    </div>
+
+                    <div class="food-card-info">
+                        <div>
+                            <h3>Margherita Pizza</h3>
+                            <p>Bella Napoli Pizza</p>
+                        </div>
+
+                        <strong class="food-price">₹299</strong>
+                    </div>
+
+                    <div class="food-card-meta">
+                        <span>⭐ 4.8</span>
+                        <span>•</span>
+                        <span>🕒 25 min</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Delivery Notification -->
+                <div class="floating-notification notification-one">
+                    <div class="notification-icon">🛵</div>
+
+                    <div>
+                        <strong>On the way!</strong>
+                        <span>Your order is arriving soon</span>
+                    </div>
+                </div>
+
+
+                <!-- Discount Notification -->
+                <div class="floating-notification notification-two">
+                    <div class="notification-icon purple-icon">%</div>
+
+                    <div>
+                        <strong>50% OFF</strong>
+                        <span>Use BITERUSH50</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             FEATURES
+        ========================================== -->
+        <section class="landing-section features-section" id="features">
+
+            <div class="section-heading">
+
+                <span class="section-label">WHY BITERUSH</span>
+
+                <h2>
+                    Everything you need to
+                    <span>order better.</span>
+                </h2>
+
+                <p>
+                    A simple and modern food ordering experience designed
+                    around speed, convenience, and great food.
+                </p>
+
+            </div>
+
+
+            <div class="feature-grid">
+
+                <article class="feature-card">
+
+                    <div class="feature-icon purple-feature">
+                        🔎
+                    </div>
+
+                    <div>
+                        <h3>Find Food Fast</h3>
+
+                        <p>
+                            Search restaurants, explore cuisines,
+                            and discover something delicious in seconds.
+                        </p>
+                    </div>
+
+                    <span class="feature-number">01</span>
+
+                </article>
+
+
+                <article class="feature-card">
+
+                    <div class="feature-icon blue-feature">
+                        🛒
+                    </div>
+
+                    <div>
+                        <h3>Easy Ordering</h3>
+
+                        <p>
+                            Customize your items, manage quantities,
+                            and place your order with ease.
+                        </p>
+                    </div>
+
+                    <span class="feature-number">02</span>
+
+                </article>
+
+
+                <article class="feature-card">
+
+                    <div class="feature-icon violet-feature">
+                        📍
+                    </div>
+
+                    <div>
+                        <h3>Track Your Order</h3>
+
+                        <p>
+                            Follow your order from preparation
+                            all the way to your doorstep.
+                        </p>
+                    </div>
+
+                    <span class="feature-number">03</span>
+
+                </article>
+
+
+                <article class="feature-card">
+
+                    <div class="feature-icon navy-feature">
+                        ❤️
+                    </div>
+
+                    <div>
+                        <h3>Your Favorites</h3>
+
+                        <p>
+                            Save favorite restaurants and easily
+                            reorder the meals you love.
+                        </p>
+                    </div>
+
+                    <span class="feature-number">04</span>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             HOW IT WORKS
+        ========================================== -->
+        <section class="landing-section process-section" id="how-it-works">
+
+            <div class="section-heading">
+
+                <span class="section-label">HOW IT WORKS</span>
+
+                <h2>
+                    From craving to
+                    <span>checkout.</span>
+                </h2>
+
+                <p>
+                    Ordering your favorite meal takes only a few simple steps.
+                </p>
+
+            </div>
+
+
+            <div class="process-grid">
+
+                <article class="process-card">
+
+                    <div class="process-step">
+                        01
+                    </div>
+
+                    <div class="process-icon">
+                        📱
+                    </div>
+
+                    <h3>Choose</h3>
+
+                    <p>
+                        Browse restaurants and discover
+                        the food you're craving.
+                    </p>
+
+                </article>
+
+
+                <article class="process-card">
+
+                    <div class="process-step">
+                        02
+                    </div>
+
+                    <div class="process-icon">
+                        🛍️
+                    </div>
+
+                    <h3>Customize</h3>
+
+                    <p>
+                        Select your favorite dishes,
+                        quantities, and special instructions.
+                    </p>
+
+                </article>
+
+
+                <article class="process-card">
+
+                    <div class="process-step">
+                        03
+                    </div>
+
+                    <div class="process-icon">
+                        💳
+                    </div>
+
+                    <h3>Checkout</h3>
+
+                    <p>
+                        Enter your delivery details and
+                        select your preferred payment method.
+                    </p>
+
+                </article>
+
+
+                <article class="process-card">
+
+                    <div class="process-step">
+                        04
+                    </div>
+
+                    <div class="process-icon">
+                        🛵
+                    </div>
+
+                    <h3>Enjoy</h3>
+
+                    <p>
+                        Track your order and enjoy
+                        your meal when it arrives.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             RESTAURANT PREVIEW
+        ========================================== -->
+        <section class="landing-section restaurants-section" id="restaurants">
+
+            <div class="section-heading section-heading-row">
+
+                <div>
+                    <span class="section-label">POPULAR CHOICES</span>
+
+                    <h2>
+                        Something for
+                        <span>every craving.</span>
+                    </h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="view-all-btn"
+                    onclick="startApp()">
+                    View all restaurants →
+                </button>
+
+            </div>
+
+
+            <div class="restaurant-preview-grid">
+
+                <article class="preview-restaurant-card">
+
+                    <div class="restaurant-preview-image pizza-preview">
+                        <img
+                            src="assets/images/restaurants/bella-napoli.png"
+                            alt="Bella Napoli Pizza"
+                            style="width:100%; height:100%; object-fit:cover; display:block;"
+                        >
+                    </div>
+
+                    <div class="preview-card-content">
+
+                        <div class="preview-card-title">
+                            <div>
+                                <h3>Bella Napoli Pizza</h3>
+                                <p>Italian • Pizza</p>
+                            </div>
+
+                            <span class="rating-badge">
+                                ⭐ 4.8
+                            </span>
+                        </div>
+
+                        <div class="preview-card-bottom">
+                            <span>🕒 25–30 min</span>
+                            <span>📍 1.2 km</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="preview-restaurant-card">
+
+                    <div class="restaurant-preview-image burger-preview">
+                        <img
+                            src="assets/images/restaurants/burger-district.png"
+                            alt="Burger District"
+                            style="width:100%; height:100%; object-fit:cover; display:block;"
+                        >
+                    </div>
+
+                    <div class="preview-card-content">
+
+                        <div class="preview-card-title">
+                            <div>
+                                <h3>Burger District</h3>
+                                <p>American • Burgers</p>
+                            </div>
+
+                            <span class="rating-badge">
+                                ⭐ 4.7
+                            </span>
+                        </div>
+
+                        <div class="preview-card-bottom">
+                            <span>🕒 20–25 min</span>
+                            <span>📍 0.9 km</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <article class="preview-restaurant-card">
+
+                    <div class="restaurant-preview-image indian-preview">
+                        <img
+                            src="assets/images/restaurants/spice-garden.png"
+                            alt="Spice Garden"
+                            style="width:100%; height:100%; object-fit:cover; display:block;"
+                        >
+                    </div>
+
+                    <div class="preview-card-content">
+
+                        <div class="preview-card-title">
+                            <div>
+                                <h3>Spice Garden</h3>
+                                <p>Indian • Curry</p>
+                            </div>
+
+                            <span class="rating-badge">
+                                ⭐ 4.9
+                            </span>
+                        </div>
+
+                        <div class="preview-card-bottom">
+                            <span>🕒 30–35 min</span>
+                            <span>📍 1.5 km</span>
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             FINAL CTA
+        ========================================== -->
+        <section class="final-cta-section">
+
+            <div class="cta-glow"></div>
+
+            <div class="cta-content">
+
+                <span class="section-label">READY TO EAT?</span>
+
+                <h2>
+                    Your next favorite meal
+                    is <span>one click away.</span>
+                </h2>
+
+                <p>
+                    Discover delicious food and get it delivered
+                    straight to your doorstep.
+                </p>
+
+                <button
+                    type="button"
+                    class="primary-hero-btn cta-button"
+                    onclick="startApp()">
+                    Start Ordering
+                    <span class="button-arrow">→</span>
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+    <footer class="landing-footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="brand-logo">
+                    <img
+                        src="assets/logo/biterush-logo.png"
+                        alt="BiteRush"
+                        style="height:55px; width:auto; max-width:200px; object-fit:contain; display:block;"
+                    >
+                </a>
+
+                <p>
+                    Delicious food. Fast delivery.
+                    A better way to satisfy your cravings.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>Explore</h4>
+
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#restaurants">Restaurants</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>Account</h4>
+
+                <a href="pages/login.html">Log In</a>
+                <a href="pages/signup.html">Create Account</a>
+                <a href="pages/profile.html">Profile</a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>BiteRush</h4>
+
+                <a href="pages/home.html">Order Food</a>
+                <a href="pages/cart.html">Shopping Cart</a>
+                <a href="pages/order-tracking.html">Track Order</a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <span>
+                © 2026 BiteRush. All rights reserved.
+            </span>
+
+            <span>
+                Designed for a fast, simple food ordering experience.
+            </span>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+    <script src="js/app.js"></script>
+
+    <script>
+        function startApp() {
+            window.location.href = "pages/onboarding.html";
+        }
+
+        function goToLogin() {
+            window.location.href = "pages/login.html";
+        }
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+
+            if (section) {
+                section.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById("mobileNavigation");
+
+            if (!menu) return;
+
+            menu.classList.toggle("active");
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById("mobileNavigation");
+
+            if (!menu) return;
+
+            menu.classList.remove("active");
+        }
+    </script>
+
+</body>
+</html>

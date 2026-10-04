@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>BiteRush — Restaurant</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================================
+           BITERUSH RESTAURANT PAGE
+           All styles are scoped with br-restaurant-
+        ========================================================= */
+
+        .br-restaurant-page {
+            min-height: 100vh;
+            width: 100%;
+            background:
+                radial-gradient(circle at 85% 5%, rgba(124, 58, 237, 0.16), transparent 26%),
+                radial-gradient(circle at 10% 35%, rgba(37, 99, 235, 0.08), transparent 25%),
+                #050508;
+            color: #fff;
+            font-family: "Inter", sans-serif;
+            overflow-x: hidden;
+        }
+
+        .br-restaurant-page *,
+        .br-restaurant-page *::before,
+        .br-restaurant-page *::after {
+            box-sizing: border-box;
+        }
+
+        /* ================= HEADER ================= */
+
+        .br-restaurant-header {
+            width: 100%;
+            min-height: 78px;
+            padding: 0 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            background: rgba(5, 5, 8, 0.88);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+        }
+
+        .br-restaurant-header-left,
+        .br-restaurant-header-right {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .br-restaurant-back {
+            width: 44px;
+            height: 44px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 14px;
+
+            background: #101017;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            color: #fff;
+            font-size: 20px;
+
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .br-restaurant-back:hover {
+            transform: translateX(-3px);
+            border-color: rgba(139, 92, 246, 0.5);
+            background: #171322;
+        }
+
+        .br-restaurant-brand {
+            font-family: "Poppins", sans-serif;
+            font-size: 21px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .br-restaurant-brand span {
+            color: #a78bfa;
+        }
+
+        .br-restaurant-cart-btn {
+            min-width: 48px;
+            height: 44px;
+
+            padding: 0 13px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+
+            border-radius: 13px;
+
+            background: linear-gradient(
+                135deg,
+                rgba(124, 58, 237, 0.25),
+                rgba(79, 70, 229, 0.18)
+            );
+
+            border: 1px solid rgba(167, 139, 250, 0.25);
+
+            color: #fff;
+            font-size: 18px;
+
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .br-restaurant-cart-btn:hover {
+            transform: translateY(-2px);
+            border-color: #a78bfa;
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.18);
+        }
+
+        .br-restaurant-cart-count {
+            min-width: 21px;
+            height: 21px;
+            padding: 0 5px;
+
+            display: none;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #a78bfa;
+            color: #08080c;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .br-restaurant-cart-count.show {
+            display: flex;
+        }
+
+        /* ================= MAIN ================= */
+
+        .br-restaurant-main {
+            width: 100%;
+            padding: 35px 42px 125px;
+        }
+
+        /* ================= HERO ================= */
+
+        .br-restaurant-hero {
+            width: 100%;
+            min-height: 310px;
+
+            display: grid;
+            grid-template-columns: minmax(350px, 0.8fr) minmax(0, 1.35fr);
+            gap: 40px;
+
+            padding: 25px;
+
+            border-radius: 30px;
+
+            background:
+                radial-gradient(
+                    circle at 80% 20%,
+                    rgba(124, 58, 237, 0.22),
+                    transparent 36%
+                ),
+                linear-gradient(
+                    135deg,
+                    #11111a,
+                    #0b0e19
+                );
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.32),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03);
+
+            overflow: hidden;
+        }
+
+        /* ================= HERO VISUAL ================= */
+
+        /*
+           The restaurant photo is intentionally STATIC.
+           No floating/rotation animation is applied to the image.
+           The image fills the entire hero box.
+        */
+
+        .br-restaurant-hero-visual {
+            position: relative;
+            width: 100%;
+            height: 360px;
+            min-height: 360px;
+
+            overflow: hidden;
+            border-radius: 23px;
+
+            background: #0b0b12;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .br-restaurant-hero-glow {
+            display: none;
+        }
+
+        .br-restaurant-hero-food {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+
+            width: 100%;
+            height: 100%;
+
+            display: block;
+            overflow: hidden;
+
+            border-radius: inherit;
+            border: 0;
+            background: #0b0b12;
+            box-shadow: none;
+
+            animation: none !important;
+            transform: none !important;
+        }
+
+        .br-restaurant-hero-image {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+            object-position: center center;
+
+            border-radius: inherit;
+
+            animation: none !important;
+            transform: none !important;
+        }
+
+        /* Keep decorative food emojis behind the photo.
+           They are hidden so the restaurant photograph remains
+           clean, straight, and fully visible. */
+
+        .br-restaurant-mini-food {
+            display: none;
+        }
+
+        /* ================= HERO INFO ================= */
+
+
+        .br-restaurant-hero-info {
+            min-width: 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            padding: 10px 20px 10px 0;
+        }
+
+        .br-restaurant-badge {
+            width: fit-content;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 8px 12px;
+
+            border-radius: 999px;
+
+            color: #c4b5fd;
+
+            background: rgba(124, 58, 237, 0.11);
+            border: 1px solid rgba(167, 139, 250, 0.18);
+
+            font-size: 12px;
+            font-weight: 700;
+
+            margin-bottom: 14px;
+        }
+
+        .br-restaurant-name {
+            margin: 0;
+
+            font-family: "Poppins", sans-serif;
+            font-size: clamp(34px, 4vw, 54px);
+            line-height: 1.05;
+
+            letter-spacing: -1.8px;
+            font-weight: 800;
+        }
+
+        .br-restaurant-description {
+            margin: 15px 0 0;
+
+            color: #9797a7;
+
+            font-size: 15px;
+            line-height: 1.7;
+
+            max-width: 750px;
+        }
+
+        .br-restaurant-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+
+            margin-top: 23px;
+        }
+
+        .br-restaurant-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            padding: 10px 13px;
+
+            border-radius: 12px;
+
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+
+            color: #bcbcc8;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .br-restaurant-meta-rating {
+            color: #fcd34d;
+        }
+
+        .br-restaurant-actions {
+            display: flex;
+            gap: 10px;
+
+            margin-top: 23px;
+        }
+
+        .br-restaurant-favorite {
+            min-width: 46px;
+            height: 46px;
+
+            border-radius: 14px;
+
+            background: #17131f;
+            border: 1px solid rgba(167, 139, 250, 0.20);
+
+            color: white;
+            font-size: 20px;
+
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .br-restaurant-favorite:hover {
+            transform: translateY(-2px);
+            border-color: #a78bfa;
+        }
+
+        .br-restaurant-favorite.active {
+            color: #c4b5fd;
+            background: rgba(124, 58, 237, 0.22);
+        }
+
+        /* ================= MENU ================= */
+
+        .br-restaurant-menu-section {
+            width: 100%;
+            margin-top: 42px;
+        }
+
+        .br-restaurant-menu-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 25px;
+
+            margin-bottom: 19px;
+        }
+
+        .br-restaurant-menu-title {
+            margin: 0;
+
+            font-family: "Poppins", sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.8px;
+        }
+
+        .br-restaurant-menu-subtitle {
+            margin: 6px 0 0;
+
+            color: #777786;
+            font-size: 13px;
+        }
+
+        /* ================= MENU CATEGORIES ================= */
+
+        .br-restaurant-categories {
+            width: 100%;
+
+            display: flex;
+            gap: 10px;
+
+            overflow-x: auto;
+            padding-bottom: 7px;
+            margin-bottom: 28px;
+
+            scrollbar-width: none;
+        }
+
+        .br-restaurant-categories::-webkit-scrollbar {
+            display: none;
+        }
+
+        .br-restaurant-category {
+            flex: 0 0 auto;
+
+            padding: 11px 18px;
+
+            border-radius: 999px;
+
+            background: #0d0d14;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            color: #9999a7;
+
+            font-size: 13px;
+            font-weight: 700;
+
+            cursor: pointer;
+            transition: 0.25s ease;
+        }
+
+        .br-restaurant-category:hover {
+            color: white;
+            border-color: rgba(139, 92, 246, 0.45);
+        }
+
+        .br-restaurant-category.active {
+            color: #fff;
+
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #4f46e5
+            );
+
+            border-color: transparent;
+
+            box-shadow:
+                0 10px 25px rgba(124, 58, 237, 0.20);
+        }
+
+        /* ================= MENU GRID ================= */
+
+        .br-restaurant-menu-grid {
+            width: 100%;
+
+            display: grid;
+            grid-template-columns:
+                repeat(3, minmax(0, 1fr));
+
+            gap: 20px;
+        }
+
+        /* ================= MENU CARD ================= */
+
+        .br-restaurant-menu-card {
+            min-width: 0;
+
+            display: grid;
+            grid-template-columns: 115px minmax(0, 1fr);
+
+            gap: 17px;
+
+            padding: 15px;
+
+            border-radius: 21px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #14141d,
+                    #0c0c12
+                );
+
+            border: 1px solid rgba(255, 255, 255, 0.07);
+
+            cursor: pointer;
+
+            transition:
+                transform 0.25s ease,
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .br-restaurant-menu-card:hover {
+            transform: translateY(-5px);
+
+            border-color: rgba(139, 92, 246, 0.38);
+
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.32),
+                0 0 30px rgba(124, 58, 237, 0.07);
+        }
+
+        .br-restaurant-menu-image {
+            min-height: 115px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 16px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(124, 58, 237, 0.12),
+                    transparent 65%
+                ),
+                #0b0b11;
+
+            border: 1px solid rgba(255, 255, 255, 0.05);
+
+            font-size: 60px;
+
+            overflow: hidden;
+        }
+
+        .br-restaurant-menu-info {
+            min-width: 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .br-restaurant-menu-name {
+            margin: 0;
+
+            font-family: "Poppins", sans-serif;
+            font-size: 16px;
+            line-height: 1.3;
+            font-weight: 700;
+
+            color: #fff;
+        }
+
+        .br-restaurant-menu-description {
+            margin: 6px 0 0;
+
+            color: #777786;
+
+            font-size: 12px;
+            line-height: 1.5;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+
+            overflow: hidden;
+        }
+
+        .br-restaurant-menu-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+
+            margin-top: 13px;
+        }
+
+        .br-restaurant-menu-price {
+            color: #ffffff;
+
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .br-restaurant-add {
+            width: 35px;
+            height: 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: none;
+            border-radius: 11px;
+
+            background: linear-gradient(
+                135deg,
+                #7c3aed,
+                #4f46e5
+            );
+
+            color: white;
+
+            font-size: 21px;
+            line-height: 1;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 18px rgba(124, 58, 237, 0.18);
+
+            transition: 0.2s ease;
+        }
+
+        .br-restaurant-add:hover {
+            transform: scale(1.08);
+            box-shadow:
+                0 10px 24px rgba(124, 58, 237, 0.28);
+        }
+
+        .br-restaurant-menu-display-note {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            margin: 0 0 18px;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 14px;
+            background: rgba(12, 12, 22, 0.72);
+        }
+
+        .br-restaurant-menu-display-note span {
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .br-restaurant-menu-display-note small {
+            color: #9d9db0;
+            font-size: 12px;
+        }
+
+        @media (max-width: 700px) {
+            .br-restaurant-menu-display-note {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 4px;
+            }
+        }
+
+        /* ================= FLOATING CART ================= */
+
+        .br-restaurant-floating-cart {
+            position: fixed;
+
+            right: 30px;
+            bottom: 28px;
+
+            min-width: 300px;
+
+            display: none;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+
+            padding: 14px 15px 14px 19px;
+
+            border-radius: 18px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(35, 22, 59, 0.97),
+                    rgba(13, 15, 30, 0.97)
+                );
+
+            border: 1px solid rgba(167, 139, 250, 0.25);
+
+            box-shadow:
+                0 25px 55px rgba(0, 0, 0, 0.55),
+                0 0 30px rgba(124, 58, 237, 0.10);
+
+            backdrop-filter: blur(18px);
+
+            z-index: 150;
+
+            animation: brRestaurantCartIn 0.3s ease;
+        }
+
+        .br-restaurant-floating-cart.show {
+            display: flex;
+        }
+
+        @keyframes brRestaurantCartIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .br-restaurant-floating-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .br-restaurant-floating-icon {
+            width: 43px;
+            height: 43px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 13px;
+
+            background: rgba(124, 58, 237, 0.22);
+
+            font-size: 20px;
+        }
+
+        .br-restaurant-floating-count {
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .br-restaurant-floating-total {
+            margin-top: 3px;
+            color: #aaaabc;
+            font-size: 12px;
+        }
+
+        .br-restaurant-view-cart {
+            padding: 11px 15px;
+
+            border: none;
+            border-radius: 12px;
+
+            background: #fff;
+            color: #09090d;
+
+            font-family: inherit;
+            font-size: 12px;
+            font-weight: 800;
+
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .br-restaurant-view-cart:hover {
+            transform: translateY(-2px);
+            background: #f1ecff;
+        }
+
+        /* ================= TOAST ================= */
+
+        .br-restaurant-toast {
+            position: fixed;
+
+            left: 50%;
+            bottom: 35px;
+
+            transform:
+                translate(-50%, 20px);
+
+            padding: 13px 18px;
+
+            border-radius: 13px;
+
+            background: #171722;
+            border: 1px solid rgba(167, 139, 250, 0.25);
+
+            color: white;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            opacity: 0;
+            pointer-events: none;
+
+            transition: 0.3s ease;
+
+            z-index: 300;
+
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.45);
+        }
+
+        .br-restaurant-toast.show {
+            opacity: 1;
+            transform:
+                translate(-50%, 0);
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (min-width: 1500px) {
+
+            .br-restaurant-menu-grid {
+                grid-template-columns:
+                    repeat(4, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 1250px) {
+
+            .br-restaurant-menu-grid {
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+        @media (max-width: 950px) {
+
+            .br-restaurant-header {
+                padding: 0 24px;
+            }
+
+            .br-restaurant-main {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            .br-restaurant-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .br-restaurant-hero-info {
+                padding: 0 10px 15px;
+            }
+
+        }
+
+        @media (max-width: 680px) {
+
+            .br-restaurant-header {
+                min-height: 70px;
+                padding: 0 16px;
+            }
+
+            .br-restaurant-brand {
+                font-size: 19px;
+            }
+
+            .br-restaurant-main {
+                padding:
+                    20px
+                    16px
+                    120px;
+            }
+
+            .br-restaurant-hero {
+                padding: 13px;
+                border-radius: 23px;
+                gap: 18px;
+            }
+
+            .br-restaurant-hero-visual {
+                min-height: 210px;
+            }
+
+            .br-restaurant-hero-food {
+                width: min(100%, 360px);
+                height: 195px;
+            }
+
+            .br-restaurant-hero-real-image {
+                width: 88%;
+                height: 88%;
+                border-radius: 20px;
+            }
+
+            .br-restaurant-mini-food {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
+
+            .br-restaurant-mini-one {
+                top: 20px;
+                left: 20px;
+            }
+
+            .br-restaurant-mini-two {
+                right: 20px;
+                bottom: 20px;
+            }
+
+            .br-restaurant-name {
+                font-size: 35px;
+            }
+
+            .br-restaurant-description {
+                font-size: 13px;
+            }
+
+            .br-restaurant-menu-title {
+                font-size: 23px;
+            }
+
+            .br-restaurant-menu-grid {
+                grid-template-columns: 1fr;
+                gap: 14px;
+            }
+
+            .br-restaurant-menu-card {
+                grid-template-columns: 100px minmax(0, 1fr);
+            }
+
+            .br-restaurant-menu-image {
+                min-height: 100px;
+            }
+
+            .br-restaurant-floating-cart {
+                left: 11px;
+                right: 11px;
+                bottom: 12px;
+                min-width: 0;
+            }
+
+            .br-restaurant-toast {
+                bottom: 90px;
+            }
+
+        }
+
+        /* ================= REAL BITERUSH ASSETS ================= */
+
+        .br-restaurant-logo-wrap {
+            width: 68px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .br-restaurant-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .br-restaurant-icon-img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .br-restaurant-cart-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .br-restaurant-hero-real-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            border-radius: inherit;
+            display: block;
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            filter: none;
+            animation: none !important;
+            transform: none !important;
+        }
+
+        .br-restaurant-mini-real-image {
+            width: 42px;
+            height: 42px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .br-restaurant-favorite-icon {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .br-restaurant-menu-real-image {
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            min-height: 0;
+            object-fit: cover;
+            border-radius: 15px;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .br-restaurant-menu-card:hover .br-restaurant-menu-real-image {
+            transform: scale(1.045);
+        }
+
+        .br-restaurant-menu-image {
+            min-height: 135px;
+            height: 135px;
+        }
+
+        .br-restaurant-floating-cart-icon {
+            width: 25px;
+            height: 25px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .br-restaurant-menu-empty {
+            grid-column: 1 / -1;
+            padding: 65px 20px;
+            text-align: center;
+            border: 1px dashed rgba(255,255,255,0.10);
+            border-radius: 22px;
+            background: rgba(255,255,255,0.02);
+        }
+
+        .br-restaurant-menu-empty h3 {
+            margin: 0 0 8px;
+            font-family: "Poppins", sans-serif;
+            font-size: 20px;
+        }
+
+        .br-restaurant-menu-empty p {
+            margin: 0;
+            color: #777786;
+            font-size: 14px;
+        }
+
+        @media (max-width: 680px) {
+            .br-restaurant-logo-wrap {
+                width: 58px;
+                height: 40px;
+            }
+
+            .br-restaurant-menu-image {
+                min-height: 110px;
+                height: 110px;
+            }
+
+            .br-restaurant-menu-card {
+                grid-template-columns: 110px minmax(0, 1fr);
+            }
+        }
+
+    
+        .br-restaurant-category {
+            white-space: nowrap;
+        }
+
+        .br-restaurant-menu-empty {
+            grid-column: 1 / -1;
+            min-height: 180px;
+            display: grid;
+            place-items: center;
+            align-content: center;
+            gap: 8px;
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 22px;
+            background: rgba(255,255,255,0.025);
+            text-align: center;
+        }
+
+        .br-restaurant-menu-empty h3 {
+            margin: 0;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .br-restaurant-menu-empty p {
+            margin: 0;
+            color: #aaa5ae;
+        }
+
+
+        .br-restaurant-header-icon,
+        .br-restaurant-favorite-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .br-restaurant-favorite-icon {
+            width: 26px;
+            height: 26px;
+        }
+
+</style>
+
+<style>
+    /* Restaurant menu image/category additions */
+    .br-restaurant-categories {
+        display:flex !important;
+        gap:10px !important;
+        flex-wrap:wrap !important;
+        max-height:none !important;
+        overflow:visible !important;
+    }
+    .br-restaurant-category {
+        white-space:nowrap !important;
+    }
+    .br-restaurant-menu-image {
+        overflow:hidden !important;
+        background:linear-gradient(145deg,#0c1730,#15102a) !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+    }
+    .br-restaurant-menu-image img {
+        width:100% !important;
+        height:100% !important;
+        object-fit:cover !important;
+        display:block !important;
+        transition:transform .35s ease !important;
+    }
+    .br-restaurant-menu-card:hover .br-restaurant-menu-image img {
+        transform:scale(1.05) !important;
+    }
+    .br-restaurant-empty {
+        grid-column:1/-1;
+        padding:45px 20px;
+        text-align:center;
+        border:1px dashed rgba(255,255,255,.12);
+        border-radius:20px;
+        background:rgba(255,255,255,.025);
+        color:#aaa5ae;
+    }
+    .br-restaurant-empty strong { display:block; color:#fff; font-size:18px; margin-bottom:8px; }
+    .br-restaurant-category-count { opacity:.65; font-size:11px; margin-left:4px; }
+</style>
+
+</head>
+
+<body>
+<div class="br-restaurant-page">
+
+<header class="br-restaurant-header">
+    <div class="br-restaurant-header-left">
+        <button class="br-restaurant-back" onclick="goBack()" aria-label="Go back">←</button>
+        <div class="br-restaurant-brand">Bite<span>Rush</span></div>
+    </div>
+    <div class="br-restaurant-header-right">
+        <button class="br-restaurant-cart-btn" onclick="openCart()" aria-label="Open cart">
+            <img src="../assets/icons/cart.png" alt="" aria-hidden="true" style="width:24px;height:24px;object-fit:contain;">
+            <span class="br-restaurant-cart-count" id="brRestaurantHeaderCartCount">0</span>
+        </button>
+    </div>
+</header>
+
+<main class="br-restaurant-main">
+<section class="br-restaurant-hero">
+    <div class="br-restaurant-hero-visual">
+        <div class="br-restaurant-hero-glow"></div>
+        <div class="br-restaurant-mini-food br-restaurant-mini-one">🍟</div>
+        <div class="br-restaurant-hero-food" id="brRestaurantHeroFood">
+            <img
+                class="br-restaurant-hero-image"
+                id="brRestaurantHeroImage"
+                src="../assets/images/restaurants/bella-napoli.png"
+                alt="Bella Napoli Pizza restaurant"
+            >
+        </div>
+        <div class="br-restaurant-mini-food br-restaurant-mini-two">🥤</div>
+    </div>
+    <div class="br-restaurant-hero-info">
+        <div class="br-restaurant-badge">✨ Popular Restaurant</div>
+        <h1 class="br-restaurant-name" id="brRestaurantName">Bella Napoli Pizza</h1>
+        <p class="br-restaurant-description" id="brRestaurantDescription">Authentic Italian pizzas made with fresh ingredients and a crispy golden crust.</p>
+        <div class="br-restaurant-meta">
+            <span class="br-restaurant-meta-item br-restaurant-meta-rating">⭐ <span id="brRestaurantRating">4.8</span></span>
+            <span class="br-restaurant-meta-item">🕒 <span id="brRestaurantTime">25–30 min</span></span>
+            <span class="br-restaurant-meta-item">💰 ₹₹</span>
+            <span class="br-restaurant-meta-item"><img src="../assets/icons/location.png" alt="" style="width:18px;height:18px;object-fit:contain;vertical-align:middle;"> <span id="brRestaurantDistance">1.2 km away</span></span>
+        </div>
+        <div class="br-restaurant-actions">
+            <button class="br-restaurant-favorite" id="brRestaurantFavorite" onclick="toggleRestaurantFavorite()" aria-label="Favorite restaurant">
+                <img src="../assets/icons/favorite.png" alt="Favorite" style="width:22px;height:22px;object-fit:contain;">
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="br-restaurant-menu-section">
+    <div class="br-restaurant-menu-header">
+        <div>
+            <h2 class="br-restaurant-menu-title">Explore Menu</h2>
+            <p class="br-restaurant-menu-subtitle">Every BiteRush food item, organized category-wise.</p>
+        </div>
+    </div>
+
+    <div class="br-restaurant-categories" id="brRestaurantCategories"></div>
+    <div class="br-restaurant-menu-display-note" id="brRestaurantMenuDisplayNote">
+    <span>Showing 18 popular dishes</span>
+    <small>Select any category above to view every dish.</small>
+</div>
+<div class="br-restaurant-menu-grid" id="brRestaurantMenuGrid"></div>
+</section>
+</main>
+
+<div class="br-restaurant-floating-cart" id="brRestaurantFloatingCart">
+    <div class="br-restaurant-floating-left">
+        <div class="br-restaurant-floating-icon"><img src="../assets/icons/cart.png" alt="Cart" style="width:24px;height:24px;object-fit:contain;"></div>
+        <div>
+            <div class="br-restaurant-floating-count" id="brRestaurantFloatingCount">0 items</div>
+            <div class="br-restaurant-floating-total" id="brRestaurantFloatingTotal">₹0</div>
+        </div>
+    </div>
+    <button class="br-restaurant-view-cart" onclick="openCart()">View Cart →</button>
+</div>
+
+<div class="br-restaurant-toast" id="brRestaurantToast"></div>
+
+<script>
+/* =========================================================
+   BITERUSH RESTAURANT PAGE — COMPLETE CATEGORY MENU
+   All 15 user-defined categories are included.
+   Rejected dishes are intentionally excluded.
+========================================================= */
+
+const BR_ASSET_ROOT = "../assets/images/food/";
+
+const BR_CATEGORIES = [
+    "All",
+    "Biryani & Rice",
+    "Breads",
+    "Burgers & Sandwiches",
+    "Chicken",
+    "Curries & Rice Combos",
+    "Desserts",
+    "Drinks",
+    "Egg",
+    "Mutton",
+    "Noodles & Asian",
+    "Pizzas",
+    "Seafood",
+    "Sides & Starters",
+    "Thali",
+    "Vegetarian"
+];
+
+/*
+   Menu names and filenames below are taken only from the user's
+   BiteRush food-folder screenshots. No extra dish names are added.
+   Explicitly excluded from the website: veg-loaded-pizza,
+   crispy-chicken-burger, cheese-burger, grilled-chicken-sandwich,
+   chicken-65, chicken-manchurian, mutton-rogan-josh, peri-peri-fries.
+*/
+const BR_MENU_ITEMS = [
+    ["Biryani & Rice","Chicken Biryani","chicken-biryani.png","₹299"],
+    ["Biryani & Rice","Chicken Fry Piece Biryani","chicken-fry-piece-biryani.png","₹329"],
+    ["Biryani & Rice","Egg Biryani","egg-biryani.png","₹229"],
+    ["Biryani & Rice","Egg Fried Rice","egg-fried-rice.png","₹199"],
+    ["Biryani & Rice","Fish Biryani","fish-biryani.png","₹349"],
+    ["Biryani & Rice","Jeera Rice","jeera-rice.png","₹149"],
+    ["Biryani & Rice","Mutton Biryani","mutton-biryani.png","₹379"],
+    ["Biryani & Rice","Paneer Biryani","paneer-biryani.png","₹279"],
+    ["Biryani & Rice","Prawns Biryani","prawns-biryani.png","₹369"],
+    ["Biryani & Rice","Schezwan Fried Rice","schezwan-fried-rice.png","₹229"],
+    ["Biryani & Rice","Veg Biryani","veg-biryani.png","₹249"],
+    ["Biryani & Rice","Veg Fried Rice","veg-fried-rice.png","₹189"],
+    ["Breads","Butter Naan","butter-naan.png","₹69"],
+    ["Breads","Butter Roti","butter-roti.png","₹49"],
+    ["Breads","Cheese Naan","cheese-naan.png","₹119"],
+    ["Breads","Garlic Naan & Paneer Curry","garlic-naan-&-paneer-curry.png","₹249"],
+    ["Breads","Paratha","paratha.png","₹79"],
+    ["Breads","Plain Naan","plain-naan.png","₹59"],
+    ["Breads","Tandoori Roti","tandoori-roti.png","₹49"],
+    ["Burgers & Sandwiches","Cheese Chicken Burger","cheese-chicken-burger.png","₹249"],
+    ["Burgers & Sandwiches","Chicken Burger","chicken-burger.png","₹219"],
+    ["Burgers & Sandwiches","Chicken Sandwich","chicken-sandwich.png","₹199"],
+    ["Burgers & Sandwiches","Paneer Burger","paneer-burger.png","₹189"],
+    ["Burgers & Sandwiches","Veg Burger","veg-burger.png","₹179"],
+    ["Chicken","Butter Chicken","butter-chicken.png","₹289"],
+    ["Chicken","Chicken Biryani","chicken-biryani.png","₹299"],
+    ["Chicken","Chicken Burger","chicken-burger.png","₹219"],
+    ["Chicken","Chicken Curry & Rice","chicken-curry-&-rice.png","₹279"],
+    ["Chicken","Chicken Curry","chicken-curry.png","₹249"],
+    ["Chicken","Chicken Fried Rice","chicken-fried-rice.png","₹229"],
+    ["Chicken","Chicken Fry Piece Biryani","chicken-fry-piece-biryani.png","₹329"],
+    ["Chicken","Chicken Fry","chicken-fry.png","₹239"],
+    ["Chicken","Chicken Kebab","chicken-kebab.png","₹269"],
+    ["Chicken","Chicken Noodles","chicken-noodles.png","₹219"],
+    ["Chicken","Chicken Nuggets","chicken-nuggets.png","₹169"],
+    ["Chicken","Chicken Samosa","chicken-samosa.png","₹129"],
+    ["Chicken","Chicken Sandwich","chicken-sandwich.png","₹199"],
+    ["Chicken","Chicken Thali","chicken-thali.png","₹329"],
+    ["Chicken","Chicken Tikka","chicken-tikka.png","₹259"],
+    ["Chicken","Chicken Wings","chicken-wings.png","₹229"],
+    ["Chicken","Chilli Chicken","chilli-chicken.png","₹249"],
+    ["Chicken","Tandoori Chicken","tandoori-chicken.png","₹299"],
+    ["Curries & Rice Combos","Chicken Curry & Rice","chicken-curry-&-rice.png","₹279"],
+    ["Curries & Rice Combos","Chole Masala","chole-masala.png","₹179"],
+    ["Curries & Rice Combos","Dal Makhani","dal-makhani.png","₹189"],
+    ["Curries & Rice Combos","Dal Tadka","dal-tadka.png","₹169"],
+    ["Curries & Rice Combos","Fish Curry & Rice","fish-curry-&-rice.png","₹299"],
+    ["Curries & Rice Combos","Fish Curry","fish-curry.png","₹249"],
+    ["Curries & Rice Combos","Kheema Curry & Rice","kheema-curry-&-rice.png","₹289"],
+    ["Curries & Rice Combos","Mutton Curry & Rice","mutton-curry-&-rice.png","₹329"],
+    ["Curries & Rice Combos","Mutton Curry","mutton-curry.png","₹299"],
+    ["Curries & Rice Combos","Paneer Butter Masala","paneer-butter-masala.png","₹229"],
+    ["Curries & Rice Combos","Paneer Tikka Masala","paneer-tikka-masala.png","₹239"],
+    ["Curries & Rice Combos","Prawns Curry & Rice","prawns-curry-&-rice.png","₹329"],
+    ["Curries & Rice Combos","Prawns Curry","prawns-curry.png","₹289"],
+    ["Curries & Rice Combos","Veg Korma","veg-korma.png","₹219"],
+    ["Desserts","Brownie","brownie.png","₹129"],
+    ["Desserts","Carrot Halwa","carrot-halwa.png","₹119"],
+    ["Desserts","Chocolate Brownie","chocolate-brownie.png","₹139"],
+    ["Desserts","Chocolate Cake","chocolate-cake.png","₹159"],
+    ["Desserts","Chocolate Pudding","chocolate-pudding.png","₹129"],
+    ["Desserts","Double Ka Meetha","double-ka-meetha.png","₹139"],
+    ["Desserts","Falooda","falooda.png","₹169"],
+    ["Desserts","Gulab Jamun","gulab-jamun.png","₹99"],
+    ["Desserts","Ice Cream","ice-cream.png","₹99"],
+    ["Desserts","Jalebi","jalebi.png","₹99"],
+    ["Desserts","Kaju Katli","kaju-katli.png","₹149"],
+    ["Desserts","Kulfi","kulfi.png","₹119"],
+    ["Desserts","Motichoor Laddu","motichoor-laddu.png","₹109"],
+    ["Desserts","Rasgulla","rasgulla.png","₹99"],
+    ["Desserts","Rasmalai","rasmalai.png","₹139"],
+    ["Drinks","Chocolate Milkshake","chocolate-milkshake.png","₹169"],
+    ["Drinks","Cold Coffee","cold-coffee.png","₹149"],
+    ["Drinks","Fresh Lime Soda","fresh-lime-soda.png","₹99"],
+    ["Drinks","Lassi","lassi.png","₹129"],
+    ["Drinks","Lemon Iced Tea","lemon-iced-tea.png","₹119"],
+    ["Egg","Egg Biryani","egg-biryani.png","₹229"],
+    ["Egg","Egg Curry","egg-curry.png","₹179"],
+    ["Egg","Egg Fried Rice","egg-fried-rice.png","₹199"],
+    ["Egg","Egg Fry","egg-fry.png","₹149"],
+    ["Egg","Egg Noodles","egg-noodles.png","₹199"],
+    ["Mutton","Mutton Biryani","mutton-biryani.png","₹379"],
+    ["Mutton","Mutton Curry & Rice","mutton-curry-&-rice.png","₹329"],
+    ["Mutton","Mutton Curry","mutton-curry.png","₹299"],
+    ["Mutton","Mutton Fry","mutton-fry.png","₹289"],
+    ["Mutton","Mutton Kebab","mutton-kebab.png","₹299"],
+    ["Mutton","Mutton Keema","mutton-keema.png","₹279"],
+    ["Mutton","Mutton Thali","mutton-thali.png","₹349"],
+    ["Noodles & Asian","Chicken Noodles","chicken-noodles.png","₹219"],
+    ["Noodles & Asian","Chilli Chicken","chilli-chicken.png","₹249"],
+    ["Noodles & Asian","Chilli Paneer","chilli-paneer.png","₹229"],
+    ["Noodles & Asian","Spring Rolls","spring-rolls.png","₹169"],
+    ["Noodles & Asian","Veg Manchurian","veg-manchurian.png","₹199"],
+    ["Noodles & Asian","Veg Noodles","veg-noodles.png","₹189"],
+    ["Pizzas","Cheese Burst Pizza","cheese-burst-pizza.png","₹429"],
+    ["Pizzas","Chicken Pizza","chicken-pizza.png","₹379"],
+    ["Pizzas","Farmhouse Pizza","farmhouse-pizza.png","₹349"],
+    ["Pizzas","Margherita Pizza","margherita-pizza.png","₹299"],
+    ["Pizzas","Paneer Pizza","paneer-pizza.png","₹359"],
+    ["Pizzas","Pepperoni Pizza","pepperoni-pizza.png","₹399"],
+    ["Seafood","Chilli Prawns","chilli-prawns.png","₹299"],
+    ["Seafood","Fish Biryani","fish-biryani.png","₹349"],
+    ["Seafood","Fish Curry & Rice","fish-curry-&-rice.png","₹299"],
+    ["Seafood","Fish Curry","fish-curry.png","₹249"],
+    ["Seafood","Fish Fry","fish-fry.png","₹269"],
+    ["Seafood","Prawns Biryani","prawns-biryani.png","₹369"],
+    ["Seafood","Prawns Curry & Rice","prawns-curry-&-rice.png","₹329"],
+    ["Seafood","Prawns Curry","prawns-curry.png","₹289"],
+    ["Seafood","Prawns Fry","prawns-fry.png","₹299"],
+    ["Sides & Starters","Cheese Garlic Bread","cheese-garlic-bread.png","₹149"],
+    ["Sides & Starters","Chicken Nuggets","chicken-nuggets.png","₹169"],
+    ["Sides & Starters","Chicken Samosa","chicken-samosa.png","₹129"],
+    ["Sides & Starters","French Fries","french-fries.png","₹129"],
+    ["Sides & Starters","Loaded Fries","loaded-fries.png","₹179"],
+    ["Sides & Starters","Mozzarella Sticks","mozzarella-sticks.png","₹179"],
+    ["Sides & Starters","Onion Rings","onion-rings.png","₹139"],
+    ["Sides & Starters","Paneer Tikka","paneer-tikka.png","₹229"],
+    ["Thali","Andhra Non Veg Thali","andhra-non-veg-thali.png","₹349"],
+    ["Thali","Andhra Style Veg Thali","andhra-style-veg-thali.png","₹229"],
+    ["Thali","Chicken Thali","chicken-thali.png","₹329"],
+    ["Thali","Mutton Thali","mutton-thali.png","₹349"],
+    ["Thali","Non Veg Thali","non-veg-thali.png","₹349"],
+    ["Thali","Veg Thali","veg-thali.png","₹229"],
+    ["Vegetarian","Andhra Style Veg Thali","andhra-style-veg-thali.png","₹229"],
+    ["Vegetarian","Chilli Paneer","chilli-paneer.png","₹229"],
+    ["Vegetarian","Gobi Manchurian","gobi-manchurian.png","₹199"],
+    ["Vegetarian","Paneer Biryani","paneer-biryani.png","₹279"],
+    ["Vegetarian","Paneer Burger","paneer-burger.png","₹189"],
+    ["Vegetarian","Paneer Butter Masala","paneer-butter-masala.png","₹229"],
+    ["Vegetarian","Paneer Noodles","paneer-noodles.png","₹219"],
+    ["Vegetarian","Paneer Pizza","paneer-pizza.png","₹359"],
+    ["Vegetarian","Paneer Tikka Masala","paneer-tikka-masala.png","₹239"],
+    ["Vegetarian","Paneer Tikka","paneer-tikka.png","₹229"],
+    ["Vegetarian","Veg Manchurian","veg-manchurian.png","₹199"],
+    ["Vegetarian","Veg Noodles","veg-noodles.png","₹189"],
+    ["Vegetarian","Veg Thali","veg-thali.png","₹229"]
+].map((x, index) => ({
+    id:index, category:x[0], name:x[1], filename:x[2],
+    price:Number(String(x[3]).replace(/[^0-9]/g,"")),
+    priceLabel:x[3], description:""
+}));
+
+/* ================= RESTAURANT DATA ================= */
+let brSelectedRestaurant = {
+    name:"Bella Napoli Pizza",
+    category:"Pizza",
+    cuisine:"Italian Pizza",
+    rating:"4.8",
+    time:"25–30 min",
+    distance:"1.2 km",
+    emoji:"🍕",
+    image:"../assets/images/restaurants/bella-napoli.png",
+    description:"Authentic Italian pizzas made with fresh ingredients and a crispy golden crust."
+};
+
+function loadSelectedRestaurant(){
+    try{
+        const saved=localStorage.getItem("selectedRestaurant");
+        if(saved){
+            const parsed=JSON.parse(saved);
+            if(parsed && typeof parsed === "object") brSelectedRestaurant={...brSelectedRestaurant,...parsed};
+        }
+    }catch(error){ console.log("Using default restaurant."); }
+
+    const set=(id,value)=>{ const el=document.getElementById(id); if(el) el.textContent=value; };
+    set("brRestaurantName",brSelectedRestaurant.name);
+    set("brRestaurantDescription",brSelectedRestaurant.description || "Delicious meals prepared fresh for you.");
+    set("brRestaurantRating",brSelectedRestaurant.rating || "4.8");
+    set("brRestaurantTime",brSelectedRestaurant.time || "25–30 min");
+    set("brRestaurantDistance",`${brSelectedRestaurant.distance || "1.2 km"} away`);
+
+    const restaurantImageMap = {
+        "Bella Napoli Pizza": "../assets/images/restaurants/bella-napoli.png",
+        "Burger District": "../assets/images/restaurants/burger-district.png",
+        "Spice Garden": "../assets/images/restaurants/spice-garden.png"
+    };
+
+    const heroImage =
+        brSelectedRestaurant.image ||
+        restaurantImageMap[brSelectedRestaurant.name] ||
+        "../assets/images/restaurants/bella-napoli.png";
+
+    const heroImageElement = document.getElementById("brRestaurantHeroImage");
+    if (heroImageElement) {
+        heroImageElement.src = heroImage;
+        heroImageElement.alt = `${brSelectedRestaurant.name || "Restaurant"} restaurant`;
+    }
+    loadRestaurantFavorite();
+}
+
+/* ================= CART ================= */
+function getCart(){
+    try{return JSON.parse(localStorage.getItem("biteRushCart")) || [];}catch{return [];}
+}
+function saveCart(cart){localStorage.setItem("biteRushCart",JSON.stringify(cart));}
+function getCartCount(){return getCart().reduce((t,i)=>t+Number(i.quantity||0),0);}
+function getCartTotal(){return getCart().reduce((t,i)=>t+(Number(i.price||0)*Number(i.quantity||0)),0);}
+
+function addMenuItem(event,index){
+    if(event) event.stopPropagation();
+    const item=BR_MENU_ITEMS[index];
+    if(!item) return;
+    let cart=getCart();
+    const existing=cart.find(i=>i.name===item.name);
+    if(existing) {
+        existing.quantity=Number(existing.quantity||0)+1;
+        existing.image=makeAssetPath(categoryFolder(item.category),item.filename);
+        existing.category=item.category;
+        existing.description=item.description;
+    }
+    else cart.push({
+        name:item.name,
+        price:item.price,
+        emoji:item.emoji||"🍽️",
+        image:makeAssetPath(categoryFolder(item.category),item.filename),
+        category:item.category,
+        description:item.description,
+        quantity:1,
+        instructions:""
+    });
+    saveCart(cart);
+    updateRestaurantCart();
+    showRestaurantToast(`${item.name} added to cart 🛒`);
+}
+
+function openMenuItem(index){
+    const item=BR_MENU_ITEMS[index];
+    if(!item) return;
+    localStorage.setItem("selectedMenuItem",JSON.stringify({
+        name:item.name,
+        price:item.price,
+        emoji:"🍽️",
+        image:makeAssetPath(categoryFolder(item.category),item.filename),
+        filename:item.filename,
+        description:item.description,
+        category:item.category
+    }));
+    window.location.href="menu-item.html";
+}
+
+/* ================= RENDER MENU ================= */
+function makeAssetPath(category,filename){
+    return BR_ASSET_ROOT + category.toLowerCase().replaceAll(" & "," & ") + "/" + filename;
+}
+
+function categoryFolder(category){
+    const map={
+        "Biryani & Rice":"biryani & rice",
+        "Breads":"breads",
+        "Burgers & Sandwiches":"burgers & sandwiches",
+        "Chicken":"chicken",
+        "Curries & Rice Combos":"curries & rice combos",
+        "Desserts":"desserts",
+        "Drinks":"drinks",
+        "Egg":"egg",
+        "Mutton":"mutton",
+        "Noodles & Asian":"noodles & asian",
+        "Pizzas":"pizzas",
+        "Seafood":"seafood",
+        "Sides & Starters":"sides & starters",
+        "Thali":"thali",
+        "Vegetarian":"vegetarian"
+    };
+    return map[category] || "";
+}
+
+function renderCategories(){
+    const wrap=document.getElementById("brRestaurantCategories");
+    if(!wrap) return;
+    wrap.innerHTML="";
+    BR_CATEGORIES.forEach(category=>{
+        const button=document.createElement("button");
+        button.className="br-restaurant-category" + (category==="All" ? " active" : "");
+        button.dataset.menuCategory=category;
+        const count=category==="All" ? BR_MENU_ITEMS.length : BR_MENU_ITEMS.filter(i=>i.category===category).length;
+        button.innerHTML=`${category}<span class="br-restaurant-category-count">${count}</span>`;
+        button.addEventListener("click",()=>{
+            document.querySelectorAll(".br-restaurant-category").forEach(b=>b.classList.remove("active"));
+            button.classList.add("active");
+            renderMenu(category);
+        });
+        wrap.appendChild(button);
+    });
+}
+
+const BR_FEATURED_ITEM_NAMES = [
+    "Margherita Pizza",
+    "Chicken Biryani",
+    "Cheese Chicken Burger",
+    "Butter Chicken",
+    "Mutton Biryani",
+    "Paneer Butter Masala",
+    "Veg Biryani",
+    "Egg Biryani",
+    "Chicken Noodles",
+    "Prawns Biryani",
+    "Fresh Lime Soda",
+    "Chocolate Milkshake",
+    "French Fries",
+    "Chocolate Cake",
+    "Veg Thali"
+];
+
+function renderMenu(category="All"){
+    const grid=document.getElementById("brRestaurantMenuGrid");
+    if(!grid) return;
+
+    /*
+       ALL = only the 18 popular dishes shown on the main restaurant page.
+       CATEGORY = every dish belonging to that category.
+    */
+    const items = category === "All"
+        ? BR_FEATURED_ITEM_NAMES
+            .map(name => BR_MENU_ITEMS.find(item => item.name === name))
+            .filter(Boolean)
+        : BR_MENU_ITEMS.filter(i => i.category === category);
+
+    grid.innerHTML="";
+
+    const heading = document.getElementById("brRestaurantMenuDisplayNote");
+    if (heading) {
+        heading.innerHTML = category === "All"
+            ? `<span>Showing ${items.length} popular dishes</span><small>Select a category to view every dish in it.</small>`
+            : `<span>${category}</span><small>${items.length} dishes available in this category.</small>`;
+    }
+
+    if(!items.length){
+        grid.innerHTML=`<div class="br-restaurant-empty"><strong>No dishes in this category</strong><span>This category is ready for your food selection.</span></div>`;
+        return;
+    }
+
+    items.forEach(item=>{
+        const card=document.createElement("article");
+        card.className="br-restaurant-menu-card";
+        card.dataset.category=item.category;
+        card.onclick=()=>openMenuItem(item.id);
+        const imgSrc=makeAssetPath(categoryFolder(item.category),item.filename);
+        card.innerHTML=`
+            <div class="br-restaurant-menu-image">
+                <img src="${imgSrc}" alt="${item.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=&quot;font-size:44px&quot;>🍽️</span>'">
+            </div>
+            <div class="br-restaurant-menu-info">
+                <h3 class="br-restaurant-menu-name">${item.name}</h3>
+                <div class="br-restaurant-menu-bottom">
+                    <span class="br-restaurant-menu-price">${item.priceLabel}</span>
+                    <button class="br-restaurant-add" onclick="addMenuItem(event,${item.id})">+</button>
+                </div>
+            </div>`;
+        grid.appendChild(card);
+    });
+}
+
+/* ================= FAVORITES ================= */
+function getRestaurantFavorites(){
+    try{return JSON.parse(localStorage.getItem("biteRushFavorites")) || [];}catch{return [];}
+}
+function toggleRestaurantFavorite(){
+    let favorites=getRestaurantFavorites();
+    const name=brSelectedRestaurant.name;
+    const index=favorites.findIndex(item=>(typeof item==="string"?item:item.name)===name);
+    if(index>=0){favorites.splice(index,1);showRestaurantToast("Removed from favorites");}
+    else{favorites.push({name:name,...brSelectedRestaurant});showRestaurantToast("Added to favorites ❤️");}
+    localStorage.setItem("biteRushFavorites",JSON.stringify(favorites));
+    loadRestaurantFavorite();
+}
+function loadRestaurantFavorite(){
+    const button=document.getElementById("brRestaurantFavorite");
+    if(!button) return;
+    const favorites=getRestaurantFavorites();
+    const name=brSelectedRestaurant.name;
+    const active=favorites.some(item=>(typeof item==="string"?item:item.name)===name);
+    button.classList.toggle("active",active);
+    button.setAttribute("aria-pressed",String(active));
+}
+
+/* ================= CART UI ================= */
+function updateRestaurantCart(){
+    const count=getCartCount(), total=getCartTotal();
+    const header=document.getElementById("brRestaurantHeaderCartCount");
+    const floating=document.getElementById("brRestaurantFloatingCart");
+    const countEl=document.getElementById("brRestaurantFloatingCount");
+    const totalEl=document.getElementById("brRestaurantFloatingTotal");
+    if(header) header.textContent=count;
+    if(countEl) countEl.textContent=`${count} ${count===1?"item":"items"}`;
+    if(totalEl) totalEl.textContent=`₹${total}`;
+    if(floating) floating.classList.toggle("show",count>0);
+}
+
+function showRestaurantToast(message){
+    const toast=document.getElementById("brRestaurantToast");
+    if(!toast) return;
+    toast.textContent=message;
+    toast.classList.add("show");
+    clearTimeout(window.brToastTimer);
+    window.brToastTimer=setTimeout(()=>toast.classList.remove("show"),2200);
+}
+
+/* ================= NAVIGATION ================= */
+function goBack(){
+    if(document.referrer && document.referrer.includes(location.host)) history.back();
+    else window.location.href="home.html";
+}
+function openCart(){window.location.href="cart.html";}
+
+/* ================= INIT ================= */
+document.addEventListener("DOMContentLoaded",()=>{
+    loadSelectedRestaurant();
+    renderCategories();
+    renderMenu("All");
+    updateRestaurantCart();
+});
+</script>
+</div>
+</body>
+</html>
