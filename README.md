@@ -4,7 +4,7 @@
 
 ## 🌐 Live Project
 
-**Live Website:** [BiteRush Food Ordering App](https://sowji1176.github.io/BiteRush-Food-Ordering-App/)
+**Live Website:** https://sowji1176.github.io/BiteRush-Food-Ordering-App/
 
 ## About the Project
 
